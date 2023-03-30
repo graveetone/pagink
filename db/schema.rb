@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_134414) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_141145) do
   create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_134414) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "publisher_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "books_books_lists", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -60,6 +62,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_134414) do
     t.index ["author_id"], name: "index_ginks_on_author_id"
   end
 
+  create_table "publishers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
@@ -70,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_134414) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "publishers"
   add_foreign_key "books_lists", "users", column: "author_id"
   add_foreign_key "ginks", "users", column: "author_id"
 end
