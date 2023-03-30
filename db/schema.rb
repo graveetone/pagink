@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_141145) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_142724) do
   create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -68,6 +68,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_141145) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "raitings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "book_id", null: false
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_raitings_on_author_id"
+    t.index ["book_id"], name: "index_raitings_on_book_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
@@ -81,4 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_141145) do
   add_foreign_key "books", "publishers"
   add_foreign_key "books_lists", "users", column: "author_id"
   add_foreign_key "ginks", "users", column: "author_id"
+  add_foreign_key "raitings", "books"
+  add_foreign_key "raitings", "users", column: "author_id"
 end
