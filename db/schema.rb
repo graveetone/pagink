@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_29_205633) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_133456) do
   create_table "books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.integer "pages_count", default: 0
@@ -37,6 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_205633) do
     t.index ["author_id"], name: "index_books_lists_on_author_id"
   end
 
+  create_table "ginks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["author_id"], name: "index_ginks_on_author_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
@@ -48,4 +57,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_205633) do
   end
 
   add_foreign_key "books_lists", "users", column: "author_id"
+  add_foreign_key "ginks", "users", column: "author_id"
 end
