@@ -4,4 +4,5 @@ class User < ApplicationRecord
     has_many :raitings, class_name: 'Raiting', foreign_key: 'author_id'
     has_many :reviews, class_name: 'Review', foreign_key: 'author_id'
     has_one :image_link, as: :imageable
+    has_many :notifications
 end

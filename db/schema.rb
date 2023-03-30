@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_163229) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_164413) do
   create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -71,6 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_163229) do
     t.index ["imageable_id"], name: "index_image_links_on_imageable_id"
   end
 
+  create_table "notifications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "payload"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "publishers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -110,6 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_163229) do
   add_foreign_key "books", "publishers"
   add_foreign_key "books_lists", "users", column: "author_id"
   add_foreign_key "ginks", "users", column: "author_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "raitings", "books"
   add_foreign_key "raitings", "users", column: "author_id"
   add_foreign_key "reviews", "authors"
