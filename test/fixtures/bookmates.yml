@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bookmate_id: 1
+  bookmatee_id: 1
+
+two:
+  bookmate_id: 1
+  bookmatee_id: 1
