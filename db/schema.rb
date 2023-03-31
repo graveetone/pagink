@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_204758) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_083322) do
   create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -51,20 +51,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_204758) do
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
-  create_table "books_books_lists", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "books_list_id", null: false
+  create_table "books_shelves", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "shelve_id", null: false
     t.bigint "book_id", null: false
-    t.index ["book_id"], name: "index_books_books_lists_on_book_id"
-    t.index ["books_list_id"], name: "index_books_books_lists_on_books_list_id"
-  end
-
-  create_table "books_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title", null: false
-    t.boolean "is_private", default: true, null: false
-    t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_books_lists_on_author_id"
+    t.index ["book_id"], name: "index_books_shelves_on_book_id"
+    t.index ["shelve_id"], name: "index_books_shelves_on_books_list_id"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -151,6 +142,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_204758) do
     t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
+  create_table "shelves", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "is_private", default: true, null: false
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_shelves_on_author_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
@@ -162,7 +162,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_204758) do
   end
 
   add_foreign_key "books", "publishers"
-  add_foreign_key "books_lists", "users", column: "author_id"
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "ginks", "users", column: "author_id"
   add_foreign_key "likes", "users"
@@ -173,4 +172,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_204758) do
   add_foreign_key "raitings", "users", column: "author_id"
   add_foreign_key "reviews", "authors"
   add_foreign_key "reviews", "books"
+  add_foreign_key "shelves", "users", column: "author_id"
 end
