@@ -3,7 +3,7 @@ class CreateNotifications < ActiveRecord::Migration[7.0]
     create_table :notifications do |t|
       t.string :title
       t.text :payload
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end

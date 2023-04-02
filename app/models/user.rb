@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :ginks, class_name: "Gink", foreign_key: 'author_id'
     has_many :raitings, class_name: 'Raiting', foreign_key: 'author_id'
     has_many :reviews, class_name: 'Review', foreign_key: 'author_id'
-    has_one :image_link, as: :imageable
+    has_one :image_link, as: :imageable, dependent: :destroy
     has_many :notifications
     has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
     has_many :sent_messages, class_name: 'Message', foreign_key: 'author_id'
@@ -25,5 +25,5 @@ class User < ApplicationRecord
     has_many :bookmatees, through: :bookmatee_relations, source: :bookmate
 
     has_many :likes
-    has_many :comments
+    has_many :comments, class_name: 'Comment', foreign_key: 'author_id'
 end
