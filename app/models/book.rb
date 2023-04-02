@@ -4,5 +4,5 @@ class Book < ApplicationRecord
     belongs_to :publisher
     has_many :raitings
     has_many :reviews
-    has_one :image_link, as: :imageable
+    has_one :image_link, as: :imageable, dependent: :destroy
 end

@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_083322) do
   end
 
   create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.string "likeable_type"
     t.integer "likeable_id"
     t.datetime "created_at", null: false
@@ -98,8 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_083322) do
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "author_id", null: false
-    t.bigint "recipient_id", null: false
+    t.bigint "author_id"
+    t.bigint "recipient_id"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -162,15 +162,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_083322) do
   end
 
   add_foreign_key "books", "publishers"
-  add_foreign_key "comments", "users", column: "author_id"
-  add_foreign_key "ginks", "users", column: "author_id"
-  add_foreign_key "likes", "users"
-  add_foreign_key "messages", "users", column: "author_id"
-  add_foreign_key "messages", "users", column: "recipient_id"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "comments", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "ginks", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "likes", "users", on_delete: :nullify
+  add_foreign_key "messages", "users", column: "author_id", on_delete: :nullify
+  add_foreign_key "messages", "users", column: "recipient_id", on_delete: :nullify
+  add_foreign_key "notifications", "users", on_delete: :cascade
   add_foreign_key "raitings", "books"
-  add_foreign_key "raitings", "users", column: "author_id"
-  add_foreign_key "reviews", "authors"
+  add_foreign_key "raitings", "users", column: "author_id", on_delete: :nullify
+  add_foreign_key "reviews", "authors", on_delete: :cascade
   add_foreign_key "reviews", "books"
-  add_foreign_key "shelves", "users", column: "author_id"
+  add_foreign_key "shelves", "users", column: "author_id", on_delete: :cascade
 end
