@@ -161,16 +161,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_083322) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "books", "publishers"
+  add_foreign_key "books", "publishers", on_delete: :nullify
   add_foreign_key "comments", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "ginks", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :nullify
   add_foreign_key "messages", "users", column: "author_id", on_delete: :nullify
   add_foreign_key "messages", "users", column: "recipient_id", on_delete: :nullify
   add_foreign_key "notifications", "users", on_delete: :cascade
-  add_foreign_key "raitings", "books"
+  add_foreign_key "raitings", "books", on_delete: :cascade
   add_foreign_key "raitings", "users", column: "author_id", on_delete: :nullify
   add_foreign_key "reviews", "authors", on_delete: :cascade
-  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "books", on_delete: :cascade
   add_foreign_key "shelves", "users", column: "author_id", on_delete: :cascade
 end
