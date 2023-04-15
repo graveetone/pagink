@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Menu from './components/menu/Menu'
-import {Book} from './pages'
+import { Book, Author } from './pages'
 
 function Home() {
   return <h1 className='text-6xl text-center'>Welcome to the Home page!</h1>;
@@ -31,9 +31,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col items-center pb-12 mb-12">
-        {/* <h1 className='text-6xl text-center'>PAgInk is UndeR conTRuCtiOn</h1> */}
         <Menu />
-        {/* <div className='h-2/3'></div> */}
 
         <Router>
           <Routes>
@@ -42,6 +40,7 @@ function App() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/authors" element={<Author />} />
           </Routes>
         </Router>
       </div >
