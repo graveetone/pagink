@@ -5,14 +5,10 @@ import {
 } from 'react-router-dom';
 
 import Menu from './components/menu/Menu'
-import { Book, Author, Shelve } from './pages'
+import { Book, Author, Shelve, Shelves } from './pages'
 
 function Home() {
   return <h1 className='text-6xl text-center'>Welcome to the Home page!</h1>;
-}
-
-function Books() {
-  return <h1 className='text-6xl text-center'>Books</h1>;
 }
 
 function Explore() {
@@ -36,11 +32,13 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/books" element={<Shelve />} />
+            <Route path="/shelves" element={<Shelves />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/authors" element={<Author />} />
+            <Route path="/shelve" element={<Shelve />} />
+            <Route path="/book" element={<Book />} />
           </Routes>
         </Router>
       </div >
