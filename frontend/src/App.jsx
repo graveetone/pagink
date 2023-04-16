@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Menu from './components/menu/Menu'
-import { Book, Author } from './pages'
+import { Book, Author, Shelve } from './pages'
 
 function Home() {
   return <h1 className='text-6xl text-center'>Welcome to the Home page!</h1>;
@@ -36,7 +36,7 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/books" element={<Book />} />
+            <Route path="/books" element={<Shelve />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
