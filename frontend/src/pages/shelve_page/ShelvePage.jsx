@@ -4,7 +4,7 @@ import { setPageTitle } from '../../helpers'
 import BooksSection from './components/BooksSection'
 import ShelveHeader from './components/ShelveHeader'
 
-function Shelve() {
+function ShelvePage() {
     setPageTitle(`${data.title} by ${data.author.username}`)
 
     return (
@@ -17,4 +17,4 @@ function Shelve() {
     )
 }
 
-export default Shelve
+export default ShelvePage;

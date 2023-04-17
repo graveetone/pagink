@@ -7,7 +7,7 @@ import { data } from './data'
 import { setPageTitle } from '../../helpers'
 
 
-function Book() {
+function BookPage() {
   setPageTitle(data.title)
   return (
     <>
@@ -34,4 +34,4 @@ function Book() {
   )
 }
 
-export default Book;
+export default BookPage;

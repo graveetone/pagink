@@ -1,7 +1,7 @@
 import React from 'react'
 import { data } from './data'
 import { setPageTitle } from '../../helpers'
-import ShelvesHeader from './ShelvesHeader';
+import ShelvesHeader from './components/ShelvesHeader';
 
 function ShelveCard() {
   return (
@@ -26,7 +26,7 @@ function ShelveCard() {
   );
 }
 
-function Shelves() {
+function ShelvesPage() {
   setPageTitle(`Shelves by ${data.author.username}`)
   return (
     <>
@@ -40,4 +40,4 @@ function Shelves() {
   )
 }
 
-export default Shelves;
+export default ShelvesPage;
