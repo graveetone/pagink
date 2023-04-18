@@ -39,6 +39,7 @@ function App() {
             <Route path="/authors" element={<AuthorPage />} />
             <Route path="/shelve" element={<ShelvePage />} />
             <Route path="/book" element={<BookPage />} />
+            <Route path="/user" element={<UserPage />} />
           </Routes>
         </Router>
       </div >
