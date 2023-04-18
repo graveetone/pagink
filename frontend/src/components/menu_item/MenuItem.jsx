@@ -2,10 +2,10 @@ import React from 'react'
 
 function MenuItem({ icon, caption, url }) {
     const styles = {
-        div: "rounded-t-3xl bg-black text-white xs:mx-1 xs:p-2 sm:mx-3 sm:py-3 sm:px-5 lg:mx-2 lg:p-2 lg:px-10",
-        a: "flex justify-center items-center xs:flex-col sm:flex-col lg:flex-col",
+        div: "rounded-t-2xl bg-black text-white xs:p-3 sm:px-2 sm:py-3 lg:px-6 lg:py-2 sm:mx-1 sm:flex-grow",
+        a: "flex justify-center items-center flex-col",
         icon: "",
-        caption: "xs:text-xss sm:text-xss lg:text-xl"
+        caption: "sm:text-md lg:text-lg sm:block xs:hidden"
     }
 
     return (
