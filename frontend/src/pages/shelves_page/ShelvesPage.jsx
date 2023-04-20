@@ -8,11 +8,14 @@ function ShelvesPage() {
   setPageTitle(`Shelves by ${data.author.username}`)
   return (
     <>
-      <ShelvesHeader author={data.author} />
-      <div className="flex flex-wrap justify-center w-full items-center">
-        <ShelveCard shelve={data.shelves[0]}/>
-        <ShelveCard shelve={data.shelves[2]}/>
-        <ShelveCard shelve={data.shelves[3]}/>
+      <div className=''>
+        <ShelvesHeader author={data.author} />
+
+        <div className="flex flex-wrap justify-center w-full items-center">
+          <ShelveCard shelve={data.shelves[0]} />
+          <ShelveCard shelve={data.shelves[2]} />
+          <ShelveCard shelve={data.shelves[3]} />
+        </div>
       </div>
     </>
   )
