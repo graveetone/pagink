@@ -26,8 +26,8 @@ puts 'Deleting all data'.yellow
 models = [User, Author, Gink, Review, Book, Shelve, Publisher, Comment, ImageLink, Like, Message, Notification, Raiting]
 models.each { |model| delete_data_and_puts_info.call(model) }
 
-5.times do
-  user = User.create(Faker::Internet.user)
+5.times do |i|
+  user = User.create(username: "member#{i+1}", email:Faker::Internet.email, password: 'pass1234', jti: User.count.to_s)
   puts "User #{user.username.to_s.blue} created".red
 
   image_link = ImageLink.create(url: Faker::LoremFlickr.image(size: '300x300', search_terms: %w[cat dog]))
@@ -70,8 +70,12 @@ end
 
 30.times do
   comment = Comment.create(author: User.all.sample, text: Faker::Lorem.paragraph(sentence_count: 3))
-  [Gink, Review, Comment].sample.all.sample.comments << comment
+
+  [Gink, Review].sample.all.sample.comments << comment
   puts "Comment with id #{comment.id.to_s.blue} created".red
+
+  comment = Comment.create(author: User.all.sample, text: Faker::Lorem.paragraph(sentence_count: 3))
+  Comment.all.sample.comments << comment
 
   like = Like.create(user: User.all.sample)
   [Gink, Review, Comment].sample.all.sample.likes << like
