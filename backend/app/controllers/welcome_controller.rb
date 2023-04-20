@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class WelcomeController < ActionController::Base
   def index
     render 'layouts/application'
   end
