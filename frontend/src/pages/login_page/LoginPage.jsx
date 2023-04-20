@@ -7,7 +7,7 @@ function LoginPage() {
   setPageTitle('Login')
   return (
     <>
-      <div className='flex flex-col h-screen justify-start items-center gap-24'>
+      <div className='flex flex-col h-screen justify-start items-center gap-10'>
         <Header subheading={'Long Time No See You, Reader'}/>
         <Form />
       </div>
