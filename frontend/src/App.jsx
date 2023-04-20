@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Menu from './components/menu/Menu'
-import { Book, Author, Shelve, Shelves } from './pages'
+import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage } from './pages'
 
 function Home() {
   return <h1 className='text-6xl text-center'>Welcome to the Home page!</h1>;
@@ -32,13 +32,14 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/shelves" element={<Shelves />} />
+            <Route path="/shelves" element={<ShelvesPage />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/authors" element={<Author />} />
-            <Route path="/shelve" element={<Shelve />} />
-            <Route path="/book" element={<Book />} />
+            <Route path="/authors" element={<AuthorPage />} />
+            <Route path="/shelve" element={<ShelvePage />} />
+            <Route path="/book" element={<BookPage />} />
+            <Route path="/user" element={<UserPage />} />
           </Routes>
         </Router>
       </div >

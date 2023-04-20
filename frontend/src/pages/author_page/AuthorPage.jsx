@@ -7,7 +7,7 @@ import { data } from './data'
 import BooksSection from './components/BooksSection'
 import { setPageTitle } from '../../helpers'
 
-function Author() {
+function AuthorPage() {
   setPageTitle(data.name)
 
   return (
@@ -21,4 +21,4 @@ function Author() {
   )
 }
 
-export default Author
+export default AuthorPage;
