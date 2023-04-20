@@ -3,5 +3,6 @@ import AuthorPage from './author_page'
 import ShelvePage from './shelve_page'
 import ShelvesPage from './shelves_page'
 import UserPage from './user_page'
+import LoginPage from './login_page'
 
-export { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage }
+export { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage }
