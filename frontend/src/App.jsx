@@ -7,25 +7,37 @@ import {
 import Menu from './components/menu/Menu'
 import LoginMenu from './components/menu/LoginMenu'
 import Header from './components/Header';
+import { setPageTitle } from './helpers';
 import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage } from './pages'
 
 function Home() {
+  setPageTitle('Home')
   return <Header />
 }
 
 function MainPage() {
-  return <Header />
+  setPageTitle('Main')
+  return <Header subheading={"Your bookshelf, your thoughts, your community"} />
 }
 
 function SignUpPage() {
-  return <Header subheading={'We are glad you are joining PagInk, Reader'}/>
+  setPageTitle('Sign Up')
+  return <Header subheading={"We're glad you're joining PagInk"} />
 }
 
 function Explore() {
-  return <h1 className='text-6xl text-center'>Explore</h1>;
+  setPageTitle('Explore')
+  return <Header heading='Explore' subheading={"Find new books"} />
+
 }
 function Settings() {
-  return <h1 className='text-6xl text-center'>Settings</h1>;
+  setPageTitle('Settings')
+  return (
+    <>
+      <Header heading='Settings' subheading={"Setup PagInk just for you"} />
+      <a href="/logout">Logout</a>
+    </>
+  )
 }
 function Logout() {
   return <h1 className='text-6xl text-center'>Logout</h1>;
@@ -33,7 +45,7 @@ function Logout() {
 
 
 function App() {
-  const user = 0;
+  const user = 1;
   return (
     <>
       <div className="flex flex-col items-center h-screen overflow-y-scroll pb-24">
@@ -60,6 +72,7 @@ function App() {
                 <Route exact path="/" element={<MainPage />} />
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route path="/sign_up" element={<SignUpPage />} />
+                <Route path="*" element={<LoginPage />} />
               </Routes>
             </Router>
           </>
