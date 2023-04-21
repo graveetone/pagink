@@ -9,6 +9,11 @@ module.exports = {
       'xs': '350px',
       'sm': '500px',
       'lg': '1500px'
+    },
+    extend: {
+      colors: {
+        'ruby-red': '#9B111E',
+      },
     }
   },
   plugins: [],

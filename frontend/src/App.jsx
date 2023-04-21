@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from 'react-router-dom';
@@ -51,7 +50,6 @@ function App() {
       <div className="flex flex-col items-center h-screen overflow-y-scroll pb-24">
         {user ? (
           <>
-            <Router>
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/shelves" element={<ShelvesPage />} />
@@ -63,18 +61,15 @@ function App() {
                 <Route path="/book" element={<BookPage />} />
                 <Route path="/user" element={<UserPage />} />
               </Routes>
-            </Router>
           </>
         ) : (
           <>
-            <Router>
               <Routes>
                 <Route exact path="/" element={<MainPage />} />
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route path="/sign_up" element={<SignUpPage />} />
                 <Route path="*" element={<LoginPage />} />
               </Routes>
-            </Router>
           </>
         )}
       </div >
