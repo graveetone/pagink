@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuItem from '../menu_item/MenuItem'
 import icons from '../../components/icons'
+
 function Menu() {
     const captions = {
         uk: {
