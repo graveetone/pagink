@@ -6,7 +6,7 @@ import {
 
 import Menu from './components/menu/Menu'
 import LoginMenu from './components/menu/LoginMenu'
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import { setPageTitle } from './helpers';
 import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage } from './pages'
 
