@@ -9,7 +9,7 @@ function BookCard({ book }) {
                 </div>
                 <div className='flex flex-col justify-center items-center gap-2'>
                     <p className='text-center text-lg'>{book.title}</p>
-                    <p className='italic text-center text-sm'>{book.authors[0].name}</p>
+                    <p className='italic text-center text-sm'>{book.authors?.[0].name}</p>
                 </div>
             </div>
         </a>
