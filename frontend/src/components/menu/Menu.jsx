@@ -22,7 +22,7 @@ function Menu() {
 
     const locale = 'en'
     return (
-        <div className='flex xs:w-full md:w-3/4 lg:w-3/4 h-1/7 bottom-0 justify-evenly fixed'>
+        <div className='flex xs:w-full md:w-3/4 lg:w-3/4 h-1/7 bottom-0 justify-evenly fixed sm:gap-2'>
             <MenuItem key='1' icon={icons.home} caption={captions[locale].home} url={'/'}></MenuItem>
             <MenuItem key='2' icon={icons.shelves} caption={captions[locale].shelves} url={'/shelves'}></MenuItem>
             <MenuItem key='5' icon={icons.user} caption={captions[locale].profile} url={'/user'}></MenuItem>
