@@ -1,11 +1,11 @@
 import React from 'react'
 import BookCard from './BookCard'
 
-function BooksSection({books}) {
+function BooksSection({caption, books}) {
     return (
         <>
             <div className='flex justify-center w-full'>
-                <p className='w-full xs:text-2xl md:text-4xl text-center break-normal'>Books in this shelve ({books.length})</p>
+                <p className='w-full xs:text-2xl md:text-4xl text-center break-normal'>{caption}</p>
             </div>
             <div className="flex xs:w-full md:w-3/4 flex-wrap justify-around gap-4">
                 {books.map(book => (

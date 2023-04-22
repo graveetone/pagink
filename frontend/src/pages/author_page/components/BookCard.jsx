@@ -1,5 +1,4 @@
-import Raiting from '../../../components/Raiting/Raiting'
-
+import Raiting from './../../../components/raiting/Raiting'
 
 function BookCard({ book }) {
     return (

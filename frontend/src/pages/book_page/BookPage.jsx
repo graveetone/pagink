@@ -4,7 +4,7 @@ import BookInfo from './components/BookInfo'
 import BookCover from './components/BookCover'
 import { data } from './data'
 import { setPageTitle, CaptionWithJsx, createLinkTo } from '../../helpers'
-import Header from './../../components/Header/Header'
+import Header from './../../components/header/Header'
 
 function BookPage() {
   setPageTitle(data.title)
