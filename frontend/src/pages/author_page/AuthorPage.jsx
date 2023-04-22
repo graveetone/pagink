@@ -2,22 +2,27 @@ import React from 'react'
 
 import AuthorImage from './components/AuthorImage'
 import AuthorName from './components/AuthorName'
+import Header from '../../components/header/Header'
 
 import { data } from './data'
-import BooksSection from './components/BooksSection'
+import BooksSection from './../../components/books_section/BooksSection'
 import { setPageTitle } from '../../helpers'
 
 function AuthorPage() {
   setPageTitle(data.name)
 
   return (
-    <div className='flex flex-col justify-around items-around w-full'>
-      <div className='flex justify-around items-center w-full my-5'>
-        <AuthorImage image_url={data.image_url} />
-        <AuthorName name={data.name} />
+    <>
+      <div className='flex flex-col w-full items-center gap-5'>
+        <div className='flex flex-row w-full items-center justify-around h-full'>
+          <div className="flex items-center justify-center m-3">
+            <img src={data.image_url} alt={data.dataname} className="rounded-3xl xs:w-[35vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center" />
+          </div>
+          <Header heading={data.name} />
+        </div>
+        <BooksSection caption={`Books by this author (${data.books.length})`} books={data.books} />
       </div>
-      <BooksSection books={data.books} />
-    </div>
+    </>
   )
 }
 
