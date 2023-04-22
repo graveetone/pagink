@@ -18,21 +18,21 @@ export const data = {
             "created_at": "2023-04-07T19:48:10.159Z"
         },
         {
-            "id": 5,
+            "id": 122,
             "title": "Містер Мерседес",
             "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
             "raiting": 1,
             "created_at": "2023-04-07T19:48:10.159Z"
         },
         {
-            "id": 5,
+            "id": 1324,
             "title": "Салимове Лігво",
             "image_url": "https://bookclub.ua/images/db/goods/k/53510_102821_k.jpg",
             "raiting": 5,
             "created_at": "2023-04-07T19:48:10.159Z"
         },
         {
-            "id": 2,
+            "id": 2323,
             "title": "Необхідні речі",
             "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
             "raiting": 3,

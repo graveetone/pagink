@@ -30,7 +30,7 @@ export const data = {
             }]
         },
         {
-            "id": 5,
+            "id": 6,
             "title": "Містер Мерседес",
             "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
             "raiting": 1,
@@ -41,7 +41,7 @@ export const data = {
             }]
         },
         {
-            "id": 5,
+            "id": 7,
             "title": "Салимове Лігво",
             "image_url": "https://bookclub.ua/images/db/goods/k/53510_102821_k.jpg",
             "raiting": 5,
@@ -52,7 +52,7 @@ export const data = {
             }]
         },
         {
-            "id": 2,
+            "id": 8,
             "title": "Необхідні речі",
             "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
             "raiting": 3,
@@ -63,7 +63,7 @@ export const data = {
             }]
         },
         {
-            "id": 2,
+            "id": 9,
             "title": "Необхідні речі",
             "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
             "raiting": 3,
@@ -74,7 +74,7 @@ export const data = {
             }]
         },
         {
-            "id": 2,
+            "id": 10,
             "title": "Необхідні речі",
             "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
             "raiting": 3,
@@ -85,7 +85,7 @@ export const data = {
             }]
         },
         {
-            "id": 2,
+            "id": 11,
             "title": "Необхідні речі",
             "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
             "raiting": 3,

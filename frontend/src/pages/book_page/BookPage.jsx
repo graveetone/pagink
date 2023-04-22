@@ -10,7 +10,7 @@ function BookPage() {
   setPageTitle(data.title)
 
   const authors = data.authors.map(author => {
-    return createLinkTo('/author', author.name + ' ')
+    return <span key={author.id}>{createLinkTo('/author', author.name + ' ')}</span>
   })
 
   const AuthorsSection = CaptionWithJsx('by', authors)

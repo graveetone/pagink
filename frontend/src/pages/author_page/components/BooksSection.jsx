@@ -7,7 +7,7 @@ function BooksSection({ books }) {
         <div className='flex flex-col items-center'>
             {books.map(book => {
                 return (
-                    <BookCard book={book} />
+                    <BookCard book={book} key={book.id} />
                 )
             })}
         </div>

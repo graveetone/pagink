@@ -36,7 +36,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 8,
                     "title": "Містер Мерседес",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
                     "raiting": 1,
@@ -47,7 +47,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 23,
                     "title": "Містер Мерседес",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
                     "raiting": 1,
@@ -58,7 +58,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 2423,
                     "title": "Містер Мерседес",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
                     "raiting": 1,
@@ -69,7 +69,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 234234,
                     "title": "Містер Мерседес",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
                     "raiting": 1,
@@ -95,7 +95,7 @@ export const data = {
             "created_at": "2023-04-07T19:48:10.188Z",
             "books": [
                 {
-                    "id": 4,
+                    "id": 2342344,
                     "title": "Згодом",
                     "image_url": "https://bookclub.ua/images/db/goods/57769_113287.jpg",
                     "raiting": 4,
@@ -106,7 +106,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 243234,
                     "title": "Салимове Лігво",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53510_102821_k.jpg",
                     "raiting": 5,
@@ -117,7 +117,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 34535,
                     "title": "Містер Мерседес",
                     "image_url": "https://bookclub.ua/images/db/goods/k/53251_97499_k.jpg",
                     "raiting": 1,
@@ -136,7 +136,7 @@ export const data = {
             "created_at": "2023-04-07T19:48:10.188Z",
             "books": [
                 {
-                    "id": 4,
+                    "id": 68567,
                     "title": "Згодом",
                     "image_url": "https://bookclub.ua/images/db/goods/57769_113287.jpg",
                     "raiting": 4,
@@ -147,7 +147,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 5,
+                    "id": 224234,
                     "title": "Що впало, те пропало",
                     "image_url": "https://bookclub.ua/images/db/goods/k/35333_52676_k.jpg",
                     "raiting": 3,
@@ -158,7 +158,7 @@ export const data = {
                     }]
                 },
                 {
-                    "id": 2,
+                    "id": 2342342,
                     "title": "Необхідні речі",
                     "image_url": "https://bookclub.ua/images/db/goods/k/56361_109620_k.jpg",
                     "raiting": 3,
