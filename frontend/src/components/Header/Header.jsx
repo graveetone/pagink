@@ -15,7 +15,7 @@ function Header({ heading, subheading }) {
                     </>
                 )}
             </div>
-            <p className='text-2xl font-oswald tracking-wider'>{subheading}</p>
+            <p className='text-2xl font-oswald tracking-wider text-center w-3/4'>{subheading}</p>
         </div >
     )
 }

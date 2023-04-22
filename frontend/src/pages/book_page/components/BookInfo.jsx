@@ -12,41 +12,28 @@ function BookInfo({ data }) {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-center h-full xs:w-full sm:w-full md:w-1/2 '>
-        <p className='text-center text-gray-600 text-4xl p-2 my-4'>About this book</p>
-        <div className='w-3/4 rounded-3xl bg-gray-300 border-2 border-gray-400'>
-          <table cellPadding={12} className='w-full'>
-            <tr>
+      <div className='flex flex-col items-center justify-center h-full xs:w-full md:w-1/2'>
+        <div className='flex items-center xs:w-full md:w-3/4 gap-12 flex-col'>
+          <table className='flex flex-col justify-center w-auto gap-5'>
+            <tr className='flex gap-10 xs:text-2xl sm:text-4xl'>
+              <td className='text-black'>ISBN: </td>
+              <td className='text-ruby-red'>{data.isbn}</td>
+            </tr>
+            <tr className='flex gap-10 xs:text-2xl sm:text-4xl'>
+              <td className='text-black'>Pages: </td>
+              <td className='text-ruby-red'>{data.pages_count}</td>
+            </tr>
+            <tr className='flex justify-center items-center flex-col'>
               <td>
-                <span className='text-gray-600 text-xl'>ISBN: </span>
+                <div className='flex justify-center items-center'>{filled_stars}{unfilled_stars}</div>
               </td>
               <td>
-                <span className='text-xl'>{data.isbn}</span>
+                <div className='text-black xs:text-lg md:text-xl'>based on <span className='font-black text-ruby-red'>{data.raitings_count}</span> raitings</div>
               </td>
             </tr>
-            <tr>
-              <td>
-                <span className='text-gray-600 text-xl'>Pages: </span>
-              </td>
-              <td>
-                <span className='text-xl'>{data.pages_count}</span>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={2}>
-                <div className='flex justify-center items-center flex-col'>
-                  <div className='flex justify-center items-center'>{filled_stars}{unfilled_stars}</div>
-                  <div className='text-gray-600 text-lg'>based on <span className='font-black text-xl'>{data.raitings_count}</span> raitings</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={2}>
-                <div className="flex justify-center items-center text-center">
-                  <div className='text-gray-600 text-lg'>
-                    Users shelved this book <span className='font-black text-xl text-black'>{data.shelves_count}</span> times
-                  </div>
-                </div>
+            <tr className="flex justify-center items-center text-center">
+              <td className='text-black xs:text-xl md:text-3xl'>
+                Users shelved this book <span className='font-black text-ruby-red'>{data.shelves_count}</span> times
               </td>
             </tr>
           </table>

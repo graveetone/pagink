@@ -7,7 +7,7 @@ function UserPage() {
   setPageTitle(`${user.username}'s profile`)
   return (
     <>
-      <div className='flex flex-col w-full items-center'>
+      <div className='flex flex-col w-full items-center gap-5'>
         <UserHeader user={user} />
       </div>
     </>
