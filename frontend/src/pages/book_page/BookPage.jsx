@@ -17,13 +17,13 @@ function BookPage() {
 
   return (
     <>
-      <div className="flex w-full flex-col items-center">
+      <div className="flex w-full flex-col items-center gap-5">
         <Header heading={data.title} subheading={AuthorsSection}></Header>
-        <div className="flex w-full flex-col items-center md:flex-row justify-around">
+        <div className="flex w-full flex-col items-center md:flex-row justify-around gap-10">
           <BookCover alt={data.title} url={data.image_url} />
           <BookInfo data={data} />
         </div>
-        <div className="flex flex-col items-center w-full sm:w-6/7 md:w-3/4 p-4 mt-6 text-center text-gray-700">
+        <div className="flex flex-col items-center w-full sm:w-6/7 md:w-3/4 p-4 text-center text-gray-700">
           <p className="text-xl md:text-2xl break-words">{data.description}</p>
         </div>
       </div>
