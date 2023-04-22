@@ -9,7 +9,7 @@ function ShelvePage() {
 
     return (
         <>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center gap-5'>
                 <ShelveHeader shelve={data}/>
                 <BooksSection books={data.books} />
             </div>
