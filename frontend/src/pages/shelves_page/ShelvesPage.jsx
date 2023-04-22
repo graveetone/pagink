@@ -2,7 +2,7 @@ import React from 'react'
 import { data } from './data'
 import { setPageTitle, createLinkTo, CaptionWithJsx } from '../../helpers'
 import ShelveCard from './components/ShelveCard';
-import Header from '../../components/Header/Header'
+import Header from '../../components/header/Header'
 
 function ShelvesPage() {
   setPageTitle(`Shelves by ${data.author.username}`)

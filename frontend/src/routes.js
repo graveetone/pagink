@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage } from './pages'
-import Header from './components/Header/Header';
+import Header from './components/header/Header';
 import { setPageTitle } from './helpers';
 
 // BEGIN temp elements for routes

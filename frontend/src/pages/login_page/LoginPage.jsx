@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from '../../components/form/Form'
-import Header from '../../components/Header/Header'
+import Header from '../../components/header/Header'
 import { setPageTitle } from '../../helpers'
 
 function LoginPage() {

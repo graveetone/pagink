@@ -1,6 +1,6 @@
 import React from 'react'
 import buttons from './buttons'
-import Header from './../../../components/Header/Header'
+import Header from './../../../components/header/Header'
 
 function UserHeader({ user }) {
     return (

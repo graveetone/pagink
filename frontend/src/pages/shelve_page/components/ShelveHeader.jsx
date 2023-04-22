@@ -1,7 +1,7 @@
 import React from 'react'
 import icons from '../../../components/icons'
 import { createLinkTo, JsxWithCaption } from '../../../helpers'
-import Header from '../../../components/Header/Header'
+import Header from '../../../components/header/Header'
 
 function ShelveHeader({ shelve }) {
     const linkToUserPage = createLinkTo('/user', shelve.author.username)
