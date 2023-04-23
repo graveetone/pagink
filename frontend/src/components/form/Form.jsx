@@ -14,12 +14,12 @@ function Form() {
     }))
   }
 
-  const submitButtonStyles = 'flex justify-center w-auto text-center bg-black text-white rounded-2xl p-4 font-medium shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out'
+  const submitButtonStyles = 'flex justify-center w-auto text-center bg-black text-white rounded-2xl p-4 font-medium shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out font-mono'
   
   const areFieldsFilled = fieldsValues.username && fieldsValues.password.length >= 6
   return (
     <>
-      <div className='flex flex-col items-center justify-center w-full gap-10 p-5' autocapitalize='off'>
+      <div className='flex flex-col items-center justify-center w-full gap-10 p-5 font-mono' autocapitalize='off'>
         <Input name='username' type='text' onChange={handleFieldChange} placeholder='username'/>
         <Input name='password' type='password' onChange={handleFieldChange} placeholder='password'/>
         

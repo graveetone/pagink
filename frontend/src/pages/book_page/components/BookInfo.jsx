@@ -16,11 +16,11 @@ function BookInfo({ data }) {
         <div className='flex items-center xs:w-full md:w-3/4 gap-12 flex-col'>
           <table>
             <tbody className='flex flex-col gap-5 justify-center w-auto'>
-              <tr className='flex gap-10 xs:text-2xl sm:text-4xl'>
+              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-comic-neue'>
                 <td className='text-black'>ISBN: </td>
                 <td className='text-ruby-red'>{data.isbn}</td>
               </tr>
-              <tr className='flex gap-10 xs:text-2xl sm:text-4xl'>
+              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-comic-neue'>
                 <td className='text-black'>Pages: </td>
                 <td className='text-ruby-red'>{data.pages_count}</td>
               </tr>
@@ -29,11 +29,11 @@ function BookInfo({ data }) {
                   <div className='flex justify-center items-center'>{filled_stars}{unfilled_stars}</div>
                 </td>
                 <td>
-                  <div className='text-black xs:text-lg md:text-xl'>based on <span className='font-black text-ruby-red'>{data.raitings_count}</span> raitings</div>
+                  <div className='text-black xs:text-lg md:text-xl font-roboto'>based on <span className='font-black text-ruby-red'>{data.raitings_count}</span> raitings</div>
                 </td>
               </tr>
               <tr className="flex justify-center items-center text-center">
-                <td className='text-black xs:text-xl md:text-3xl'>
+                <td className='text-black xs:text-xl md:text-3xl font-roboto'>
                   Users shelved this book <span className='font-black text-ruby-red'>{data.shelves_count}</span> times
                 </td>
               </tr>

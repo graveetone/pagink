@@ -2,13 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
 
-.font-fredoka    { font-family: 'Fredoka One', cursive; }         /* headings */
-.font-oswald     { font-family: 'Oswald', sans-serif; }           /* subheadings */
+.font-fredoka    { font-family: 'Fredoka', cursive; }         /* headings, menu items */
+.font-comic-neue  { font-family: 'Comic Neue'; } /* subheadings */
 .font-roboto     { font-family: 'Roboto Condensed', sans-serif; } /* regular text */
 
 /* div {
