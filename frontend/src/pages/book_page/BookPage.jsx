@@ -24,7 +24,7 @@ function BookPage() {
           <BookInfo data={data} />
         </div>
         <div className="flex flex-col items-center w-full sm:w-6/7 md:w-3/4 p-4 text-center text-gray-700">
-          <p className="text-xl md:text-2xl break-words">{data.description}</p>
+          <p className="text-xl md:text-2xl break-words font-roboto">{data.description}</p>
         </div>
       </div>
     </>

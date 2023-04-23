@@ -10,7 +10,7 @@ function UserHeader({ user }) {
                     <img src={user.image_url} alt={user.username} className="rounded-3xl xs:w-[35vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center" />
                 </div>
                 <Header heading={user.username} subheading={
-                    <div className='flex flex-col items-center justify-center gap-5'>
+                    <div className='flex flex-col items-center justify-center gap-5 text-lg md:text-xl'>
                         <div className='flex xs:flex-col sm:flex-row sm:gap-3'>
                             <span>
                                 Joined PagInk
