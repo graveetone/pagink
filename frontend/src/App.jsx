@@ -5,10 +5,10 @@ import { LoggedOutRoutes, LoggedInRoutes } from './routes';
 
 
 function App() {
-  const user = 1;
+  const user = 0;
   return (
     <>
-      <div className="flex flex-col items-center h-screen overflow-y-scroll pb-24">
+      <div className="mb-24">
         { user ? <LoggedInRoutes /> : <LoggedOutRoutes /> }
       </div >
 
