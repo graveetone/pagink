@@ -3,7 +3,7 @@ import React from 'react'
 import BookInfo from './components/BookInfo'
 import BookCover from './components/BookCover'
 import { data } from './data'
-import { setPageTitle, CaptionWithJsx, createLinkTo } from '../../helpers'
+import { setPageTitle, captionWithJsx, createLinkTo } from '../../helpers'
 import Header from './../../components/header/Header'
 
 function BookPage() {
@@ -13,7 +13,7 @@ function BookPage() {
     return <span key={author.id}>{createLinkTo('/author', author.name + ' ')}</span>
   })
 
-  const AuthorsSection = CaptionWithJsx('by', authors)
+  const AuthorsSection = captionWithJsx('by', authors)
 
   return (
     <>

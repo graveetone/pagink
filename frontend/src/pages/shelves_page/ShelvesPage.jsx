@@ -1,6 +1,6 @@
 import React from 'react'
 import { data } from './data'
-import { setPageTitle, createLinkTo, CaptionWithJsx } from '../../helpers'
+import { setPageTitle, createLinkTo, captionWithJsx } from '../../helpers'
 import ShelveCard from './components/ShelveCard';
 import Header from '../../components/header/Header'
 
@@ -10,7 +10,7 @@ function ShelvesPage() {
   return (
     <>
       <div className='flex flex-col gap-10'>
-        <Header heading={'Shelves'} subheading={CaptionWithJsx('by', linkToUserPage)}> </Header>
+        <Header heading={'Shelves'} subheading={captionWithJsx('by', linkToUserPage)}> </Header>
 
         <div className="flex flex-wrap justify-center w-full items-center gap-10">
           <ShelveCard shelve={data.shelves[0]} />
