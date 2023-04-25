@@ -19,7 +19,7 @@ function Form() {
   const areFieldsFilled = fieldsValues.username && fieldsValues.password.length >= 6
   return (
     <>
-      <div className='flex flex-col items-center justify-center w-full gap-10 p-5 font-mono' autocapitalize='off'>
+      <div className='flex flex-col items-center justify-center w-full gap-10 p-5 font-mono'>
         <Input name='username' type='text' onChange={handleFieldChange} placeholder='username'/>
         <Input name='password' type='password' onChange={handleFieldChange} placeholder='password'/>
         
