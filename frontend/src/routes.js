@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage } from './pages'
+import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage } from './pages'
 import Header from './components/header/Header';
 import { setPageTitle } from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
@@ -8,11 +8,6 @@ import { RegistrationProvider } from './contexts/RegistrationContext'
 function Home() {
     setPageTitle('Home')
     return <Header />
-}
-
-function MainPage() {
-    setPageTitle('Main')
-    return <Header subheading={"Your bookshelf, your thoughts, your community"} />
 }
 
 
@@ -58,7 +53,7 @@ const LoggedOutRoutes = () => {
     return (
         <>
             <Routes>
-                <Route exact path="/" element={<MainPage />} />
+                <Route exact path="/" element={<MainLogoutPage />} />
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route path="/sign_up" element={<RegistrationProvider><RegistrationPage /></RegistrationProvider>} />
                 <Route path="*" element={<LoginPage />} />
