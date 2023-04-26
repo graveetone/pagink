@@ -29,7 +29,7 @@ function RegistrationInput({ name, type, placeholder, description, validations }
 
     return (
         <div className='flex items-center w-full gap-10 flex-col'>
-            <div className='flex -z-10 flex-col justify-center items-center w-3/4 font-sans text-xl text-center font-roboto gap-2'>
+            <div className='flex z-10 flex-col justify-center items-center w-3/4 font-sans text-xl text-center font-roboto gap-2'>
                 {description}
             </div>
             <div className='flex flex-col justify-center items-center w-3/4'>
