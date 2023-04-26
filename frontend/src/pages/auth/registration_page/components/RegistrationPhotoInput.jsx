@@ -9,8 +9,11 @@ function RegistrationPhotoInput({ description }) {
         const selectedImage = acceptedFiles[0];
         readPhotoFromFile(selectedImage, (result) => {
             dispatchRegistrationState({
-                type: 'UPDATE_PHOTO',
-                payload: result
+                type: 'UPDATE_FIELD',
+                payload: {
+                    fieldName: 'photo',
+                    value: result
+                }
             },
                 (error) => {
                     alert('Try again')
@@ -23,7 +26,9 @@ function RegistrationPhotoInput({ description }) {
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop: handlePhotoUploaded,
-        accept: 'image/*',
+        accept: {
+            'image/*': []
+        },
         multiple: false
     });
 
@@ -39,7 +44,7 @@ function RegistrationPhotoInput({ description }) {
                     {isDragActive ? 'Release to drop your photo here' : 'Drop your photo here or click to select from files'}
                     {registrationState.photo && (
                         <div className="flex items-center justify-center">
-                            <img src={registrationState.photo} alt='' className="rounded-3xl w-[250px] h-[250px] object-cover object-center" />
+                            <img src={registrationState.photo.value} alt='' className="rounded-3xl w-[250px] h-[250px] object-cover object-center" />
                         </div>
                     )}
                 </div>
@@ -48,4 +53,4 @@ function RegistrationPhotoInput({ description }) {
     )
 }
 
-export default RegistrationPhotoInput
+export default RegistrationPhotoInput;
