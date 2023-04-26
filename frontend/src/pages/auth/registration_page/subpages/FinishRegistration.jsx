@@ -11,7 +11,7 @@ function FinishRegistration() {
       <Header subheading={"Hey, world! Look at the new PagInk user"} />
 
       <div className="flex items-center justify-center">
-        <img src={registrationState.photo} alt='' className="rounded-3xl w-[250px] h-[250px] object-cover object-center" />
+        <img src={registrationState.photo.value} alt='' className="rounded-3xl w-[250px] h-[250px] object-cover object-center" />
       </div>
       <table className='flex items-center text-xl md:text-2xl font-roboto p-3 text-center'>
         <tbody className='flex flex-col justify-start'>

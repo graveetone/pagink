@@ -8,14 +8,34 @@ import ConfirmAccount from './ConfirmAccount'
 import Photo from './Photo'
 
 const subpages = {
-    StartRegistration: <StartRegistration />,
-    Username: <Username />,
-    Email: <Email />,
-    Password: <Password />,
-    PasswordConfirmation: <PasswordConfirmation />,
-    Photo: <Photo />,
-    FinishRegistration: <FinishRegistration />,
-    ConfirmAccount: <ConfirmAccount />
+    startRegistration: {
+        subpage: <StartRegistration />
+    },
+    username: {
+        subpage: <Username />,
+        inputName: "username"
+    },
+    email: {
+        subpage: <Email />,
+        inputName: "email"
+    },
+    password: {
+        subpage: <Password />,
+        inputName: "password"
+    },
+    passwordConfirmation: {
+        subpage: <PasswordConfirmation />,
+        inputName: "passwordConfirmation"
+    },
+    photo: {
+        subpage: <Photo />
+    },
+    finishRegistration: {
+        subpage: <FinishRegistration />
+    },
+    confirmAccount: {
+        subpage: <ConfirmAccount />
+    }
 }
 
 export default subpages;

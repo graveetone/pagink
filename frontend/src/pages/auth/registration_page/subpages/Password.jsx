@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react'
 import Header from './../../../../components/header/Header'
 import RegistrationInput from './../components/RegistrationInput'
 import icons from './../../../../components/icons'
+import { passwordTester } from './../../../../helpers'
 
 function Password() {
+    const validations = [
+        {
+            rule: (value) => value && value.trim('').length > 0,
+            message: 'Please provide your password'
+        },
+        {
+            rule: (value) => passwordTester(value),
+            message: 'Password must have 6+ chars. One letter, one number and one special character is required'
+        },
+    ];
+
     const [passwordVisible, setPasswordVisible] = useState(false)
     let fieldType = passwordVisible ? 'text' : 'password'
     let currentIcon = passwordVisible ? icons.hide : icons.see
@@ -23,7 +35,13 @@ function Password() {
         <>
             <Header subheading={"Please think up a good password"} />
             <div className='flex justify-center items-center w-full'>
-                <RegistrationInput name='password' type={fieldType} placeholder='password' description={description} />
+                <RegistrationInput
+                    name='password'
+                    type={fieldType}
+                    placeholder='password'
+                    description={description}
+                    validations={validations}
+                />
             </div>
         </>
     )

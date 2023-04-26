@@ -24,4 +24,14 @@ const readPhotoFromFile = (file, onLoad, onAbort, onError) => {
 
 }
 
-export { setPageTitle, createLinkTo, jsxWithCaption, captionWithJsx, readPhotoFromFile }
+// validators
+
+// 6+ chars, one letter, one number, one special char required
+const passwordTester = password => {
+    return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password);
+}
+
+const emailTester = email => {
+    return /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/.test(email);
+}
+export { setPageTitle, createLinkTo, jsxWithCaption, captionWithJsx, readPhotoFromFile, passwordTester, emailTester }
