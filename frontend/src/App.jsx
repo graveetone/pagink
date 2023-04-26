@@ -1,19 +1,22 @@
 import Menu from './components/menu/Menu'
 import LoginMenu from './components/menu/LoginMenu'
+import { CurrentUserContext, CurrentUserProvider } from './contexts/CurrentUserContext'
 
 import { LoggedOutRoutes, LoggedInRoutes } from './routes';
+import { useContext } from 'react';
 
 
 function App() {
-  const user = 0;
+  const { currentUser } = useContext(CurrentUserContext);
+  const user = currentUser.username;
   return (
     <>
       <div className="mb-24">
-        { user ? <LoggedInRoutes /> : <LoggedOutRoutes /> }
+        {user ? <LoggedInRoutes /> : <LoggedOutRoutes />}
       </div >
 
       <div className='flex w-full justify-center'>
-        { user ? <Menu /> : <LoginMenu /> }
+        {user ? <Menu /> : <LoginMenu />}
       </div>
     </>
   );

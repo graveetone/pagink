@@ -1,9 +1,12 @@
-import React from 'react'
-import { data as user } from './data'
+import React, { useContext } from 'react'
+import { data } from './data'
 import { setPageTitle } from '../../helpers'
 import UserHeader from './components/UserHeader'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function UserPage() {
+  const { currentUser } = useContext(CurrentUserContext)
+  const user = currentUser.id == 1 ? currentUser : data.user;
   setPageTitle(`${user.username}'s profile`)
   return (
     <>

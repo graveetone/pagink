@@ -3,6 +3,7 @@ import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, Reg
 import Header from './components/header/Header';
 import { setPageTitle } from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
+
 // BEGIN temp elements for routes
 function Home() {
     setPageTitle('Home')
@@ -48,7 +49,6 @@ const LoggedInRoutes = () => {
                 <Route path="/book" element={<BookPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="*" element={<Home />} />
-
             </Routes>
         </>
     )

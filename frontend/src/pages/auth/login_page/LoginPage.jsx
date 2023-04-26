@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../../../components/form/Form'
+import LoginForm from '../../../components/form/LoginForm'
 import Header from '../../../components/header/Header'
 import { setPageTitle } from '../../../helpers'
 
@@ -9,7 +9,7 @@ function LoginPage() {
     <>
       <div className='flex flex-col justify-start items-center w-full gap-10'>
         <Header subheading={'Long Time No See'} />
-        <Form />
+        <LoginForm />
       </div>
     </>
   )
