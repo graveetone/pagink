@@ -4,10 +4,10 @@ export const CurrentUserContext = createContext();
 
 const initialCurrentUserState = {
     id: 1,
-    username: '',
+    username: 'g',
     email: 'graveetone@pagink.com',
     last_seen: null,
-    status: "ACTIVE",
+    status: "OFFLINE",
     image_url: "https://lh3.googleusercontent.com/a/AGNmyxbEQfvSPsOPbiim51eu0juOcPUg0bCrHbLkjWE8=s288",
     created_at: "2023-04-07T19:48:09.367Z"
 };

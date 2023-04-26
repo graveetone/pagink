@@ -2,12 +2,20 @@ import React from 'react'
 import buttons from './buttons'
 import Header from './../../../components/header/Header'
 
+const imageBorderColorsByUserStatus = {
+    'ONLINE': 'ruby-red',
+    'OFFLINE': 'gray-400',
+    'SUSPENDED': 'black'
+
+}
+
 function UserHeader({ user }) {
+    const borderColor = imageBorderColorsByUserStatus[user.status] || ''
     return (
         <>
             <div className='flex flex-row w-full items-center justify-around h-full'>
-                <div className="flex items-center justify-center m-3">
-                    <img src={user.image_url} alt={user.username} className="rounded-3xl xs:w-[35vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center" />
+                <div className={'flex items-center justify-center m-3'}>
+                    <img src={user.image_url} alt={user.username} className={`rounded-3xl xs:w-[35vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center border-8 border-${borderColor}`} />
                 </div>
                 <Header heading={user.username} subheading={
                     <div className='flex flex-col items-center justify-center gap-5 text-lg md:text-xl'>
