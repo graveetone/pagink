@@ -3,7 +3,7 @@ class Api::V1::CurrentUserController < ApplicationController
 
   def index
     render json: {
-      user: current_user
+      user: UserSerializer.new(current_user)
     }, status: :ok
   end
 end

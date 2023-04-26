@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::JTIMatcher
+  STATUSES = {
+    active: 'ACTIVE',
+    suspended: 'SUSPENDED',
+    unconfirmed: 'UNCONFIRMED'
+  }
 
   devise :database_authenticatable,
          :registerable,
@@ -36,4 +41,30 @@ class User < ApplicationRecord
 
   has_many :likes
   has_many :comments, class_name: 'Comment', foreign_key: 'author_id'
+
+  def status=(value)
+    raise ArgumentError, "Invalid status: #{value}" unless STATUSES.values.include?(value)
+
+    write_attribute(:status, value)
+  end
+
+  def suspend
+    self.status = STATUSES[:suspended]
+  end
+
+  def activate
+    self.status = STATUSES[:active]
+  end
+
+  def active?
+    status == STATUSES[:active]
+  end
+
+  def suspended?
+    status == STATUSES[:v]
+  end
+
+  def unconfirmed?
+    status == STATUSES[:unconfirmed]
+  end
 end

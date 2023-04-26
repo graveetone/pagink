@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_19_203218) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_26_225044) do
   create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -154,7 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_203218) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.datetime "last_seen"
-    t.string "status", default: "ACTIVE", null: false
+    t.string "status", default: "UNCONFIRMED", null: false
     t.integer "login_counts", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
