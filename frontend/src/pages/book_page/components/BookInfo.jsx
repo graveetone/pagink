@@ -16,11 +16,11 @@ function BookInfo({ data }) {
         <div className='flex items-center xs:w-full md:w-3/4 gap-12 flex-col'>
           <table>
             <tbody className='flex flex-col gap-5 justify-center w-auto'>
-              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-comic-neue'>
+              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-balsamiq'>
                 <td className='text-black'>ISBN: </td>
                 <td className='text-ruby-red'>{data.isbn}</td>
               </tr>
-              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-comic-neue'>
+              <tr className='flex gap-10 xs:text-2xl sm:text-4xl font-balsamiq'>
                 <td className='text-black'>Pages: </td>
                 <td className='text-ruby-red'>{data.pages_count}</td>
               </tr>

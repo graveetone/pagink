@@ -8,7 +8,7 @@ function BookCard({ book }) {
                     <img src={book.image_url} alt={book.title} className="rounded-tl-2xl rounded-bl-2xl rounded-br-3xl w-full md:w-full h-auto object-fill" />
                 </div>
                 <div className='flex flex-col justify-center items-center gap-2 font-roboto'>
-                    <p className='text-center text-lg font-comic-neue'>{book.title}</p>
+                    <p className='text-center text-lg font-balsamiq'>{book.title}</p>
                     <p className='text-center text-sm font-roboto'>{book.authors?.[0].name}</p>
                 </div>
             </div>
