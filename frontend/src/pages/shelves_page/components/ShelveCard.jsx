@@ -16,7 +16,7 @@ function ShelveCard({ shelve }) {
                         <img src={shelve.books[2].image_url} alt={shelve.books[2].title} className="rounded-tl-md rounded-bl-md rounded-br-lg w-full md:w-full h-auto object-fill" />
                     </div>
                 </div>
-                <div className='flex flex-col gap-3 font-comic-neue'>
+                <div className='flex flex-col gap-3 font-balsamiq'>
                     <div className='bg-black w-full h-3 shadow-lg rounded-lg shadow-black' />
                     <p className='text-center text-xl'>{`${shelve.title} (${shelve.books.length})`}</p>
                 </div>
