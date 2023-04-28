@@ -5,7 +5,7 @@ class AuthorSerializer < ActiveModel::Serializer
   attributes %i[id name image_url books]
 
   def image_url
-    object.image_link.url
+    object.image_link&.url
   end
 
   def books

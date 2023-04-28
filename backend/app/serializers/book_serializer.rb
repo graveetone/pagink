@@ -8,7 +8,7 @@ class BookSerializer < ActiveModel::Serializer
   end
 
   def image_url
-    object.image_link.url
+    object.image_link&.url
   end
 
   def average_raiting
