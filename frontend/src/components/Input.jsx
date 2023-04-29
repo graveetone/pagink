@@ -1,6 +1,6 @@
 import React from 'react'
 
-const textInputStyles = `md:w-1/3 w-3/4
+const textInputStyles = `md:w-1/2 w-3/4
                          text-center
                          border-2 border-black
                          rounded-2xl

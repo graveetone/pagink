@@ -6,5 +6,18 @@ import UserPage from './user_page'
 import LoginPage from './auth/login_page'
 import RegistrationPage from './auth/registration_page'
 import MainLogoutPage from './main_logout_page'
+import ExplorePage from './explore_page'
+import SettingsPage from './settings_page'
 
-export { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage }
+export {
+    BookPage,
+    AuthorPage,
+    ShelvePage,
+    ShelvesPage,
+    UserPage,
+    LoginPage,
+    RegistrationPage,
+    MainLogoutPage,
+    ExplorePage,
+    SettingsPage
+}
