@@ -19,15 +19,21 @@ function LoginForm() {
   }
 
   const handleSubmitButtonClick = event => {
-    dispatchCurrentUser(
-      {
-        type: 'UPDATE_FIELD',
-        payload: {
-          fieldName: 'username',
-          value: 'graveetone'
-        }
-      })
+    if (fieldsValues.password === 'pass1234!') {
+
+      dispatchCurrentUser(
+        {
+          type: 'UPDATE_FIELD',
+          payload: {
+            fieldName: 'username',
+            value: fieldsValues.username
+          }
+        })
       alert('Logged In')
+    }
+    else {
+      alert('Wrong password')
+    }
   }
 
   const submitButtonStyles = 'flex justify-center w-auto text-center bg-black text-white rounded-2xl p-4 font-medium shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out font-mono'
@@ -40,7 +46,7 @@ function LoginForm() {
         <Input name='password' type='password' onChange={handleFieldChange} placeholder='password' />
 
         {areFieldsFilled &&
-          <input className={submitButtonStyles} type='submit' name='submit' value='Go to PagInk' onClick={handleSubmitButtonClick} />
+          <input className={submitButtonStyles} type='submit' name='submit' value='Go to PagInk' onClick={() => handleSubmitButtonClick()} />
         }
       </div>
     </>
