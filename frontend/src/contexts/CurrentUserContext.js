@@ -4,10 +4,10 @@ export const CurrentUserContext = createContext();
 
 const initialCurrentUserState = {
     id: 1,
-    username: 'g',
+    username: '',
     email: 'graveetone@pagink.com',
     last_seen: null,
-    status: "OFFLINE",
+    status: "Online",
     image_url: "https://lh3.googleusercontent.com/a/AGNmyxbEQfvSPsOPbiim51eu0juOcPUg0bCrHbLkjWE8=s288",
     created_at: "2023-04-07T19:48:09.367Z"
 };
@@ -19,6 +19,8 @@ const CurrentUserReducer = (state, action) => {
                 ...state,
                 [action.payload.fieldName]: action.payload.value
             }
+        case 'RESET':
+            return initialCurrentUserState
         default:
             return state;
     }
