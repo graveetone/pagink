@@ -1,6 +1,6 @@
 import Menu from './components/menu/Menu'
 import LoginMenu from './components/menu/LoginMenu'
-import { CurrentUserContext, CurrentUserProvider } from './contexts/CurrentUserContext'
+import { CurrentUserContext } from './contexts/CurrentUserContext'
 
 import { LoggedOutRoutes, LoggedInRoutes } from './routes';
 import { useContext } from 'react';

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage } from './pages'
+import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage, ExplorePage, SettingsPage } from './pages'
 import Header from './components/header/Header';
 import { setPageTitle } from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
@@ -9,25 +9,6 @@ function Home() {
     setPageTitle('Home')
     return <Header />
 }
-
-
-function Explore() {
-    setPageTitle('Explore')
-    return <Header heading='Explore' subheading={"Find new books"} />
-
-}
-function Settings() {
-    setPageTitle('Settings')
-    return (
-        <>
-            <Header heading='Settings' subheading={"Setup PagInk just for you"} />
-            <a href="/logout">Logout</a>
-        </>
-    )
-}
-function Logout() {
-    return <h1 className='text-6xl text-center'>Logout</h1>;
-}
 // END temp elements for routes
 
 const LoggedInRoutes = () => {
@@ -36,9 +17,9 @@ const LoggedInRoutes = () => {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/shelves" element={<ShelvesPage />} />
-                <Route path="/explore" element={<Explore />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/logout" element={<Logout />} />
+                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                {/* <Route path="/logout" element={<Logout />} /> */}
                 <Route path="/author" element={<AuthorPage />} />
                 <Route path="/shelve" element={<ShelvePage />} />
                 <Route path="/book" element={<BookPage />} />

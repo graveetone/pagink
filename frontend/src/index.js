@@ -8,10 +8,10 @@ import { CurrentUserProvider } from './contexts/CurrentUserContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <CurrentUserProvider>
+      <BrowserRouter>
+    <CurrentUserProvider>
         <App className='flex flex-col items-center h-screen overflow-y-scroll' />
-      </ CurrentUserProvider>
-    </BrowserRouter>
+    </ CurrentUserProvider>
+      </BrowserRouter>
   </React.StrictMode>
 );
