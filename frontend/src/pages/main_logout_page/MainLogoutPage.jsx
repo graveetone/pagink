@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../components/header/Header'
 import { data } from './data'
+import { Link } from 'react-router-dom';
 
 function MainLogoutPage() {
   return (
@@ -15,7 +16,7 @@ function MainLogoutPage() {
         <div className='flex flex-col text-lg text-center'>
           <p>Don't you know what gink is?</p>
           <p>What are you waiting for?</p>
-          <p><a href='/sign_up'><b>Join Us Now</b></a></p>
+          <p><Link to='/sign_up'><b>Join Us Now</b></Link></p>
         </div>
       </div>
     </>
