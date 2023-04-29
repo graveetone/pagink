@@ -12,7 +12,7 @@ function MenuItem({ icon, caption, url }) {
 
     return (
         <NavLink to={url} className={({ isActive }) =>
-            isActive ? styles.divActive: styles.div}>
+            isActive ? styles.divActive : styles.div}>
             <div className={styles.a}>
                 <span className={styles.icon}>{icon}</span>
                 <span className={styles.caption}>{caption}</span>
