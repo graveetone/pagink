@@ -1,12 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
-import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage, ExplorePage, SettingsPage, GinkPage } from './pages'
+import {
+    BookPage,
+    AuthorPage,
+    ShelvePage,
+    ShelvesPage,
+    UserPage,
+    LoginPage,
+    RegistrationPage,
+    MainLogoutPage,
+    ExplorePage,
+    SettingsPage,
+    GinkPage,
+    ReviewPage
+} from './pages'
+
 import Header from './components/header/Header';
-import { setPageTitle } from './helpers';
+import helpers from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
 
 // BEGIN temp elements for routes
 function Home() {
-    setPageTitle('Home')
+    helpers.setPageTitle('Home')
     return <Header />
 }
 // END temp elements for routes
@@ -25,6 +39,7 @@ const LoggedInRoutes = () => {
                 <Route path="/book" element={<BookPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/gink" element={<GinkPage />} />
+                <Route path="/review" element={<ReviewPage />} />
                 <Route path="*" element={<Home />} />
             </Routes>
         </>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTextPreview } from './../helpers'
+import helpers from './../helpers'
 
 const textInputStyles = `md:w-3/4 w-full
                          h-[30vh]
@@ -25,7 +25,7 @@ function CommentForm({ parent, onSubmit }) {
               Reply to {parent.author.username}
             </p>
             <p>
-              {getTextPreview(parent.text)}
+              {helpers.getTextPreview(parent.text)}
             </p>
             <p>
               written {parent.created_at}

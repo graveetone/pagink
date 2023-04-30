@@ -5,7 +5,7 @@ import icons from '../icons'
 import Image from '../Image'
 import ModalWindow from '../ModalWindow'
 import CommentForm from '../CommentForm'
-import { getTextPreview } from './../../helpers'
+import helpers from './../../helpers'
 
 function CommentCard({ comment, parent, commentsRef }) {
     const [liked, setLiked] = useState(comment.likedByCurrentUser)
@@ -25,12 +25,12 @@ function CommentCard({ comment, parent, commentsRef }) {
                 <div className='flex flex-col w-full items-center'>
                     {parent &&
                         <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-y-2 border-black w-full'>
-                            replied to {parent.author.username}'s: {getTextPreview(parent.text)}
+                            replied to {parent.author.username}'s: {helpers.getTextPreview(parent.text)}
                         </button>
                     }
                     <div className='flex w-full justify-start'>
-                        <div className='flex flex-col border-r-2 border-black p-2'>
-                            <p className='font-balsamiq'>{comment.author.username}</p>
+                        <div className='flex flex-col border-r-2 border-black p-2 font-balsamiq'>
+                            <p>{comment.author.username}</p>
                             <Link to='/user' className='flex'>
                                 <Image src={comment.author.image_url} alt={comment.author.username} width={'w-24'} height={'h-24'} />
                             </Link>
