@@ -1,6 +1,7 @@
 import React from 'react'
 import buttons from './buttons'
 import Header from './../../../components/header/Header'
+import Image from './../../../components/Image'
 
 function UserHeader({ user }) {
     return (
@@ -9,8 +10,8 @@ function UserHeader({ user }) {
                 <Header heading={user.username} subheading={
                     <div className='flex w-full justify-start items-center'>
                         <div className='w-full flex flex-col items-center justify-center gap-5 text-xl'>
-                            <div className={'flex items-center justify-center m-3'}>
-                                <img src={user.image_url} alt={user.username} className={'rounded-3xl xs:w-[40vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center'} />
+                            <div className='flex'>
+                                <Image src={user.image_url} width={'w-72'} height={'h-72'} />
                             </div>
                             <div className='flex xs:flex-col sm:flex-row sm:gap-3 w-full justify-center'>
                                 <span>
