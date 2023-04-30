@@ -9,6 +9,7 @@ import MainLogoutPage from './main_logout_page'
 import ExplorePage from './explore_page'
 import SettingsPage from './settings_page'
 import GinkPage from './gink_page'
+import ReviewPage from './review_page'
 
 export {
     BookPage,
@@ -21,5 +22,6 @@ export {
     MainLogoutPage,
     ExplorePage,
     SettingsPage,
-    GinkPage
+    GinkPage,
+    ReviewPage
 }

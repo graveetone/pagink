@@ -1,16 +1,16 @@
 import React from 'react'
 import { data } from './data'
-import { setPageTitle, createLinkTo, captionWithJsx } from '../../helpers'
+import helpers from '../../helpers'
 import ShelveCard from './components/ShelveCard';
 import Header from '../../components/header/Header'
 
 function ShelvesPage() {
-  setPageTitle(`Shelves by ${data.author.username}`)
-  const linkToUserPage = createLinkTo('/user', data.author.username)
+  helpers.setPageTitle(`Shelves by ${data.author.username}`)
+  const linkToUserPage = helpers.createLinkTo('/user', data.author.username)
   return (
     <>
       <div className='flex flex-col gap-10'>
-        <Header heading={'Shelves'} subheading={captionWithJsx('by', linkToUserPage)}> </Header>
+        <Header heading={'Shelves'} subheading={helpers.captionWithJsx('by', linkToUserPage)}> </Header>
 
         <div className="flex flex-wrap justify-center w-full items-center gap-10">
           <ShelveCard shelve={data.shelves[0]} />

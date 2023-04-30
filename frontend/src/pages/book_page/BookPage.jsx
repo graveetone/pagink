@@ -3,17 +3,16 @@ import React from 'react'
 import BookInfo from './components/BookInfo'
 import BookCover from './components/BookCover'
 import { data } from './data'
-import { setPageTitle, captionWithJsx, createLinkTo } from '../../helpers'
+import helpers from '../../helpers'
 import Header from './../../components/header/Header'
 
 function BookPage() {
-  setPageTitle(data.title)
+  helpers.setPageTitle(data.title)
 
-  const authors = data.authors.map(author => {
-    return <span key={author.id}>{createLinkTo('/author', author.name + ' ')}</span>
-  })
 
-  const AuthorsSection = captionWithJsx('by', authors)
+  const authors = helpers.joinAuthorNamesAsLinks(data.authors);
+
+  const AuthorsSection = helpers.captionWithJsx('by', authors)
 
   return (
     <>

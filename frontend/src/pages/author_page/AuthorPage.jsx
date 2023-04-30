@@ -3,10 +3,10 @@ import React from 'react'
 import Header from '../../components/header/Header'
 import { data } from './data'
 import BooksSection from './../../components/books_section/BooksSection'
-import { setPageTitle } from '../../helpers'
+import helpers from '../../helpers'
 
 function AuthorPage() {
-  setPageTitle(data.name)
+  helpers.setPageTitle(data.name)
 
   return (
     <>

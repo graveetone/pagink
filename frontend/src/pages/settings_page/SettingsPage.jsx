@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Header from '../../components/header/Header'
-import { setPageTitle } from '../../helpers'
+import helpers from '../../helpers'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -9,7 +9,7 @@ const logoutButtonStyles = 'flex w-full justify-center text-center bg-ruby-red t
 const editProfileButtonStyles = 'flex w-full justify-center text-center bg-black text-white rounded-3xl p-3 font-xs shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out font-mono'
 
 function SettingsPage() {
-    setPageTitle('Settings')
+    helpers.setPageTitle('Settings')
     const { dispatchCurrentUser } = useContext(CurrentUserContext);
 
     const logoutUser = () => {
