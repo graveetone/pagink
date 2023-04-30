@@ -5,7 +5,7 @@ import Header from '../../../components/header/Header'
 
 function ShelveHeader({ shelve }) {
     const linkToUserPage = createLinkTo('/user', shelve.author.username)
-    
+
     return (
         <Header heading={
             <div className='flex items-center gap-10'>
@@ -13,7 +13,11 @@ function ShelveHeader({ shelve }) {
                 <span className='hover:text-ruby-red hover:cursor-pointer'> {shelve.is_private ? icons.lock : icons.globe}</span>
 
             </div>
-        } subheading={jsxWithCaption(linkToUserPage, 'created this shelve 1 month ago')}>
+        } subheading={
+            <div className='text-center m-3'>
+                {jsxWithCaption(linkToUserPage, 'created this shelve 1 month ago')}
+            </div>
+        }>
         </Header>
     )
 }
