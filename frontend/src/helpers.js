@@ -34,4 +34,10 @@ const passwordTester = password => {
 const emailTester = email => {
     return /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/.test(email);
 }
-export { setPageTitle, createLinkTo, jsxWithCaption, captionWithJsx, readPhotoFromFile, passwordTester, emailTester }
+
+const getTextPreview = (text) => {
+    const textPreviewLength = 30;
+    return text.length <= textPreviewLength ? text : `${text.slice(0, textPreviewLength)}...`
+
+}
+export { setPageTitle, createLinkTo, jsxWithCaption, captionWithJsx, readPhotoFromFile, passwordTester, emailTester, getTextPreview }

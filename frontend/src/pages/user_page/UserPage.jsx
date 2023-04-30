@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function UserPage() {
   const { currentUser } = useContext(CurrentUserContext)
-  const user = currentUser.id == 1 ? currentUser : data.user;
+  const user = currentUser.id === 1 ? currentUser : data.user;
   setPageTitle(`${user.username}'s profile`)
   return (
     <>

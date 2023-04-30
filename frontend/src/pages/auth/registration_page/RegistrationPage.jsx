@@ -82,7 +82,7 @@ function RegistrationPage() {
             </div>
             <div className='flex flex-col-reverse md:flex-row justify-center items-center font-mono gap-5 md:gap-12'>
 
-                {currentPageIndex == 0 && (
+                {currentPageIndex === 0 && (
                     <RegistrationButton
                         caption='Start Registration'
                         width={primaryButtonWidth}
@@ -100,19 +100,19 @@ function RegistrationPage() {
                         width={primaryButtonWidth}
                         onClick={handleNextButtonClick} />
                 )}
-                {currentPageIndex == lastLastPageIndex && (
+                {currentPageIndex === lastLastPageIndex && (
                     <RegistrationButton
                         caption='Finish'
                         width={primaryButtonWidth}
                         onClick={() => { alert(JSON.stringify(registrationState)); setCurrentPageIndex(nextPageIndex) }} />
                 )}
-                {currentPageIndex == lastLastPageIndex && (
+                {currentPageIndex === lastLastPageIndex && (
                     <RegistrationButton
                         caption='Start Over'
                         width={secondaryButtonWidth}
                         onClick={startRegistrationOver} />
                 )}
-                {currentPageIndex == lastPageIndex && (
+                {currentPageIndex === lastPageIndex && (
                     <RegistrationButton
                         caption='Login'
                         width={primaryButtonWidth}
@@ -123,4 +123,4 @@ function RegistrationPage() {
     )
 }
 
-export default RegistrationPage
+export default RegistrationPage;

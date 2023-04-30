@@ -1,9 +1,6 @@
 import React from 'react'
 
-import AuthorImage from './components/AuthorImage'
-import AuthorName from './components/AuthorName'
 import Header from '../../components/header/Header'
-
 import { data } from './data'
 import BooksSection from './../../components/books_section/BooksSection'
 import { setPageTitle } from '../../helpers'

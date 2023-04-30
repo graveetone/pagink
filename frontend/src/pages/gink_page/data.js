@@ -1,7 +1,7 @@
 export const data = {
     author: {
         username: 'levytskyi',
-        image_url: "https://www.freecodecamp.org/news/content/images/2022/01/IMG_1763.jpg"
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/6/63/Nechui_levytskyi.jpg"
     },
     likedByCurrentUser: true,
     title: "Кайдашева сім'я",
@@ -11,5 +11,69 @@ export const data = {
     created_at: '145 years ago',
     likesCount: 12,
     comments: [
+        {
+            id: 1,
+            author: {
+                username: 'graveetone',
+                image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            },
+            created_at: '12 minutes ago',
+            text: 'Nice gink!',
+            likedByCurrentUser: false
+        },
+        {
+            id: 4,
+            author: {
+                username: 'minty_N',
+                image_url: "https://drive.google.com/u/0/uc?id=1d6IblP-86YPe0-4XEpANLDstQRuPLWkx&export=download"
+            },
+            created_at: 'just now',
+            text: '#ГРУШКА_RIP',
+            likedByCurrentUser: true
+        },
+        {
+            id: 2,
+            author: {
+                username: 'aka_pako',
+                image_url: "https://drive.google.com/u/0/uc?id=1B8-w439X4pzvGrjvh2s1ZBidfO0mmsO8&export=download",
+            },
+            created_at: '6 minutes ago',
+            text: 'I really like it!I really like it!I really like it!I really like it!I really liI really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!ke it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!I really like it!',
+            likedByCurrentUser: true,
+            parentId: 1
+        },
+        {
+            id: 3,
+            author: {
+                username: 'graveetone',
+                image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            },
+            created_at: '2 minutes ago',
+            text: "КАЙДАШЕВА СІМ'Я ТОП!",
+            likedByCurrentUser: false,
+            parentId: 1
+        },
+        {
+            id: 5,
+            author: {
+                username: 'graveetone',
+                image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            },
+            created_at: '2 minutes ago',
+            text: "А Кайдаш шо, не RIP???😆",
+            likedByCurrentUser: false,
+            parentId: 4
+        },
+        {
+            id: 6,
+            author: {
+                username: 'aka_pako',
+                image_url: "https://drive.google.com/u/0/uc?id=1B8-w439X4pzvGrjvh2s1ZBidfO0mmsO8&export=download",
+            },
+            created_at: 'just now',
+            text: 'І я кажу, що RIP!',
+            likedByCurrentUser: true,
+            parentId: 5
+        }
     ]
 }

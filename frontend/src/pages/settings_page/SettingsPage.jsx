@@ -10,7 +10,7 @@ const editProfileButtonStyles = 'flex w-full justify-center text-center bg-black
 
 function SettingsPage() {
     setPageTitle('Settings')
-    const { currentUser, dispatchCurrentUser } = useContext(CurrentUserContext);
+    const { dispatchCurrentUser } = useContext(CurrentUserContext);
 
     const logoutUser = () => {
         confirmAlert({

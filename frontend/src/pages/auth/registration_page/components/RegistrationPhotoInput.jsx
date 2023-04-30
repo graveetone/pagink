@@ -22,7 +22,7 @@ function RegistrationPhotoInput({ description }) {
                     alert('Try again')
                 })
         })
-    }, []);
+    }, [dispatchRegistrationState]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop: handlePhotoUploaded,
