@@ -12,7 +12,7 @@ function PostCard({ post }) {
   const linkToPost = (post.type === 'gink' ? '/gink' : '/review')
   return (
     <>
-      <Link to={linkToPost} className='shadow-xl shadow-black flex w-full justify-center items-center border-2 border-x-2 border-black text-center rounded-xl'>
+      <Link to={linkToPost} className='shadow-2xl p-1 shadow-black flex w-full justify-center items-center border-black text-center rounded-xl'>
         <div className='flex flex-col w-full items-center'>
           <div className='flex w-full justify-start'>
             <div>

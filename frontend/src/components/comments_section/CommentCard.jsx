@@ -31,10 +31,10 @@ function CommentCard({ comment, parent, commentsRef }) {
 
     return (
         <>
-            <div ref={commentRef} className={`shadow-xl shadow-black flex w-full justify-center items-center ${parent ? 'border-b-2' : 'border-2'} border-x-2 border-black text-center rounded-xl`}>
+            <div ref={commentRef} className={`shadow-2xl shadow-black flex w-full justify-center items-center border-black text-center rounded-xl`}>
                 <div className='flex flex-col w-full items-center'>
                     {parent &&
-                        <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-y-2 border-black w-full'>
+                        <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-b-2 border-black w-full'>
                             replied to {parent.author.username}'s: {helpers.getTextPreview(parent.text)}
                         </button>
                     }
