@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+
 import Button from '../Button'
 import icons from '../icons'
 import Image from '../Image'
@@ -17,6 +18,15 @@ function CommentCard({ comment, parent, commentsRef }) {
 
     const scrollToParent = () => {
         parentRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    const submitComment = () => {
+        // send comment here
+        closeModal()
+    }
+
+    const closeModal = () => {
+        setFormForCommentVisible(false)
     }
 
     return (
@@ -57,11 +67,11 @@ function CommentCard({ comment, parent, commentsRef }) {
                             <ModalWindow
                                 title='Write comment'
                                 isOpen={formForCommentVisible}
+                                onRequestClose={closeModal}
                                 content={(
                                     <CommentForm
                                         parent={comment}
-                                        onSubmit={() => {
-                                        }} />)}
+                                        onSubmit={submitComment} />)}
                             />
                         </div>
                     </div>
