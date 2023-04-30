@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const setPageTitle = title => {
     document.title = `PagInk | ${title}`
 }
 
 const createLinkTo = (path, caption) => {
-    return <NavLink className='hover:text-ruby-red' to={path}>{caption}</NavLink>
+    return <Link className='hover:text-ruby-red' to={path}>{caption}</Link>
 }
 
 const jsxWithCaption = (jsx, caption) => {
@@ -40,4 +40,29 @@ const getTextPreview = (text) => {
     return text.length <= textPreviewLength ? text : `${text.slice(0, textPreviewLength)}...`
 
 }
-export { setPageTitle, createLinkTo, jsxWithCaption, captionWithJsx, readPhotoFromFile, passwordTester, emailTester, getTextPreview }
+
+const joinAuthorNamesAsLinks = authors => {
+    return authors.map(author => {
+        return <span key={author.id}>{createLinkTo('/author', author.name + ' ')}</span>
+    })
+}
+
+const joinAuthorNames = authors => {
+    return authors.map(author => author.name).join(', ')
+}
+
+const helpers = {
+    setPageTitle,
+    createLinkTo,
+    jsxWithCaption,
+    captionWithJsx,
+    readPhotoFromFile,
+    passwordTester,
+    emailTester,
+    getTextPreview,
+    joinAuthorNamesAsLinks,
+    joinAuthorNames
+}
+
+export default helpers;
+

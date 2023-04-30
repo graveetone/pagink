@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from './../../../../components/header/Header'
 import RegistrationInput from './../components/RegistrationInput'
 import icons from './../../../../components/icons'
-import { passwordTester } from './../../../../helpers'
+import helpers from './../../../../helpers'
 
 function Password() {
     const validations = [
@@ -11,7 +11,7 @@ function Password() {
             message: 'Please provide your password'
         },
         {
-            rule: (value) => passwordTester(value),
+            rule: (value) => helpers.passwordTester(value),
             message: 'Password must have 6+ chars. One letter, one number and one special character is required'
         },
     ];

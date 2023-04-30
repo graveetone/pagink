@@ -1,13 +1,13 @@
 import React, { useContext, useCallback } from 'react'
 import { useDropzone } from "react-dropzone";
-import { readPhotoFromFile } from './../../../../helpers'
+import helpers from './../../../../helpers'
 import { RegistrationContext } from '../../../../contexts/RegistrationContext';
 
 function RegistrationPhotoInput({ description }) {
     const { registrationState, dispatchRegistrationState } = useContext(RegistrationContext);
     const handlePhotoUploaded = useCallback(acceptedFiles => {
         const selectedImage = acceptedFiles[0];
-        readPhotoFromFile(selectedImage, (result) => {
+        helpers.readPhotoFromFile(selectedImage, (result) => {
             dispatchRegistrationState({
                 type: 'UPDATE_FIELD',
                 payload: {

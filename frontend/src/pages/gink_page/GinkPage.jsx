@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import Header from '../../components/header/Header';
-import * as helpers from '../../helpers';
+import helpers from '../../helpers';
 import { data as gink } from './data'
 import Button from '../../components/Button';
 import icons from '../../components/icons';

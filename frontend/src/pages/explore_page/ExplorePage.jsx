@@ -1,5 +1,5 @@
 import React from 'react'
-import { setPageTitle } from '../../helpers'
+import helpers from '../../helpers'
 import Header from '../../components/header/Header'
 import SearchSection from './components/SearchSection'
 import BooksSection from '../../components/books_section/BooksSection';
@@ -7,7 +7,7 @@ import { data } from './data';
 import GlobalSearchButton from './components/GlobalSearchButton';
 
 function ExplorePage() {
-    setPageTitle('Explore')
+    helpers.setPageTitle('Explore')
 
     return (
         <>

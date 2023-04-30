@@ -1,7 +1,7 @@
 import React from 'react'
 import RegistrationInput from './../components/RegistrationInput'
 import Header from './../../../../components/header/Header'
-import { emailTester } from '../../../../helpers';
+import helpers from '../../../../helpers';
 function Email() {
   const validations = [
     {
@@ -9,7 +9,7 @@ function Email() {
       message: 'Please provide your email'
     },
     {
-      rule: (value) => emailTester(value),
+      rule: (value) => helpers.emailTester(value),
       message: 'Please check your email as it seems to be invalid'
     },
     {

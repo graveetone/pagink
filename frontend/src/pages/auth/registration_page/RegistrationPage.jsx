@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { setPageTitle } from './../../../helpers'
+import helpers from './../../../helpers'
 import subpages from './subpages'
 import { RegistrationContext } from './../../../contexts/RegistrationContext'
 import RegistrationButton from './components/RegistrationButton'
@@ -19,7 +19,7 @@ const components = [
 
 
 function RegistrationPage() {
-    setPageTitle('Sign Up')
+    helpers.setPageTitle('Sign Up')
 
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
     const [errorsBlock, setErrorsBlock] = useState(<Popup errors={[]} visible={false} />);

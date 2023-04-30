@@ -1,10 +1,10 @@
 import React from 'react'
 import icons from '../../../components/icons'
-import { createLinkTo, jsxWithCaption } from '../../../helpers'
+import helpers from '../../../helpers'
 import Header from '../../../components/header/Header'
 
 function ShelveHeader({ shelve }) {
-    const linkToUserPage = createLinkTo('/user', shelve.author.username)
+    const linkToUserPage = helpers.createLinkTo('/user', shelve.author.username)
 
     return (
         <Header heading={
@@ -15,7 +15,7 @@ function ShelveHeader({ shelve }) {
             </div>
         } subheading={
             <div className='text-center m-3'>
-                {jsxWithCaption(linkToUserPage, 'created this shelve 1 month ago')}
+                {helpers.jsxWithCaption(linkToUserPage, 'created this shelve 1 month ago')}
             </div>
         }>
         </Header>
