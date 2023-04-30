@@ -42,7 +42,7 @@ function GinkPage() {
                                 <div>
                                     <div className='flex flex-col justify-around items-center'>
                                         <Link to='/user' className='flex'>
-                                            <Image src={gink.author.image_url} width={'w-64'} height={'h-64'} />
+                                            <Image src={gink.author.image_url} alt={gink.author.username} width={'w-64'} height={'h-64'} />
                                         </Link>
                                         <div className='flex flex-col w-full gap-3'>
                                             <span>{helpers.jsxWithCaption(linkToUserPage, 'wrote')}</span>

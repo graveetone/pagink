@@ -32,7 +32,7 @@ function CommentCard({ comment, parent, commentsRef }) {
                         <div className='flex flex-col border-r-2 border-black p-2'>
                             <p className='font-balsamiq'>{comment.author.username}</p>
                             <Link to='/user' className='flex'>
-                                <Image src={comment.author.image_url} width={'w-24'} height={'h-24'} />
+                                <Image src={comment.author.image_url} alt={comment.author.username} width={'w-24'} height={'h-24'} />
                             </Link>
                             <p>{comment.created_at}</p>
                         </div>

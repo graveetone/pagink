@@ -11,7 +11,7 @@ function UserHeader({ user }) {
                     <div className='flex w-full justify-start items-center'>
                         <div className='w-full flex flex-col items-center justify-center gap-5 text-xl'>
                             <div className='flex'>
-                                <Image src={user.image_url} width={'w-72'} height={'h-72'} />
+                                <Image src={user.image_url} alt={user.username} width={'w-72'} height={'h-72'} />
                             </div>
                             <div className='flex xs:flex-col sm:flex-row sm:gap-3 w-full justify-center'>
                                 <span>

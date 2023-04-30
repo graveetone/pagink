@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useCallback } from 'react'
 import Input from './../../../../components/Input'
 import { RegistrationContext } from './../../../../contexts/RegistrationContext';
 
@@ -15,17 +15,17 @@ function RegistrationInput({ name, type, placeholder, description, validations }
                 errors: errorMessages
             }
         });
-    }, [name, registrationState, validations]);
+    }, [name, registrationState, validations, dispatchRegistrationState]);
 
-    const handleFieldValueChange = event => {
+    const handleFieldValueChange = useCallback(event => {
         dispatchRegistrationState({
-            type: 'UPDATE_FIELD',
-            payload: {
-                fieldName: event.target.name,
-                value: event.target.value
-            }
+          type: 'UPDATE_FIELD',
+          payload: {
+            fieldName: event.target.name,
+            value: event.target.value
+          }
         })
-    }
+      }, [dispatchRegistrationState]);
 
     return (
         <div className='flex items-center w-full gap-10 flex-col'>
