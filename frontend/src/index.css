@@ -7,9 +7,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
 
-.font-amatic    { font-family: 'Amatic SC'; font-weight: 700;}    /* headings */
-.font-balsamiq  { font-family: 'Balsamiq Sans', sans-serif;}      /* subheadings, menu items */
-.font-roboto    { font-family: 'Roboto Condensed', sans-serif; }  /* regular text */
+.font-amatic {
+  font-family: 'Amatic SC';
+  font-weight: 700;
+}
+
+/* headings */
+.font-balsamiq {
+  font-family: 'Balsamiq Sans', sans-serif;
+}
+
+/* subheadings, menu items */
+.font-roboto {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* regular text */
 
 /* div {
   border: 1px solid red;
@@ -22,3 +35,11 @@ img {
 p {
   border: 1px solid blue;
 } */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.leading-free {
+  line-height: 2.5;
+}
