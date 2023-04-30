@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage, ExplorePage, SettingsPage } from './pages'
+import { BookPage, AuthorPage, ShelvePage, ShelvesPage, UserPage, LoginPage, RegistrationPage, MainLogoutPage, ExplorePage, SettingsPage, GinkPage } from './pages'
 import Header from './components/header/Header';
 import { setPageTitle } from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
@@ -24,6 +24,7 @@ const LoggedInRoutes = () => {
                 <Route path="/shelve" element={<ShelvePage />} />
                 <Route path="/book" element={<BookPage />} />
                 <Route path="/user" element={<UserPage />} />
+                <Route path="/gink" element={<GinkPage />} />
                 <Route path="*" element={<Home />} />
             </Routes>
         </>

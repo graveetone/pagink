@@ -8,6 +8,7 @@ import RegistrationPage from './auth/registration_page'
 import MainLogoutPage from './main_logout_page'
 import ExplorePage from './explore_page'
 import SettingsPage from './settings_page'
+import GinkPage from './gink_page'
 
 export {
     BookPage,
@@ -19,5 +20,6 @@ export {
     RegistrationPage,
     MainLogoutPage,
     ExplorePage,
-    SettingsPage
+    SettingsPage,
+    GinkPage
 }

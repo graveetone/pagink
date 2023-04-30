@@ -4,7 +4,6 @@ import { setPageTitle } from '../../helpers'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { Switch, FormControlLabel } from '@mui/material'
 import Confirm from '../../components/Confirm';
 const logoutButtonStyles = 'flex w-full justify-center text-center bg-ruby-red text-white rounded-3xl p-3 font-xs shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-ruby-red transition-all duration-700 ease-out font-mono'
 const editProfileButtonStyles = 'flex w-full justify-center text-center bg-black text-white rounded-3xl p-3 font-xs shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out font-mono'

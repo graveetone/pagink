@@ -23,8 +23,13 @@ function BookPage() {
           <BookCover alt={data.title} url={data.image_url} />
           <BookInfo data={data} />
         </div>
-        <div className="flex flex-col items-center w-full sm:w-6/7 md:w-3/4 p-4 text-center text-gray-700">
-          <p className="text-xl md:text-2xl break-words font-roboto">{data.description}</p>
+        <div className='w-5/6 font-roboto xs:text-2xl sm:text-3xl text-gray-900 text-center leading-relaxed tracking-wider'>
+          <p>
+            {data.description}
+          </p>
+        </div>
+        <div className="flex flex-col items-center p-6">
+          <p className="w-full font-roboto xs:text-xl sm:text-2xl text-gray-800 text-center leading-free tracking-wider"></p>
         </div>
       </div>
     </>

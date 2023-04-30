@@ -15,7 +15,9 @@ function Header({ heading, subheading }) {
                     </>
                 )}
             </div>
-            <div className='text-2xl font-balsamiq tracking-wider text-center w-3/4'>{subheading}</div>
+            <div className='text-2xl font-balsamiq tracking-wider text-center w-full flex justify-center items-center gap-3'>
+                {subheading}
+            </div>
         </div >
     )
 }
