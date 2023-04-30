@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 
 const ModalWindow = ({ title, content, isOpen }) => {
@@ -8,6 +8,10 @@ const ModalWindow = ({ title, content, isOpen }) => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    setIsModalOpen(isOpen);
+  }, [isOpen]);
+  
   return (
     <ReactModal
       isOpen={isModalOpen}
