@@ -11,36 +11,27 @@ import {
     ExplorePage,
     SettingsPage,
     GinkPage,
-    ReviewPage
+    ReviewPage,
+    HomePage
 } from './pages'
 
-import Header from './components/header/Header';
-import helpers from './helpers';
 import { RegistrationProvider } from './contexts/RegistrationContext'
-
-// BEGIN temp elements for routes
-function Home() {
-    helpers.setPageTitle('Home')
-    return <Header />
-}
-// END temp elements for routes
 
 const LoggedInRoutes = () => {
     return (
         <>
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<HomePage />} />
                 <Route path="/shelves" element={<ShelvesPage />} />
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/settings" element={<SettingsPage />} />
-                {/* <Route path="/logout" element={<Logout />} /> */}
                 <Route path="/author" element={<AuthorPage />} />
                 <Route path="/shelve" element={<ShelvePage />} />
                 <Route path="/book" element={<BookPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/gink" element={<GinkPage />} />
                 <Route path="/review" element={<ReviewPage />} />
-                <Route path="*" element={<Home />} />
+                <Route path="*" element={<HomePage />} />
             </Routes>
         </>
     )

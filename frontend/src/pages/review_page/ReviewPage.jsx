@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom';
+
 import Header from '../../components/header/Header';
 import helpers from '../../helpers';
 import { data as review } from './data'
@@ -7,7 +9,6 @@ import icons from '../../components/icons';
 import CommentsSection from '../../components/comments_section/CommentsSection';
 import BookImage from '../../components/BookImage';
 import Image from '../../components/Image';
-import { Link } from 'react-router-dom';
 import CommentForm from '../../components/CommentForm';
 import ModalWindow from '../../components/ModalWindow';
 
@@ -30,6 +31,15 @@ function ReviewPage() {
     };
     const openCommentForm = () => {
         setFormForCommentVisible(true)
+    }
+
+    const submitComment = () => {
+        // send gink here
+        closeModal()
+    }
+
+    const closeModal = () => {
+        setFormForCommentVisible(false)
     }
     return (
         <>
@@ -85,20 +95,10 @@ function ReviewPage() {
                     <ModalWindow
                         title='Write comment'
                         isOpen={formForCommentVisible}
+                        onRequestClose={closeModal}
                         content={(
                             <CommentForm
-                                onSubmit={() => {
-                                    setFormForCommentVisible(false); review.comments.push(
-                                        {
-                                            id: 562,
-                                            text: 'akdfmksdf',
-                                            author: {
-                                                username: 'graveetone'
-                                            }
-                                        }
-
-                                    )
-                                }} />)}
+                                onSubmit={submitComment} />)}
                     />
                 </div>
                 <div className="flex flex-col justify-center w-full items-center gap-10">

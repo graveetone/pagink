@@ -3,8 +3,8 @@ export const data = [
         id: 1,
         type: 'gink',
         author: {
-            username: 'graveetone',
-            image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            username: 'minty_N',
+            image_url: "https://drive.google.com/u/0/uc?id=1d6IblP-86YPe0-4XEpANLDstQRuPLWkx&export=download"
         },
         likedByCurrentUser: true,
         title: "Новий ДЖИНК",
@@ -17,8 +17,8 @@ export const data = [
         id: 2,
         type: 'review',
         author: {
-            username: 'graveetone',
-            image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            username: 'aka_pako',
+            image_url: "https://drive.google.com/u/0/uc?id=1B8-w439X4pzvGrjvh2s1ZBidfO0mmsO8&export=download",
         },
         likedByCurrentUser: true,
         text: `Ви уже читали цей шедевр?`,
@@ -45,8 +45,8 @@ export const data = [
         id: 3,
         type: 'gink',
         author: {
-            username: 'graveetone',
-            image_url: "https://drive.google.com/u/0/uc?id=1D13oE__ZmhfieSE6SkRInSDJw831y6sz&export=download",
+            username: 'levytskyi',
+            image_url: "https://upload.wikimedia.org/wikipedia/commons/6/63/Nechui_levytskyi.jpg"
         },
         likedByCurrentUser: true,
         title: "Кайдашева сім'я",

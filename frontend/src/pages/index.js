@@ -10,6 +10,7 @@ import ExplorePage from './explore_page'
 import SettingsPage from './settings_page'
 import GinkPage from './gink_page'
 import ReviewPage from './review_page'
+import HomePage from "./home_page";
 
 export {
     BookPage,
@@ -23,5 +24,6 @@ export {
     ExplorePage,
     SettingsPage,
     GinkPage,
-    ReviewPage
+    ReviewPage,
+    HomePage
 }
