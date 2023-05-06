@@ -5,11 +5,13 @@ import { CurrentUserContext } from '../../../contexts/CurrentUserContext'
 function UserGreeting() {
   const { currentUser } = useContext(CurrentUserContext)
   return (
-    <div className='flex flex-col gap-1 justify-center items-center mt-3 text-3xl font-balsamiq'>
-      <span>
-        {currentUser.username}
-      </span>
-    </div>
+    currentUser.username && (
+      <div className='flex justify-center text-center items-center p-3 text-6xl font-amatic'>
+        <p>
+          Hello, {currentUser.username}
+        </p>
+      </div>
+    )
   )
 }
 
