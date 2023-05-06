@@ -1,3 +1,3 @@
-class MessageSerializer < ActiveModel::Serializer
-  attributes %i[id text author recipient created_at]
+class MessageSerializer < BaseSerializer
+  attributes %i[id text author recipient timestamp]
 end

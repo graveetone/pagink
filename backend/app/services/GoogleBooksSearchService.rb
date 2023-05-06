@@ -4,7 +4,7 @@ API_KEY = 'AIzaSyCGTxAfqCX5kMRs9EpWTbkTdqT1QkLNFpk'
 GOOGLE_BOOKS_URL = 'https://www.googleapis.com'
 SEARCH_ENDPOINT = '/books/v1/volumes'
 
-IMAGE_LINK = 'http://books.google.com/books/publisher/content/images/frontcover/%s?w=500&h=500'
+IMAGE_URL = 'http://books.google.com/books/publisher/content/images/frontcover/%s?w=500&h=500'
 PER_PAGE = 10
 
 class GoogleBooksSearchService
@@ -52,8 +52,8 @@ class GoogleBooksSearchService
     {
       id: response[:id],
       title: info[:title],
-      authors: info[:authors],
-      image_link: format(IMAGE_LINK, response[:id])
+      authors: info[:authors].map { |author| { name: author } },
+      image_url: format(IMAGE_URL, response[:id])
     }
   end
 end

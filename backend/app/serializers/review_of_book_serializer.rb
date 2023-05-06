@@ -1,7 +1,7 @@
-class GinkSerializer < BaseSerializer
-  attributes %i[id title text author likedBy timestamp commentsCount type]
+class ReviewOfBookSerializer < BaseSerializer
+  attributes %i[id text commentsCount timestamp likedBy book author type]
   def type
-    :gink
+    'Review'
   end
 
   def commentsCount
@@ -10,6 +10,10 @@ class GinkSerializer < BaseSerializer
 
   def likedBy
     object.likes.pluck(:user_id)
+  end
+
+  def book
+    BookSerializer.new(object.book).as_json
   end
 
   def author

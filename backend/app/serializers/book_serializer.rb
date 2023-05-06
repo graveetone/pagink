@@ -1,6 +1,6 @@
-class BookSerializer < ActiveModel::Serializer
+class BookSerializer < BaseSerializer
   attributes %i[id title isbn pages_count description shelves_count image_url average_raiting
-                raitings_count created_at]
+                raitings_count]
   has_many :authors
 
   def shelves_count

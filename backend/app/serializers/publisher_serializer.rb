@@ -1,4 +1,4 @@
-class PublisherSerializer < ActiveModel::Serializer
+class PublisherSerializer < BaseSerializer
   attributes %i[id name books_count]
 
   def books_count

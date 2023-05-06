@@ -1,14 +1,19 @@
-class CommentSerializer < ActiveModel::Serializer
-  attributes %i[id author likes_count comments text created_at]
+class CommentSerializer < BaseSerializer
+  attributes %i[id author likedBy text timestamp]
 
   def likes_count
     object.likes.count
   end
 
-  def comments
-    ActiveModel::Serializer::CollectionSerializer.new(
-      object.comments,
-      serializer: CommentSerializer
-    )
+  def author
+    UserAuthorSerializer.new(object.author).as_json
+  end
+
+  def commentsCount
+    object.comments.count
+  end
+
+  def likedBy
+    object.likes.pluck(:user_id)
   end
 end

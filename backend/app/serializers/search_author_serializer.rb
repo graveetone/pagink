@@ -1,4 +1,4 @@
-class SearchAuthorSerializer < ActiveModel::Serializer
+class SearchAuthorSerializer < BaseSerializer
   attributes %i[id name image_url]
 
   def image_url
