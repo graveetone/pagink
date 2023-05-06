@@ -1,37 +1,43 @@
 import React from 'react'
 import buttons from './buttons'
-import Header from './../../../components/header/Header'
 import Image from './../../../components/Image'
+
+import Heading from '../../../components/Heading';
+import Subheading from '../../../components/Subheading';
 
 function UserHeader({ user }) {
     return (
         <>
-            <div className='flex w-full'>
-                <Header heading={user.username} subheading={
-                    <div className='flex w-full justify-start items-center'>
-                        <div className='w-full flex flex-col items-center justify-center gap-5 text-xl'>
-                            <div className='flex'>
-                                <Image src={user.image_url} alt={user.username} width={'w-72'} height={'h-72'} />
+            <Heading>
+                {user.username}
+            </Heading>
+            <div className='flex flex-col w-full justify-around gap-6'>
+                <Subheading>
+                    <span className='text-ruby-red'>
+                        {user.status}
+                    </span>
+                </Subheading>
+
+                <div className='flex flex-col w-full md:w-full'>
+                    <div className='w-full'>
+                        <Image src={user.image_url} alt={user.username} width={'w-56'} height={'h-56'} />
+                    </div>
+                    <div className='flex flex-col w-full gap-3 text-center h-full'>
+                        <div className='flex justify-evenly items-center h-full w-full'>
+                            <div className='flex flex-col text-center w-full h-full justify-center items-center '>
+                                <span className='text-lg'>Bookmates</span>
+                                <span className='text-2xl font-black text-ruby-red'>{user.bookmatesCount}</span>
                             </div>
-                            <div className='flex xs:flex-col sm:flex-row sm:gap-3 w-full justify-center'>
-                                <span>
-                                    Joined 3 month ago
-                                </span>
-                            </div>
-                            <div className='flex xs:flex-col sm:flex-row sm:gap-3'>
-                                <span>
-                                    {user.status}
-                                </span>
-                            </div>
-                            <div className='xs:hidden md:flex flex-row justify-center items-center gap-10 w-full'>
-                                {buttons(user)}
+                            <div className='flex flex-col justify-center items-center text-center w-full'>
+                                <span className='text-lg'>Joined</span>
+                                <span className='text-2xl font-black text-ruby-red'>{user.membershipDuration}</span>
                             </div>
                         </div>
                     </div>
-                } />
-            </div>
-            <div className='visible md:hidden flex flex-row justify-center md:justify-end items-center xs:w-3/4 xs:gap-3 md:gap-3 md:w-full'>
-                {buttons(user)}
+                </div>
+                <div className='flex justify-evenly items-center'>
+                    {buttons(user)}
+                </div>
             </div>
         </>
     )

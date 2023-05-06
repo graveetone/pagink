@@ -1,25 +1,41 @@
 import React from 'react'
-import { data } from './data'
 import helpers from '../../helpers'
 import ShelveCard from './components/ShelveCard';
-import Header from '../../components/header/Header'
+import LoadableContent from '../../components/LoadableContent';
+import { useParams } from 'react-router-dom';
+import { useShelvesQuery } from './../../api/queries/shelves';
+import Heading from '../../components/Heading';
+import Subheading from '../../components/Subheading';
 
-function ShelvesPage() {
-  helpers.setPageTitle(`Shelves by ${data.author.username}`)
-  const linkToUserPage = helpers.createLinkTo('/user', data.author.username)
+const Shelves = ({ shelves, author }) => {
+  { helpers.setPageTitle(`Shelves by ${author.username}`) }
+
+  const shelvesAuthor = author;
+  const linkToUserPage = helpers.createLinkTo(`/user/${shelvesAuthor.id}`, shelvesAuthor.username)
   return (
     <>
       <div className='flex flex-col gap-10'>
-        <Header heading={'Shelves'} subheading={helpers.captionWithJsx('by', linkToUserPage)}> </Header>
+        <Heading>Shelves</Heading>
+        <Subheading>
+          {helpers.captionWithJsx('by', linkToUserPage)}
+        </Subheading>
 
         <div className="flex flex-wrap justify-center w-full items-center gap-10">
-          <ShelveCard shelve={data.shelves[0]} />
-          <ShelveCard shelve={data.shelves[2]} />
-          <ShelveCard shelve={data.shelves[3]} />
+          {shelves.map(shelve => {
+            return <ShelveCard shelve={shelve} />
+          })}
         </div>
       </div >
     </>
   )
+}
+
+function ShelvesPage() {
+  const { userId } = useParams();
+
+  return <LoadableContent hook={useShelvesQuery} params={userId}>
+    {Shelves}
+  </LoadableContent>
 }
 
 export default ShelvesPage;

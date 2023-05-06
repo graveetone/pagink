@@ -1,20 +1,31 @@
 import React from 'react'
-import { data } from './data'
 import helpers from '../../helpers'
 import BooksSection from './../../components/books_section/BooksSection'
 import ShelveHeader from './components/ShelveHeader'
+import { useShelveQuery } from './../../api/queries/shelves'
+import LoadableContent from './../../components/LoadableContent'
+import { useParams } from 'react-router-dom'
 
-function ShelvePage() {
-    helpers.setPageTitle(`${data.title} by ${data.author.username}`)
+const Shelve = (shelve) => {
+    { helpers.setPageTitle(`${shelve.title} by ${shelve.author.username}`) }
 
     return (
         <>
             <div className='flex flex-col items-center gap-5'>
-                <ShelveHeader shelve={data}/>
-                <BooksSection caption={`Books in this shelve (${data.books.length})`} books={data.books} />
+                <ShelveHeader shelve={shelve} />
+                <BooksSection caption={`Books in this shelve (${shelve.books.length})`} books={shelve.books} />
             </div>
         </>
     )
+
+}
+function ShelvePage() {
+    const shelveId = parseInt(useParams().shelveId);
+
+    return <LoadableContent hook={useShelveQuery} params={shelveId} >
+        {Shelve}
+    </LoadableContent>
+
 }
 
 export default ShelvePage;
