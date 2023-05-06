@@ -7,7 +7,7 @@ class ShelveSerializer < BaseSerializer
 
   def books
     ActiveModel::Serializer::CollectionSerializer.new(
-      object.books,
+      object.books.uniq,
       serializer: BookOfAuthorSerializer
     )
   end

@@ -8,7 +8,7 @@ import Heading from '../../components/Heading';
 import Subheading from '../../components/Subheading';
 
 const Shelves = ({ shelves, author }) => {
-  { helpers.setPageTitle(`Shelves by ${author.username}`) }
+  helpers.setPageTitle(`Shelves by ${author.username}`)
 
   const shelvesAuthor = author;
   const linkToUserPage = helpers.createLinkTo(`/user/${shelvesAuthor.id}`, shelvesAuthor.username)
@@ -22,7 +22,7 @@ const Shelves = ({ shelves, author }) => {
 
         <div className="flex flex-wrap justify-center w-full items-center gap-10">
           {shelves.map(shelve => {
-            return <ShelveCard shelve={shelve} />
+            return <ShelveCard key={shelve.id} shelve={shelve} />
           })}
         </div>
       </div >

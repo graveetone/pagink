@@ -16,7 +16,7 @@ const Input = forwardRef((props, ref) => {
     ref={ref}
     {...props}
     autoCapitalize='off'
-    autofocus="yes"
+    autoFocus="yes"
   />
 })
 
