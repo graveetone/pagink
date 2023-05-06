@@ -27,7 +27,8 @@ models = [User, Author, Gink, Review, Book, Shelve, Publisher, Comment, ImageLin
 models.each { |model| delete_data_and_puts_info.call(model) }
 
 5.times do |i|
-  user = User.create(username: "member#{i+1}", email:Faker::Internet.email, password: 'pass1234', jti: User.count.to_s)
+  user = User.create(username: "member#{i + 1}", email: Faker::Internet.email, password: 'pass1234',
+                     jti: User.count.to_s)
   puts "User #{user.username.to_s.blue} created".red
 
   image_link = ImageLink.create(url: Faker::LoremFlickr.image(size: '300x300', search_terms: %w[cat dog]))
@@ -46,6 +47,11 @@ models.each { |model| delete_data_and_puts_info.call(model) }
 end
 
 15.times do
+  u = User.all.sample
+  u.bookmates << User.all.where.not(id: u.id).all.sample
+end
+
+15.times do
   book = Book.create(title: Faker::Book.title, pages_count: Faker::Number.within(range: 100..3000),
                      isbn: Faker::Number.number(digits: 10).to_s, description: Faker::Lorem.paragraph(sentence_count: 5), publisher: Publisher.all.sample)
   puts "Book #{book.title.to_s.blue} created".red
@@ -55,6 +61,9 @@ end
   puts 'Images links created'.red
 
   shelve = Shelve.create(title: Faker::Quote.singular_siegler, author: User.all.sample)
+  shelve.books << Book.all.sample
+  shelve.books << Book.all.sample
+  shelve.books << Book.all.sample
   shelve.books << Book.all.sample
   puts "Shelve #{shelve.title.to_s.blue} created".red
 
@@ -68,15 +77,43 @@ end
   puts "Review #{review.text.to_s.blue} created".red
 end
 
-30.times do
-  comment = Comment.create(author: User.all.sample, text: Faker::Lorem.paragraph(sentence_count: 3))
+Gink.all.each do |gink|
+  comment = Comment.create(
+    author: User.all.sample,
+    text: Faker::Lorem.paragraph(sentence_count: 3)
+  )
 
-  [Gink, Review].sample.all.sample.comments << comment
+  gink.comments << comment
+
+  5.times do
+    comment.replies << Comment.create(
+      author: User.all.sample,
+      text: Faker::Lorem.paragraph(sentence_count: 3),
+      origin: comment
+    )
+  end
   puts "Comment with id #{comment.id.to_s.blue} created".red
+end
 
-  comment = Comment.create(author: User.all.sample, text: Faker::Lorem.paragraph(sentence_count: 3))
-  Comment.all.sample.comments << comment
+Review.all.each do |review|
+  comment = Comment.create(
+    author: User.all.sample,
+    text: Faker::Lorem.paragraph(sentence_count: 3)
+  )
 
+  review.comments << comment
+
+  5.times do
+    comment.replies << Comment.create(
+      author: User.all.sample,
+      text: Faker::Lorem.paragraph(sentence_count: 3),
+      origin: comment
+    )
+  end
+  puts "Comment with id #{comment.id.to_s.blue} created".red
+end
+
+30.times do
   like = Like.create(user: User.all.sample)
   [Gink, Review, Comment].sample.all.sample.likes << like
   puts "Like with id #{like.id.to_s.blue} created".red

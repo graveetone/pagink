@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[7.0]
       t.references :author, foreign_key: { to_table: :users, on_delete: :cascade }, null: false
       t.string :commentable_type
       t.integer :commentable_id
+      t.references :origin, foreign_key: { to_table: :comments, on_delete: :cascade}, optional: true
 
       t.timestamps
     end

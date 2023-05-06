@@ -61,11 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_092006) do
     t.bigint "author_id", null: false
     t.string "commentable_type"
     t.integer "commentable_id"
+    t.bigint "origin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "text", null: false
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["origin_id"], name: "index_comments_on_origin_id"
   end
 
   create_table "ginks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -151,14 +153,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_092006) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "username", null: false
+    t.string "email", null: false
     t.datetime "last_seen"
     t.string "status", default: "UNCONFIRMED", null: false
     t.integer "login_counts", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jti", default: "", null: false
-    t.string "email", default: "", null: false
+    t.string "username", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -168,12 +170,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_092006) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "books", "publishers", on_delete: :nullify
+  add_foreign_key "comments", "comments", column: "origin_id", on_delete: :cascade
   add_foreign_key "comments", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "ginks", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :nullify
@@ -182,7 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_092006) do
   add_foreign_key "notifications", "users", on_delete: :cascade
   add_foreign_key "raitings", "books", on_delete: :cascade
   add_foreign_key "raitings", "users", column: "author_id", on_delete: :nullify
-  add_foreign_key "reviews", "authors", on_delete: :cascade
   add_foreign_key "reviews", "books", on_delete: :cascade
+  add_foreign_key "reviews", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "shelves", "users", column: "author_id", on_delete: :cascade
 end
