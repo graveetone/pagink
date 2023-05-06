@@ -1,4 +1,6 @@
 class Api::V1::AuthorsController < ApplicationController
+  before_action :set_author, only: %w[show books]
+
   def index
     @authors = Author.all
 
@@ -6,8 +8,21 @@ class Api::V1::AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find(params[:id])
-
     render json: @author
+  end
+
+  def books
+    books = @author.books
+
+    render json: {
+      count: books.count,
+      books: serialize_collection(books, BookOfAuthorSerializer)
+    }
+  end
+
+  private
+
+  def set_author
+    @author = Author.find(params[:id])
   end
 end

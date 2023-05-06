@@ -48,12 +48,14 @@ class User < ApplicationRecord
     write_attribute(:status, value)
   end
 
-  def suspend
+  def suspend!
     self.status = STATUSES[:suspended]
+    save!
   end
 
-  def activate
+  def activate!
     self.status = STATUSES[:active]
+    save!
   end
 
   def active?

@@ -1,10 +1,11 @@
 import React from 'react'
+import BookImage from '../../../components/BookImage';
 
 function BookCover({ alt, url }) {
     return (
         <>
-            <div className="flex items-center justify-center xs:w-3/4 sm:w-3/4 md:w-1/4">
-                <img src={url} alt={alt} className="rounded-3xl object-cover object-center" />
+            <div className='w-full'>
+                <BookImage src={url} width={'w-72'} height={'h-96'} />
             </div>
         </>
     )

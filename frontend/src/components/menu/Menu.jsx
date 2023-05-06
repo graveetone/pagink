@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import MenuItem from '../menu_item/MenuItem'
 import icons from '../../components/icons'
 import { useState, useEffect, useRef } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const hiddeableMenu = false;
 function Menu() {
     const [isMenuVisible, setIsMenuVisible] = useState(!hiddeableMenu)
+    const { currentUser } = useContext(CurrentUserContext);
+
     const divRef = useRef()
+
+    useEffect(() => {
+        divRef.current.addEventListener('click', () => {
+            window.scrollTo(0, 0)
+        });
+    })
 
     useEffect(() => {
         if (hiddeableMenu) {
@@ -44,10 +53,10 @@ function Menu() {
                 isMenuVisible || !hiddeableMenu ? (
 
                     <div ref={divRef} className={'flex xs:w-full md:w-3/4 lg:w-3/4 h-1/7 bottom-0 justify-evenly fixed sm:gap-2'}
-                        onMouseLeave={() => setIsMenuVisible(!hiddeableMenu)}>
+                        onMouseLeave={() => { setIsMenuVisible(!hiddeableMenu) }}>
                         <MenuItem key='1' icon={icons.home} caption={captions[locale].home} url={'/'}></MenuItem>
-                        <MenuItem key='2' icon={icons.shelves} caption={captions[locale].shelves} url={'/shelves'}></MenuItem>
-                        <MenuItem key='5' icon={icons.user} caption={captions[locale].profile} url={'/user'}></MenuItem>
+                        <MenuItem key='2' icon={icons.shelves} caption={captions[locale].shelves} url={`/shelves/${currentUser.id}`}></MenuItem>
+                        <MenuItem key='5' icon={icons.user} caption={captions[locale].profile} url={`/user/${currentUser.id}`}></MenuItem>
                         <MenuItem key='3' icon={icons.explore} caption={captions[locale].explore} url={'/explore'}></MenuItem>
                         <MenuItem key='4' icon={icons.settings} caption={captions[locale].settings} url={'/settings'}></MenuItem>
                     </div>

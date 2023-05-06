@@ -1,8 +1,24 @@
-class ReviewSerializer < ActiveModel::Serializer
-  attributes %i[id text author likes_count comments created_at]
+class ReviewSerializer < BaseSerializer
+  attributes %i[id text author likedBy comments_count timestamp book type]
 
-  def likes_count
-    object.likes.count
+  def type
+    :review
+  end
+
+  def likedBy
+    object.likes.pluck(:user_id)
+  end
+
+  def comments_count
+    object.comments.count
+  end
+
+  def author
+    UserAuthorSerializer.new(object.author).as_json
+  end
+
+  def book
+    BookOfAuthorSerializer.new(object.book).as_json
   end
 
   def comments

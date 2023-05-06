@@ -5,7 +5,7 @@ const setPageTitle = title => {
 }
 
 const createLinkTo = (path, caption) => {
-    return <Link className='hover:text-ruby-red' to={path}>{caption}</Link>
+    return <Link className='hover:text-ruby-red hover:font-black' to={path}>{caption}</Link>
 }
 
 const jsxWithCaption = (jsx, caption) => {
@@ -43,12 +43,24 @@ const getTextPreview = (text) => {
 
 const joinAuthorNamesAsLinks = authors => {
     return authors.map(author => {
-        return <span key={author.id}>{createLinkTo('/author', author.name + ' ')}</span>
+        return <span key={author.id}>{createLinkTo(`/author/${author.id}`, author.name + ' ')}</span>
     })
 }
 
 const joinAuthorNames = authors => {
     return authors.map(author => author.name).join(', ')
+}
+
+const setTokenInSession = (token) => {
+    sessionStorage.setItem('jwt', token)
+}
+
+const getTokenFromSession = () => {
+    return sessionStorage.getItem('jwt')
+}
+
+const areUsersTheSame = (user1, user2) => {
+    return user1.id === user2.id
 }
 
 const helpers = {
@@ -61,8 +73,10 @@ const helpers = {
     emailTester,
     getTextPreview,
     joinAuthorNamesAsLinks,
-    joinAuthorNames
+    joinAuthorNames,
+    setTokenInSession,
+    getTokenFromSession,
+    areUsersTheSame
 }
 
 export default helpers;
-

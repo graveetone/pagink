@@ -1,18 +1,7 @@
-# frozen_string_literal: true
-
-# Serializes Author objects to JSON format.
-class AuthorSerializer < ActiveModel::Serializer
-  attributes %i[id name image_url books]
+class AuthorSerializer < BaseSerializer
+  attributes %i[id name image_url]
 
   def image_url
     object.image_link&.url
-  end
-
-  def books
-    ActiveModel::Serializer::CollectionSerializer.new(
-      object.books,
-      serializer: BookOfAuthorSerializer
-    )
-    
   end
 end

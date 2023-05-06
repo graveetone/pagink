@@ -1,3 +1,3 @@
-class NotificationSerializer < ActiveModel::Serializer
-  attributes %i[id title payload created_at]
+class NotificationSerializer < BaseSerializer
+  attributes %i[id title payload timestamp]
 end

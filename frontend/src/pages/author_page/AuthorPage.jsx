@@ -1,26 +1,26 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-import Header from '../../components/header/Header'
-import { data } from './data'
-import BooksSection from './../../components/books_section/BooksSection'
-import helpers from '../../helpers'
+import { useAuthorQuery, useAuthorBooksQuery } from './../../api/queries/authors'
+import LoadableContent from '../../components/LoadableContent'
+import Author from './components/Author'
+import AuthorBooks from './components/AuthorBooks'
 
 function AuthorPage() {
-  helpers.setPageTitle(data.name)
+  const authorId = parseInt(useParams().authorId);
+
 
   return (
-    <>
-      <div className='flex flex-col w-full items-center gap-5'>
-        <div className='flex flex-row w-full items-center justify-around h-full'>
-          <div className="flex items-center justify-center m-3">
-            <img src={data.image_url} alt={data.dataname} className="rounded-3xl xs:w-[35vh] xs:h-auto sm:w-[40vh] sm:auto md:w-[50vh] md:auto lg:w-[55vh] lg:h-auto object-cover object-center" />
-          </div>
-          <Header heading={data.name} />
-        </div>
-        <BooksSection caption={`Books by this author (${data.books.length})`} books={data.books} />
-      </div>
-    </>
-  )
+    <div className='flex flex-col w-full items-center gap-5'>
+      <LoadableContent hook={useAuthorQuery} params={authorId}>
+        {Author}
+      </LoadableContent >
+
+      <LoadableContent hook={useAuthorBooksQuery} params={authorId}>
+        {AuthorBooks}
+      </LoadableContent>
+    </div>
+  );
 }
 
 export default AuthorPage;

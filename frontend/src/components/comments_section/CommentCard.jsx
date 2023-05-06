@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import Button from '../Button'
@@ -7,10 +7,13 @@ import Image from '../Image'
 import ModalWindow from '../ModalWindow'
 import CommentForm from '../CommentForm'
 import helpers from './../../helpers'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function CommentCard({ comment, parent, commentsRef }) {
-    const [liked, setLiked] = useState(comment.likedByCurrentUser)
+    const [liked, setLiked] = useState(false)
     const [formForCommentVisible, setFormForCommentVisible] = useState(false)
+
+    const { currentUser } = useContext(CurrentUserContext);
 
     const commentRef = useRef()
     commentsRef.current[comment.id] = commentRef
@@ -31,20 +34,20 @@ function CommentCard({ comment, parent, commentsRef }) {
 
     return (
         <>
-            <div ref={commentRef} className={`shadow-xl shadow-black flex w-full justify-center items-center ${parent ? 'border-b-2' : 'border-2'} border-x-2 border-black text-center rounded-xl`}>
+            <div ref={commentRef} className={`shadow-2xl shadow-black flex w-full justify-center items-center border-black text-center rounded-xl`}>
                 <div className='flex flex-col w-full items-center'>
                     {parent &&
-                        <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-y-2 border-black w-full'>
+                        <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-b-2 border-black w-full'>
                             replied to {parent.author.username}'s: {helpers.getTextPreview(parent.text)}
                         </button>
                     }
                     <div className='flex w-full justify-start'>
                         <div className='flex flex-col border-r-2 border-black p-2 font-balsamiq'>
                             <p>{comment.author.username}</p>
-                            <Link to='/user' className='flex'>
+                            <Link to={`/user/${comment.author.id}`} className='flex'>
                                 <Image src={comment.author.image_url} alt={comment.author.username} width={'w-24'} height={'h-24'} />
                             </Link>
-                            <p>{comment.created_at}</p>
+                            <p>{comment.timestamp}</p>
                         </div>
 
                         <div className='flex flex-col items-end justify-between w-full gap-3 font-balsamiq p-2'>
@@ -55,7 +58,7 @@ function CommentCard({ comment, parent, commentsRef }) {
                             </div>
                             <div className='flex justify-end items-end gap-6'>
                                 <div className='flex justify-end items-end'>
-                                    <Button icon={liked ? icons.liked : icons.unliked} onClick={() => { setLiked(!liked) }} />
+                                    <Button icon={liked ? icons.liked : icons.unliked} onClick={() => { setLiked(comment.likedBy.includes(currentUser.id)) }} />
                                 </div>
                                 <div className='flex justify-end items-end'>
                                     <Button icon={icons.pencil} onClick={() => { setFormForCommentVisible(true) }} />

@@ -1,14 +1,18 @@
-class GinkSerializer < ActiveModel::Serializer
-  attributes %i[id title text author likes_count comments created_at]
-
-  def likes_count
-    object.likes.count
+class GinkSerializer < BaseSerializer
+  attributes %i[id title text author likedBy timestamp commentsCount type]
+  def type
+    :gink
   end
 
-  def comments
-    ActiveModel::Serializer::CollectionSerializer.new(
-      object.comments,
-      serializer: CommentSerializer
-    )
+  def commentsCount
+    object.comments.count
+  end
+
+  def likedBy
+    object.likes.pluck(:user_id)
+  end
+
+  def author
+    UserAuthorSerializer.new(object.author).as_json
   end
 end

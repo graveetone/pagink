@@ -22,15 +22,15 @@ const LoggedInRoutes = () => {
         <>
             <Routes>
                 <Route exact path="/" element={<HomePage />} />
-                <Route path="/shelves" element={<ShelvesPage />} />
+                <Route path="/shelves/:userId" element={<ShelvesPage />} /> 
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/author" element={<AuthorPage />} />
-                <Route path="/shelve" element={<ShelvePage />} />
-                <Route path="/book" element={<BookPage />} />
-                <Route path="/user" element={<UserPage />} />
-                <Route path="/gink" element={<GinkPage />} />
-                <Route path="/review" element={<ReviewPage />} />
+                <Route path="/author/:authorId" element={<AuthorPage />} />
+                <Route path="/shelve/:shelveId" element={<ShelvePage />} />
+                <Route path="/book/:bookId" element={<BookPage />} />
+                <Route path="/user/:userId" element={<UserPage />} />
+                <Route path="/gink/:ginkId" element={<GinkPage />} />
+                <Route path="/review/:reviewId" element={<ReviewPage />} />
                 <Route path="*" element={<HomePage />} />
             </Routes>
         </>
