@@ -5,23 +5,29 @@ export const RegistrationContext = createContext();
 const initialRegistrationState = {
     username: {
         value: '',
-        errors: []
+        errors: [],
+        validations: []
     },
     email: {
         value: '',
-        errors: []
+        errors: [],
+        validations: []
+
     },
     password: {
         value: '',
-        errors: []
+        errors: [],
+        validations: []
     },
     passwordConfirmation: {
         value: '',
-        errors: []
+        errors: [],
+        validations: []
     },
     photo: {
         value: 'default_user_profile_picture.svg',
-        errors: []
+        errors: [],
+        validations: []
     }
 };
 
@@ -59,6 +65,19 @@ const registrationReducer = (state, action) => {
                     [fieldName]: {
                         ...state[fieldName],
                         errors: action.payload.errors
+                    }
+                };
+            }
+            else {
+                return state;
+            }
+        case 'SET_VALIDATIONS':
+            if (isFieldValid) {
+                return {
+                    ...state,
+                    [fieldName]: {
+                        ...state[fieldName],
+                        validations: action.payload.validations
                     }
                 };
             }

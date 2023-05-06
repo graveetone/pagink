@@ -5,6 +5,7 @@ import subpages from './subpages'
 import { RegistrationContext } from './../../../contexts/RegistrationContext'
 import RegistrationButton from './components/RegistrationButton'
 import Popup from './../../../components/popup/Popup'
+import Heading from '../../../components/Heading'
 
 const components = [
     subpages.startRegistration,
@@ -38,15 +39,38 @@ function RegistrationPage() {
         })
     }
 
-    const handleNextButtonClick = () => {
+    const validateCurrentField = () => {
         if (currentInputName) {
-            if (registrationState[currentInputName].errors.length === 0) {
+            const field = registrationState[currentInputName];
+
+            const errorMessages = field.validations.filter(validation => {
+                return !validation.rule(field.value)
+            }).map(validation => {
+                return validation.message
+            })
+
+            dispatchRegistrationState({
+                type: 'ADD_ERRORS',
+                payload: {
+                    fieldName: currentInputName,
+                    errors: errorMessages
+                }
+            });
+
+            return errorMessages;
+        }
+    }
+
+    const handleNextButtonClick = () => {
+        const errorMessages = validateCurrentField();
+        if (currentInputName) {
+            if (errorMessages.length === 0) {
                 setCurrentPageIndex(nextPageIndex)
                 resetErrors()
             }
             else {
                 setErrorsBlock(
-                    <Popup errors={registrationState[currentInputName].errors} visible={true} />
+                    <Popup errors={errorMessages} visible={true} />
                 )
                 dispatchRegistrationState({
                     type: 'RESET_ERRORS',
@@ -77,6 +101,7 @@ function RegistrationPage() {
     return (
         <div className='flex flex-col w-full gap-12'>
             <div className='flex flex-col items-center w-full gap-5'>
+                <Heading />
                 {currentComponent.subpage}
                 {errorsBlock}
             </div>

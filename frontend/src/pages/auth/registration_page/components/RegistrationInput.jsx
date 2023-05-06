@@ -1,31 +1,19 @@
-import React, { useContext, useEffect, useCallback } from 'react'
+import React, { useContext, useEffect, useCallback, useState } from 'react'
 import Input from './../../../../components/Input'
 import { RegistrationContext } from './../../../../contexts/RegistrationContext';
 
-function RegistrationInput({ name, type, placeholder, description, validations }) {
+function RegistrationInput({ name, type, placeholder, description }) {
     const { registrationState, dispatchRegistrationState } = useContext(RegistrationContext);
-
-    useEffect(() => {
-        const field = registrationState[name];
-        const errorMessages = validations.filter(validation => !validation.rule(field.value)).map(validation => validation.message);
-        dispatchRegistrationState({
-            type: 'ADD_ERRORS',
-            payload: {
-                fieldName: name,
-                errors: errorMessages
-            }
-        });
-    }, [name, registrationState, validations, dispatchRegistrationState]);
 
     const handleFieldValueChange = useCallback(event => {
         dispatchRegistrationState({
-          type: 'UPDATE_FIELD',
-          payload: {
-            fieldName: event.target.name,
-            value: event.target.value
-          }
+            type: 'UPDATE_FIELD',
+            payload: {
+                fieldName: event.target.name,
+                value: event.target.value
+            }
         })
-      }, [dispatchRegistrationState]);
+    }, [registrationState]);
 
     return (
         <div className='flex items-center w-full gap-10 flex-col'>
@@ -37,7 +25,9 @@ function RegistrationInput({ name, type, placeholder, description, validations }
                     name={name}
                     type={type}
                     placeholder={placeholder}
-                    onChange={event => handleFieldValueChange(event)}
+                    onChange={event => {
+                        handleFieldValueChange(event);
+                    }}
                     value={registrationState[name].value}
                 />
             </div>

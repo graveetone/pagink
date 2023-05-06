@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import RegistrationInput from './../components/RegistrationInput'
-import Header from './../../../../components/header/Header'
 import helpers from '../../../../helpers';
+import { RegistrationContext } from '../../../../contexts/RegistrationContext';
+import Subheading from '../../../../components/Subheading';
+
 function Email() {
   const validations = [
     {
@@ -18,6 +20,18 @@ function Email() {
     },
   ];
 
+  const { dispatchRegistrationState } = useContext(RegistrationContext);
+
+  useEffect(() => {
+    dispatchRegistrationState({
+      type: 'SET_VALIDATIONS',
+      payload: {
+        fieldName: 'email',
+        validations: validations
+      }
+    })
+  }, [])
+
   const description = (
     <>
       <span>No spam. We promise</span>
@@ -26,13 +40,14 @@ function Email() {
   )
   return (
     <>
-      <Header subheading={"Please specify your email address"} />
+      <Subheading>
+        Please specify your email address
+      </Subheading>
       <RegistrationInput
         name='email'
         type='email'
         placeholder='email'
         description={description}
-        validations={validations}
       />
     </>
   )
