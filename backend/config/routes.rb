@@ -12,20 +12,45 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :shelves
-      resources :reviews
+      resources :reviews do
+        member do
+          get :comments
+        end
+      end
       resources :publishers
       resources :notifications
       resources :messages
-      resources :ginks
+      resources :ginks do
+        member do
+          get :comments
+        end
+      end
       resources :comments
-      resources :authors
+      resources :authors do
+        member do
+          get :books
+        end
+      end
       resources :books do
         collection do
           get 'search'
         end
+        member do
+          get :reviews
+        end
       end
-      resources :users
+      resources :users do
+        member do
+          get :bookmates_posts
+          get :posts
+          get :bookmates
+          get :shelves
+        end
+      end
       get 'current_user', to: 'current_user#index'
+      get 'statistics', to: 'statistics#index'
+      get 'validate_username', to: 'validations#username'
+      get 'validate_email', to: 'validations#email'
     end
   end
 
