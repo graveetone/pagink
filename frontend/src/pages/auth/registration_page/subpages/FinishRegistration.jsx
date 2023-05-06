@@ -1,14 +1,16 @@
 import React from 'react'
-import Header from './../../../../components/header/Header'
 import { useContext } from 'react'
 import { RegistrationContext } from '../../../../contexts/RegistrationContext'
+import Subheading from '../../../../components/Subheading';
 
 function FinishRegistration() {
   const { registrationState } = useContext(RegistrationContext);
-  
+
   return (
     <div className='flex flex-col justify-center items-center text-center w-full'>
-      <Header subheading={"Hey, world! Look at the new PagInk user"} />
+      <Subheading>
+        Hey, world! Look at the new PagInk user
+      </Subheading>
 
       <div className="flex items-center justify-center">
         <img src={registrationState.photo.value} alt='' className="rounded-3xl w-[250px] h-[250px] object-cover object-center" />

@@ -28,7 +28,7 @@ function CommentForm({ parent, onSubmit }) {
               {helpers.getTextPreview(parent.text)}
             </p>
             <p>
-              written {parent.created_at}
+              written {parent.timestamp}
             </p>
           </div>
         }

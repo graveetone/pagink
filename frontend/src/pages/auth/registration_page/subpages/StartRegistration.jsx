@@ -1,9 +1,11 @@
 import React from 'react'
-import Header from './../../../../components/header/Header'
+import Subheading from '../../../../components/Subheading';
 
 function StartRegistration() {
   return (
-      <Header subheading={"We're glad you're joining PagInk"} />
+    <Subheading>
+      We're glad you're joining PagInk
+    </Subheading>
   )
 }
 

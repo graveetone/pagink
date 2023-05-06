@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 const textInputStyles = `md:w-1/2 w-3/4
                          text-center
@@ -11,18 +11,13 @@ const textInputStyles = `md:w-1/2 w-3/4
                          focus:outline-none focus:shadow-black
                          `
 
-function Input({ name, type, placeholder, onChange, value }) {
-  return (
-    <>
-      <input className={textInputStyles}
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        autoCapitalize='off' />
-    </>
-  )
-}
+const Input = forwardRef((props, ref) => {
+  return <input className={textInputStyles}
+    ref={ref}
+    {...props}
+    autoCapitalize='off'
+    autoFocus="yes"
+  />
+})
 
 export default Input;

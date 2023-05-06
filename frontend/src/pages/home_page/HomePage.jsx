@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 import Heading from './../../components/Heading';
 import helpers from './../../helpers';
 import PostCard from './../../components/PostCard'
-import Button from '../../components/Button';
-import icons from '../../components/icons';
 import Subheading from '../../components/Subheading';
 import LoadableContent from '../../components/LoadableContent';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -12,7 +10,7 @@ import { useBookmatesPostsQuery } from './../../api/queries/posts'
 import CreateGinkSection from '../../components/CreateGinkSection';
 
 const recentPosts = ({ posts }) => posts.map(post => {
-    return <PostCard key={post.id} post={post} />
+    return <PostCard key={`${post.type}_${post.id}`} post={post} />
 })
 
 function HomePage() {

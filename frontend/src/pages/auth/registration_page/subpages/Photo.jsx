@@ -2,7 +2,7 @@ import React from 'react'
 
 import RegistrationFileInput from '../components/RegistrationPhotoInput'
 
-import Header from './../../../../components/header/Header'
+import Subheading from '../../../../components/Subheading'
 
 function Photo() {
   const description = (
@@ -13,7 +13,9 @@ function Photo() {
   )
   return (
     <>
-      <Header subheading={"Please choose your best photo"} />
+      <Subheading>
+        Please choose your best photo
+      </Subheading>
       <RegistrationFileInput name='photo' type='file' placeholder='photo' description={description} />
     </>
   )
