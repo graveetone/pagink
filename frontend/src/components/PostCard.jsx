@@ -9,7 +9,7 @@ import helpers from '../helpers'
 
 function PostCard({ post }) {
   const [liked, setLiked] = useState(post.likedByCurrentUser)
-  const linkToPost = (post.type === 'gink' ? '/gink' : '/review')
+  const linkToPost = (post.type === 'gink' ? `/gink/${post.id}` : `/review/${post.id}`)
   return (
     <>
       <Link to={linkToPost} className='shadow-2xl p-1 shadow-black flex w-full justify-center items-center border-black text-center rounded-xl'>
@@ -18,15 +18,15 @@ function PostCard({ post }) {
             <div>
               <div className='flex flex-col p-2 font-balsamiq'>
                 <p className='text-xl'>{post.author.username}</p>
-                <Link to='/user' className='flex'>
+                <Link to={`user/${post.author.id}`} className='flex'>
                   <Image src={post.author.image_url} alt={post.author.username} width={'w-24'} height={'h-24'} />
                 </Link>
-                <p className='text-sm'>{post.created_at}</p>
+                <p className='text-sm'>{post.timestamp}</p>
               </div>
 
               {post.book &&
                 <div className='flex justify-center border-t-2 border-black items-center flex-col font-balsamiq'>
-                  <Link to='/book' className='flex'>
+                  <Link to={`/book/${post.book.id}`} className='flex'>
                     <BookImage src={post.book.image_url} alt={post.book.title} width={'w-24'} height={'h-36'} />
                   </Link>
                   <p className='text-xl'>{post.book.title}</p>
@@ -34,20 +34,18 @@ function PostCard({ post }) {
               }
             </div>
             <div className='flex flex-col items-center justify-between w-full gap-3 font-balsamiq p-2 border-l-2 border-black'>
-              <div className='flex flex-col justify-center items-center'>
+              <div className='flex flex-col justify-center items-center w-full'>
                 {post.title && <p>{post.title}</p>}
-                <div className='flex w-full text-xl p-3 justify-center items-center text-center font-sans'>
-                  <p>
-                    {helpers.getTextPreview(post.text)}
-                  </p>
+                <div className='flex text-xl p-3 justify-center w-full overflow-hidden items-center text-center font-sans'>
+                  {helpers.getTextPreview(post.text)}
                 </div>
               </div>
               <div className='flex self-end justify-end items-end gap-6'>
                 <div className='flex justify-center items-center'>
-                  <Button icon={<>{post.likesCount}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked) }} />
+                  <Button icon={<>{post.likes_count}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked) }} />
                 </div>
                 <div className='flex justify-center items-center'>
-                  <Button icon={<>{post.commentsCount} {icons.comments}</>} onClick={() => { }} />
+                  <Button icon={<>{post.comments_count} {icons.comments}</>} onClick={() => { }} />
                 </div>
               </div>
             </div>

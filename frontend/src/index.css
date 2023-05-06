@@ -7,22 +7,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
 
+/* headings */
 .font-amatic {
   font-family: 'Amatic SC';
   font-weight: 700;
 }
 
-/* headings */
+/* subheadings, menu items */
 .font-balsamiq {
   font-family: 'Balsamiq Sans', sans-serif;
 }
 
-/* subheadings, menu items */
+/* regular text */
 .font-roboto {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-/* regular text */
 
 /* div {
   border: 1px solid red;
