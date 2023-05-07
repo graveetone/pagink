@@ -41,10 +41,12 @@ Rails.application.routes.draw do
       end
       resources :users do
         member do
-          get :bookmates_posts
+          get :bookmatees_posts
           get :posts
-          get :bookmates
+          get :bookmatees
           get :shelves
+          post :follow
+          delete :unfollow
         end
       end
       get 'current_user', to: 'current_user#index'

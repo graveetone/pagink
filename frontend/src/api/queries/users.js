@@ -4,10 +4,12 @@ import PaginkAPI from "../PaginkAPI";
 const endpoints = {
     user: userId => `users/${userId}`,
     userPosts: userId => `users/${userId}/posts`,
-    currentUser: () => `current_user`
+    currentUser: () => `current_user`,
+    followUser: userId => `users/${userId}/follow`,
+    unfollowUser: userId => `users/${userId}/unfollow`
 }
 
-const { getEndpoint, usePaginkQuery } = PaginkAPI(endpoints);
+const { getEndpoint, usePaginkQuery, usePaginkMutation } = PaginkAPI(endpoints);
 
 const useUserQuery = (userId) => {
     const queryKey = ['users', userId];
@@ -31,9 +33,30 @@ const useCurrentUserQuery = () => {
     return usePaginkQuery(queryKey, getEndpoint(endpointKey), { headers: { Authorization: token } });
 };
 
+const useFollowUserMutation = (currentUserId, userId) => {
+    const endpointKey = 'followUser'
+    const token = helpers.getTokenFromSession()
+    return usePaginkMutation(getEndpoint(endpointKey, userId), 'POST', { headers: { Authorization: token } }, [
+        ['users', currentUserId, 'bookmatees_posts'],
+        ['users', userId]
+    ]);
+};
+
+const useUnfollowUserMutation = (currentUserId, userId) => {
+    const endpointKey = 'unfollowUser'
+    const token = helpers.getTokenFromSession()
+    return usePaginkMutation(getEndpoint(endpointKey, userId), 'DELETE', { headers: { Authorization: token } }, [
+        ['users', currentUserId, 'bookmatees_posts'],
+        ['users', userId]
+    ]);
+};
+
+
 
 export {
     useUserQuery,
     useUserPostsQuery,
-    useCurrentUserQuery
+    useCurrentUserQuery,
+    useFollowUserMutation,
+    useUnfollowUserMutation
 }
