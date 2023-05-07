@@ -11,6 +11,7 @@ import LoadableContent from './../../components/LoadableContent'
 import { useGinkQuery, useGinkCommentsQuery } from './../../api/queries/ginks'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import CreateCommentSection from './../../components/CreateCommentSection'
+import LikeButton from '../../components/LikeButton';
 
 function GinkPage() {
     const ginkId = parseInt(useParams().ginkId);
@@ -36,7 +37,7 @@ function GinkPage() {
                 {(gink) => {
                     {
                         { helpers.setPageTitle(`Gink by ${gink.author.username}`) }
-                        setLiked(gink.likedBy.includes(currentUser.id))
+                        setLiked(gink.likedByCurrentUser)
                     }
                     return <div ref={ginkRef} className='flex flex-col gap-10 justify-center items-center w-full'>
                         <Heading>
@@ -56,9 +57,13 @@ function GinkPage() {
                                     </div>
                                 </div>
                                 <div className='flex justify-around items-center'>
-                                    <div>
-                                        <Button icon={<>{gink.likedBy.length}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked); }} />
-                                    </div>
+                                    <LikeButton isLiked={gink.likedByCurrentUser} caption={gink.likesCount} likeableData={{
+                                        likeable_id: gink.id,
+                                        likeable_type: 'Gink'
+                                    }}
+                                        queriesToInvalidate={[['ginks']]}
+
+                                    />
                                     <div>
                                         <Button icon={<>{gink.commentsCount} {icons.comments}</>} onClick={scrollToComments} />
                                     </div>

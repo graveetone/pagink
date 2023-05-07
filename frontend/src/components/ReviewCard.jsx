@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Image from './../components/Image'
 import Button from './Button'
 import icons from './icons'
+import LikeButton from './LikeButton'
 
 function ReviewCard({ review }) {
     const linkToReview = `/review/${review.id}`
@@ -60,9 +61,17 @@ function ReviewCard({ review }) {
                         </p>
                     </div>
                     <div className='flex gap-3'>
-                        <div className='flex justify-center items-center'>
-                            <Button icon={<>{review.likedBy.length}{true ? icons.liked : icons.unliked}</>} onClick={() => { }} />
-                        </div>
+                        <LikeButton isLiked={review.likedByCurrentUser} caption={review.likesCount} likeableData={{
+                            likeable_id: review.id,
+                            likeable_type: 'Review'
+                        }}
+                        queriesToInvalidate={[{
+                            predicate: function(query) {
+                              return query.queryKey.includes('bookmatees_posts')
+                            },
+                          }, ['users', review.author.id, 'posts']]}
+                    />
+
                         <div className='flex justify-center items-center'>
                             <Button icon={<>{review.commentsCount} {icons.comments}</>} onClick={() => { }} />
                         </div>

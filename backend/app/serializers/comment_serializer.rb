@@ -1,7 +1,7 @@
 class CommentSerializer < BaseSerializer
-  attributes %i[id author likedBy text timestamp origin repliesCount commentable]
+  attributes %i[id author likedByCurrentUser text timestamp origin repliesCount commentable likesCount]
 
-  def likes_count
+  def likesCount
     object.likes.count
   end
 
@@ -13,8 +13,8 @@ class CommentSerializer < BaseSerializer
     object.replies.count
   end
 
-  def likedBy
-    object.likes.pluck(:user_id)
+  def likedByCurrentUser
+    object.likes.find_by(user: scope) if scope.present?
   end
 
   def origin

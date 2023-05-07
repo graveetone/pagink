@@ -18,7 +18,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def show
-    render json: @review
+    render json: ReviewSerializer.new(@review, scope: current_user).as_json
   end
 
   def comments

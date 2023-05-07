@@ -6,6 +6,7 @@ import icons from '../icons'
 import Image from '../Image'
 import helpers from './../../helpers'
 import CreateReplySection from './CreateReplySection'
+import LikeButton from '../LikeButton'
 
 function CommentCard({ comment, parent, commentsRef }) {
     const commentRef = useRef();
@@ -70,9 +71,12 @@ function CommentCard({ comment, parent, commentsRef }) {
                         </p>
                     </div>
                     <div className='flex gap-3'>
-                        <div className='flex justify-center items-center'>
-                            <Button icon={<>{comment.likedBy.length}{true ? icons.liked : icons.unliked}</>} onClick={() => { }} />
-                        </div>
+                        <LikeButton isLiked={comment.likedByCurrentUser} caption={comment.likesCount} likeableData={{
+                            likeable_id: comment.id,
+                            likeable_type: 'Comment'
+                        }}
+                            queriesToInvalidate={[['reviews'], ['ginks']]}
+                        />
                         <CreateReplySection origin={comment} />
                     </div>
                 </div>
