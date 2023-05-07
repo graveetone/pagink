@@ -53,6 +53,9 @@ Rails.application.routes.draw do
       get 'statistics', to: 'statistics#index'
       get 'validate_username', to: 'validations#username'
       get 'validate_email', to: 'validations#email'
+
+      post :likes, to: 'likes#like'
+      delete :likes, to: 'likes#unlike'
     end
   end
 
