@@ -1,6 +1,6 @@
 class UserSerializer < BaseSerializer
   attributes %i[id username status image_url sign_in_count last_sign_in_at bookmatesCount ginksCount
-                reviewsCount membershipDuration isCurrentUser isFollowedByCurrentUser]
+                reviewsCount membershipDuration isCurrentUser isFollowedByCurrentUser bookmateesCount]
 
   def image_url
     object.image_link&.url
@@ -16,6 +16,10 @@ class UserSerializer < BaseSerializer
 
   def bookmatesCount
     object.bookmates.count
+  end
+
+  def bookmateesCount
+    object.bookmatees.count
   end
 
   def ginksCount

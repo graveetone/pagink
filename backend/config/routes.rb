@@ -43,7 +43,7 @@ Rails.application.routes.draw do
         member do
           get :bookmatees_posts
           get :posts
-          get :bookmatees
+          get :related_users
           get :shelves
           post :follow
           delete :unfollow
