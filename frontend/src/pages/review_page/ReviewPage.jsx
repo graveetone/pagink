@@ -7,22 +7,19 @@ import Button from '../../components/Button';
 import icons from '../../components/icons';
 import CommentsSection from '../../components/comments_section/CommentsSection';
 import Image from '../../components/Image';
-import CommentForm from '../../components/CommentForm';
-import ModalWindow from '../../components/ModalWindow';
 import Heading from './../../components/Heading'
 import LoadableContent from './../../components/LoadableContent'
 import { useReviewQuery, useReviewCommentsQuery } from './../../api/queries/reviews'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import CreateCommentSection from './../../components/CreateCommentSection'
 
 function ReviewPage() {
     const reviewId = parseInt(useParams().reviewId);
-
 
     const reviewRef = useRef()
     const commentsSectionRef = useRef()
 
     const [liked, setLiked] = useState(false)
-    const [formForCommentVisible, setFormForCommentVisible] = useState(false)
 
     const scrollToStart = () => {
         reviewRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -30,18 +27,6 @@ function ReviewPage() {
     const scrollToComments = () => {
         commentsSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-    const openCommentForm = () => {
-        setFormForCommentVisible(true)
-    }
-
-    const submitComment = () => {
-        // send comment here
-        closeModal()
-    }
-
-    const closeModal = () => {
-        setFormForCommentVisible(false)
-    }
 
     const { currentUser } = useContext(CurrentUserContext);
 
@@ -84,13 +69,10 @@ function ReviewPage() {
                                 </div>
                                 <div className='flex flex-row justify-around items-center'>
                                     <div>
-                                        <Button icon={<>{review.likesCount}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked); }} />
+                                        <Button icon={<>{review.likedBy.length}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked); }} />
                                     </div>
                                     <div>
                                         <Button icon={<>{review.commentsCount} {icons.comments}</>} onClick={scrollToComments} />
-                                    </div>
-                                    <div>
-                                        <Button icon={icons.pencil} onClick={openCommentForm} />
                                     </div>
                                 </div>
                             </div>
@@ -100,17 +82,7 @@ function ReviewPage() {
                                 </p>
                             </div>
                         </div>
-                        <div>
-                            <ModalWindow
-                                title='Write comment'
-                                isOpen={formForCommentVisible}
-                                onRequestClose={closeModal}
-                                content={(
-                                    <CommentForm
-                                        onSubmit={submitComment} />)}
-                            />
-                        </div>
-
+                        <CreateCommentSection commentable={{ commentable_id: review.id, commentable_type: 'Review' }} />
                         <LoadableContent hook={useReviewCommentsQuery} params={review.id}>
                             {CommentsSections}
                         </LoadableContent>

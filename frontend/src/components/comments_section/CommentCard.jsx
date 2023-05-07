@@ -1,20 +1,13 @@
-import React, { useState, useRef, useContext } from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import Button from '../Button'
 import icons from '../icons'
 import Image from '../Image'
-import ModalWindow from '../ModalWindow'
-import CommentForm from '../CommentForm'
 import helpers from './../../helpers'
-import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import CreateReplySection from './CreateReplySection'
 
 function CommentCard({ comment, parent, commentsRef }) {
-    const [liked, setLiked] = useState(false)
-    const [formForCommentVisible, setFormForCommentVisible] = useState(false)
-
-    const { currentUser } = useContext(CurrentUserContext);
-
     const commentRef = useRef();
     commentsRef.current[comment.id] = commentRef;
     const author = comment.author;
@@ -23,21 +16,10 @@ function CommentCard({ comment, parent, commentsRef }) {
     const origin = comment.origin;
     const originRef = origin && commentsRef.current[origin.id];
 
-
-    const submitComment = (commentInfo) => {
-        // send comment here
-        alert(JSON.stringify(commentInfo))
-        closeModal()
-    }
-
-    const closeModal = () => {
-        setFormForCommentVisible(false)
-    }
-
-
     const scrollToOrigin = () => {
         originRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
     return (
         <>
             <div ref={commentRef} className='flex p-3 gap-3 flex-col justify-center items-center shadow-2xl shadow-black w-full border-black text-center rounded-xl'>
@@ -55,13 +37,20 @@ function CommentCard({ comment, parent, commentsRef }) {
                             <div>
                                 {icons.replyArrow}
                             </div>
-                            <div className='text-start'>
-                                <p className='flex text-lg'>
-                                    {origin.authorUsername}
-                                </p>
-                                <p className='text-sm'>
-                                    {helpers.getTextPreview(origin.text)}
-                                </p>
+                            <div className='flex text-start'>
+                                <div className='flex'>
+                                    <Link to={linkToAuthor}>
+                                        <Image src={origin.author.image_url} alt={origin.author.username} width={'w-16'} height={'h-16'} />
+                                    </Link>
+                                </div>
+                                <div className='flex flex-1 w-full flex-col gap-2 px-2'>
+                                    <p className='flex text-lg'>
+                                        {origin.author.username}
+                                    </p>
+                                    <p className='text-sm'>
+                                        {helpers.getTextPreview(origin.text)}
+                                    </p>
+                                </div>
                             </div>
                         </div>}
                     </div>
@@ -84,22 +73,9 @@ function CommentCard({ comment, parent, commentsRef }) {
                         <div className='flex justify-center items-center'>
                             <Button icon={<>{comment.likedBy.length}{true ? icons.liked : icons.unliked}</>} onClick={() => { }} />
                         </div>
-                        <div className='flex justify-center items-center'>
-                            <Button icon={<>{comment.commentsCount} {icons.comments}</>} onClick={() => { }} />
-                        </div>
+                        <CreateReplySection origin={comment} />
                     </div>
                 </div>
-            </div>
-            <div>
-                <ModalWindow
-                    title='Write comment'
-                    isOpen={formForCommentVisible}
-                    onRequestClose={closeModal}
-                    content={(
-                        <CommentForm
-                            parent={comment}
-                            onSubmit={submitComment} />)}
-                />
             </div>
         </>
     )
