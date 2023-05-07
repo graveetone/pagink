@@ -1,5 +1,5 @@
 class CommentSerializer < BaseSerializer
-  attributes %i[id author likedBy text timestamp origin]
+  attributes %i[id author likedBy text timestamp origin repliesCount commentable]
 
   def likes_count
     object.likes.count
@@ -9,8 +9,8 @@ class CommentSerializer < BaseSerializer
     UserAuthorSerializer.new(object.author).as_json
   end
 
-  def commentsCount
-    object.comments.count
+  def repliesCount
+    object.replies.count
   end
 
   def likedBy
@@ -25,7 +25,18 @@ class CommentSerializer < BaseSerializer
     {
       id: origin_comment.id,
       text: origin_comment.text,
-      authorUsername: origin_comment.author.username
+      author: {
+        id: origin_comment.author.id,
+        username: origin_comment.author.username,
+        image_url: origin_comment.author.image_link.url
+      }
+    }
+  end
+
+  def commentable
+    {
+      commentable_id: object.commentable_id,
+      commentable_type: object.commentable_type
     }
   end
 end

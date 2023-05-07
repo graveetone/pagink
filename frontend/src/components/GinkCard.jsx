@@ -38,7 +38,7 @@ function GinkCard({ gink }) {
                     </div>
                 </div>
                 <div className='flex justify-center items-center p-3 w-full'>
-                    <p className='text-center break-words font-roboto'>
+                    <p className='text-center text-xl break-words font-roboto'>
                         {gink.text}
                     </p>
                 </div>
