@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Image from './../components/Image'
 import Button from './Button'
 import icons from './icons'
+import LikeButton from './LikeButton'
 
 function GinkCard({ gink }) {
     const linkToGink = `/gink/${gink.id}`
@@ -52,9 +53,16 @@ function GinkCard({ gink }) {
                         </p>
                     </div>
                     <div className='flex gap-3'>
-                        <div className='flex justify-center items-center'>
-                            <Button icon={<>{gink.likedBy.length}{true ? icons.liked : icons.unliked}</>} onClick={() => { }} />
-                        </div>
+                        <LikeButton isLiked={gink.likedByCurrentUser} caption={gink.likesCount} likeableData={{
+                            likeable_id: gink.id,
+                            likeable_type: 'Gink'
+                        }}
+                            queriesToInvalidate={[{
+                                predicate: function(query) {
+                                  return query.queryKey.includes('bookmatees_posts')
+                                },
+                              }, ['users', gink.author.id, 'posts']]}
+                        />
                         <div className='flex justify-center items-center'>
                             <Button icon={<>{gink.commentsCount} {icons.comments}</>} onClick={() => { }} />
                         </div>

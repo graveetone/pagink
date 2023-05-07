@@ -12,6 +12,7 @@ import LoadableContent from './../../components/LoadableContent'
 import { useReviewQuery, useReviewCommentsQuery } from './../../api/queries/reviews'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import CreateCommentSection from './../../components/CreateCommentSection'
+import LikeButton from '../../components/LikeButton';
 
 function ReviewPage() {
     const reviewId = parseInt(useParams().reviewId);
@@ -36,7 +37,7 @@ function ReviewPage() {
                 {(review) => {
                     {
                         { helpers.setPageTitle(`Review by ${review.author.username}`) }
-                        setLiked(review.likedBy.includes(currentUser.id))
+                        setLiked(review.likedByCurrentUser)
                     }
                     return <div ref={reviewRef} className='flex flex-col gap-12 justify-center items-around w-full'>
                         <Heading>
@@ -68,9 +69,13 @@ function ReviewPage() {
                                     </div>
                                 </div>
                                 <div className='flex flex-row justify-around items-center'>
-                                    <div>
-                                        <Button icon={<>{review.likedBy.length}{liked ? icons.liked : icons.unliked}</>} onClick={() => { setLiked(!liked); }} />
-                                    </div>
+                                    <LikeButton isLiked={review.likedByCurrentUser} caption={review.likesCount} likeableData={{
+                                        likeable_id: review.id,
+                                        likeable_type: 'Review'
+                                    }}
+                                        queriesToInvalidate={[['reviews']]}
+                                    />
+
                                     <div>
                                         <Button icon={<>{review.commentsCount} {icons.comments}</>} onClick={scrollToComments} />
                                     </div>
