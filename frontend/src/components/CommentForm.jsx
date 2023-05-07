@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import helpers from './../helpers'
 
 const textInputStyles = `md:w-3/4 w-full
@@ -16,6 +16,9 @@ const textInputStyles = `md:w-3/4 w-full
 const editProfileButtonStyles = 'flex w-full justify-center text-center bg-black text-white rounded-3xl p-3 font-xs shadow-lg shadow-gray-600 focus:outline-none focus:shadow-black hover:cursor-pointer hover:bg-white hover:text-black border-4 border-black transition-all duration-700 ease-out font-mono'
 
 function CommentForm({ parent, onSubmit }) {
+  const [commentInfo, setCommentInfo] = useState({
+    text: ''
+  })
   return (
     <div className='flex flex-col justify-center items-center w-full p-12 gap-6'>
       <div>
@@ -35,10 +38,14 @@ function CommentForm({ parent, onSubmit }) {
       </div>
       <textarea className={textInputStyles}
         name='commentText'
-        placeholder={'Type here...'} />
+        placeholder={'Type here...'}
+        value={commentInfo.text}
+        onChange={(e) => setCommentInfo({
+          text: e.target.value
+        })}/>
 
       <div className='flex items-center justify-center xs:w-2/3 md:w-2/5'>
-        <button className={editProfileButtonStyles} onClick={onSubmit}>Comment!</button>
+        <button className={editProfileButtonStyles} onClick={() => onSubmit(commentInfo)}>Comment!</button>
       </div >
     </div>
   )
