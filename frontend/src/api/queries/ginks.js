@@ -26,7 +26,7 @@ const useGinkCommentsQuery = (ginkId) => {
 const useCreateGinkMutation = (userId) => {
     const endpointKey = 'createGink'
     const token = helpers.getTokenFromSession()
-    return usePaginkMutation(getEndpoint(endpointKey), 'POST', { headers: { Authorization: token } }, [['users', userId, 'posts'], ['users', userId, 'bookmates_posts']])
+    return usePaginkMutation(getEndpoint(endpointKey), 'POST', { headers: { Authorization: token } }, [['users', userId, 'posts'], ['users', userId, 'bookmatees_posts']])
         ;
 };
 
