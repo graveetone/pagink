@@ -26,7 +26,7 @@ class Api::V1::GinksController < ApplicationController
   end
 
   def show
-    render json: @gink
+    render json: GinkSerializer.new(@gink, scope: current_user).as_json
   end
 
   private

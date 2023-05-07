@@ -1,5 +1,5 @@
 class GinkSerializer < BaseSerializer
-  attributes %i[id title text author likedBy timestamp commentsCount type]
+  attributes %i[id title text author likedByCurrentUser likesCount timestamp commentsCount type]
   def type
     :gink
   end
@@ -8,8 +8,12 @@ class GinkSerializer < BaseSerializer
     object.comments.count
   end
 
-  def likedBy
-    object.likes.pluck(:user_id)
+  def likedByCurrentUser
+    object.likes.find_by(user: scope).present? if scope.present?
+  end
+
+  def likesCount
+    object.likes.count
   end
 
   def author

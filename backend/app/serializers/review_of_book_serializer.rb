@@ -1,5 +1,5 @@
 class ReviewOfBookSerializer < BaseSerializer
-  attributes %i[id text commentsCount timestamp likedBy book author type]
+  attributes %i[id text commentsCount timestamp likedByCurrentUser book author type likesCount]
   def type
     :review
   end
@@ -8,8 +8,12 @@ class ReviewOfBookSerializer < BaseSerializer
     object.comments.count
   end
 
-  def likedBy
-    object.likes.pluck(:user_id)
+  def likesCount
+    object.likes.count
+  end
+
+  def likedByCurrentUser
+    object.likes.find_by(user: scope) if scope.present?
   end
 
   def book

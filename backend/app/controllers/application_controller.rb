@@ -8,7 +8,8 @@ class ApplicationController < ActionController::API
   def serialize_collection(collection, serializer)
     ActiveModel::Serializer::CollectionSerializer.new(
       collection,
-      serializer: serializer
+      serializer: serializer,
+      scope: current_user
     )
   end
 end

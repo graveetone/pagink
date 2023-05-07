@@ -20,6 +20,6 @@ class Api::V1::CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
 
-    render json: @comment
+    render json: CommentSerializer.new(@comment, scope: current_user)
   end
 end
