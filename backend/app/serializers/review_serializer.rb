@@ -1,5 +1,5 @@
 class ReviewSerializer < BaseSerializer
-  attributes %i[id text author likedBy comments_count timestamp book type]
+  attributes %i[id text author likedBy commentsCount timestamp book type]
 
   def type
     :review
@@ -9,7 +9,7 @@ class ReviewSerializer < BaseSerializer
     object.likes.pluck(:user_id)
   end
 
-  def comments_count
+  def commentsCount
     object.comments.count
   end
 
