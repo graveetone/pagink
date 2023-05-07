@@ -46,7 +46,7 @@ function ReviewCard({ review }) {
                     </div>
                 </div>
                 <div className='flex justify-center items-center p-3 w-full'>
-                    <p className='text-center font-roboto'>
+                    <p className='text-center text-xl font-roboto'>
                         {review.text}
                     </p>
                 </div>
