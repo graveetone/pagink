@@ -9,20 +9,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    if current_user # == @user
-      render json: @user
-    else
-      render json: {
-        status: {
-          code: 403,
-          message: 'You are not allowed to see this user data'
-        }
-      }, status: 403
-    end
+    render json: @user
   end
 
   def bookmates_posts
-    bookmate_ids = @user.bookmates.pluck(:id)
+    bookmate_ids = [*@user.bookmates.pluck(:id), @user.id]
 
     reviews = Review.where(author_id: bookmate_ids)
     ginks = Gink.where(author_id: bookmate_ids)
