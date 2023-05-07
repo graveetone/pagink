@@ -10,10 +10,13 @@ function usePaginkMutation(url, method, options, queriesToInvalidate) {
             return { data: response.data, headers: response.headers };
         }, {
         onSuccess: () => {
-            queryClient.invalidateQueries(queriesToInvalidate, {
-                force: true
-            })
-
+            if (queriesToInvalidate) {
+                queriesToInvalidate.forEach(queryToInvalidate => {
+                    queryClient.invalidateQueries(queryToInvalidate, {
+                        force: true
+                    })
+                })
+            }
         }
     }
     );
