@@ -15,16 +15,18 @@ function CommentCard({ comment, parent, commentsRef }) {
 
     const { currentUser } = useContext(CurrentUserContext);
 
-    const commentRef = useRef()
-    commentsRef.current[comment.id] = commentRef
-    const parentRef = parent && commentsRef.current[parent.id];
+    const commentRef = useRef();
+    commentsRef.current[comment.id] = commentRef;
+    const author = comment.author;
+    const linkToAuthor = `/user/${author.id}`
 
-    const scrollToParent = () => {
-        parentRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    const origin = comment.origin;
+    const originRef = origin && commentsRef.current[origin.id];
 
-    const submitComment = () => {
+
+    const submitComment = (commentInfo) => {
         // send comment here
+        alert(JSON.stringify(commentInfo))
         closeModal()
     }
 
@@ -32,53 +34,72 @@ function CommentCard({ comment, parent, commentsRef }) {
         setFormForCommentVisible(false)
     }
 
+
+    const scrollToOrigin = () => {
+        originRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     return (
         <>
-            <div ref={commentRef} className={`shadow-2xl shadow-black flex w-full justify-center items-center border-black text-center rounded-xl`}>
-                <div className='flex flex-col w-full items-center'>
-                    {parent &&
-                        <button onClick={scrollToParent} className='flex p-2 cursor-pointer font-balsamiq justify-center text-md rounded-t-xl border-b-2 border-black w-full'>
-                            replied to {parent.author.username}'s: {helpers.getTextPreview(parent.text)}
-                        </button>
-                    }
-                    <div className='flex w-full justify-start'>
-                        <div className='flex flex-col border-r-2 border-black p-2 font-balsamiq'>
-                            <p>{comment.author.username}</p>
-                            <Link to={`/user/${comment.author.id}`} className='flex'>
-                                <Image src={comment.author.image_url} alt={comment.author.username} width={'w-24'} height={'h-24'} />
-                            </Link>
-                            <p>{comment.timestamp}</p>
-                        </div>
-
-                        <div className='flex flex-col items-end justify-between w-full gap-3 font-balsamiq p-2'>
-                            <div className='flex w-full text-xl p-3 justify-center items-center text-center font-sans'>
-                                <p>
-                                    {comment.text}
+            <div ref={commentRef} className='flex p-3 gap-3 flex-col justify-center items-center shadow-2xl shadow-black w-full border-black text-center rounded-xl'>
+                <div className='flex w-full gap-3'>
+                    <div className='flex'>
+                        <Link to={linkToAuthor}>
+                            <Image src={author.image_url} alt={author.username} width={'w-24'} height={'h-24'} />
+                        </Link>
+                    </div>
+                    <div className='flex flex-col text-2xl flex-1'>
+                        <Link to={linkToAuthor} className='flex w-full p-1'>
+                            {author.username}
+                        </Link>
+                        {origin && <div className='flex flex-col items-start gap-3 w-full border-l-4 border-ruby-red p-3 cursor-pointer' onClick={() => scrollToOrigin()}>
+                            <div>
+                                {icons.replyArrow}
+                            </div>
+                            <div className='text-start'>
+                                <p className='flex text-lg'>
+                                    {origin.authorUsername}
+                                </p>
+                                <p className='text-sm'>
+                                    {helpers.getTextPreview(origin.text)}
                                 </p>
                             </div>
-                            <div className='flex justify-end items-end gap-6'>
-                                <div className='flex justify-end items-end'>
-                                    <Button icon={liked ? icons.liked : icons.unliked} onClick={() => { setLiked(comment.likedBy.includes(currentUser.id)) }} />
-                                </div>
-                                <div className='flex justify-end items-end'>
-                                    <Button icon={icons.pencil} onClick={() => { setFormForCommentVisible(true) }} />
-                                </div>
-
-                            </div>
+                        </div>}
+                    </div>
+                </div>
+                <div className='flex justify-center items-center p-3 w-full'>
+                    <p className='text-center text-xl font-roboto'>
+                        {comment.text}
+                    </p>
+                </div>
+                <div className='flex justify-between items-center w-full font-balsamiq'>
+                    <div className='flex justify-center items-center gap-3 text-center text-sm'>
+                        <p>
+                            {icons.clock}
+                        </p>
+                        <p>
+                            {comment.timestamp}
+                        </p>
+                    </div>
+                    <div className='flex gap-3'>
+                        <div className='flex justify-center items-center'>
+                            <Button icon={<>{comment.likedBy.length}{true ? icons.liked : icons.unliked}</>} onClick={() => { }} />
                         </div>
-                        <div>
-                            <ModalWindow
-                                title='Write comment'
-                                isOpen={formForCommentVisible}
-                                onRequestClose={closeModal}
-                                content={(
-                                    <CommentForm
-                                        parent={comment}
-                                        onSubmit={submitComment} />)}
-                            />
+                        <div className='flex justify-center items-center'>
+                            <Button icon={<>{comment.commentsCount} {icons.comments}</>} onClick={() => { }} />
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <ModalWindow
+                    title='Write comment'
+                    isOpen={formForCommentVisible}
+                    onRequestClose={closeModal}
+                    content={(
+                        <CommentForm
+                            parent={comment}
+                            onSubmit={submitComment} />)}
+                />
             </div>
         </>
     )

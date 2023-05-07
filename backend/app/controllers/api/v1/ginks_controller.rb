@@ -17,7 +17,7 @@ class Api::V1::GinksController < ApplicationController
   end
 
   def comments
-    comments = @gink.comments
+    comments = @gink.comments.order(created_at: :asc)
 
     render json: {
       comments: serialize_collection(comments, CommentSerializer),

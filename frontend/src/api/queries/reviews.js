@@ -11,8 +11,9 @@ const { getEndpoint, usePaginkQuery, usePaginkMutation } = PaginkAPI(endpoints);
 const useCreateReviewMutation = (bookId) => {
   const endpointKey = 'createReview'
   const token = helpers.getTokenFromSession()
-  return usePaginkMutation(getEndpoint(endpointKey), 'POST', { headers: { Authorization: token } }, ['books', bookId, 'reviews'])
-    ;
+  return usePaginkMutation(getEndpoint(endpointKey), 'POST', { headers: { Authorization: token } }, [
+    ['books', bookId, 'reviews']
+  ]);
 };
 
 const useReviewQuery = (reviewId) => {
