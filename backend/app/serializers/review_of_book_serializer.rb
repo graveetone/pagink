@@ -1,7 +1,7 @@
 class ReviewOfBookSerializer < BaseSerializer
   attributes %i[id text commentsCount timestamp likedBy book author type]
   def type
-    'Review'
+    :review
   end
 
   def commentsCount
