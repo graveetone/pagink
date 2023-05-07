@@ -22,7 +22,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def comments
-    comments = @review.comments
+    comments = @review.comments.order(created_at: :asc)
 
     render json: {
       comments: serialize_collection(comments, CommentSerializer),
