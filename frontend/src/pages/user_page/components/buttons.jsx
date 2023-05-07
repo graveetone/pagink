@@ -9,6 +9,7 @@ function UserButtons(user) {
   const buttonForAnotherUser = (
     <>
       <Button caption={'Add bookmate'} icon={icons.add_bookmate} />
+      <Button caption={`Go to ${user.username}'s shelves`} icon={icons.books} href={`/shelves/${user.id}`} />
       <Button className='' icon={icons.block} caption={'Block'} />
       <Button caption={'Send private message'} icon={icons.message} />
     </>
@@ -16,8 +17,6 @@ function UserButtons(user) {
 
   const buttonsForCurrentUser = (
     <>
-      <Button caption={`Go to ${user.username}'s shelves`} icon={icons.books} href={`/shelves/${user.id}`} />
-      <Button caption={`Edit profile`} icon={icons.edit} />
     </>
   )
 
