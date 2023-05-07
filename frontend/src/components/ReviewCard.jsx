@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Image from './../components/Image'
@@ -46,7 +46,7 @@ function ReviewCard({ review }) {
                     </div>
                 </div>
                 <div className='flex justify-center items-center p-3 w-full'>
-                    <p className='text-center  font-roboto'>
+                    <p className='text-center font-roboto'>
                         {review.text}
                     </p>
                 </div>
