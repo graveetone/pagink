@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :set_user, only: %i[show bookmates_posts shelves bookmates posts]
+  before_action :authenticate_user!
+  before_action :set_user, only: %i[show bookmatees_posts shelves bookmates posts follow unfollow]
 
   def index
     @users = User.all
@@ -9,14 +9,14 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    render json: UserSerializer.new(@user, scope: current_user).as_json
   end
 
-  def bookmates_posts
-    bookmate_ids = [*@user.bookmates.pluck(:id), @user.id]
+  def bookmatees_posts
+    bookmatee_ids = [*@user.bookmatees.pluck(:id), @user.id]
 
-    reviews = Review.where(author_id: bookmate_ids)
-    ginks = Gink.where(author_id: bookmate_ids)
+    reviews = Review.where(author_id: bookmatee_ids)
+    ginks = Gink.where(author_id: bookmatee_ids)
 
     posts = (reviews + ginks).sort_by(&:created_at).reverse
 
@@ -35,11 +35,11 @@ class Api::V1::UsersController < ApplicationController
     }
   end
 
-  def bookmates
-    bookmates = @user.bookmates
+  def bookmatees
+    bookmates = @user.bookmatees
 
     render json: {
-      bookmates: serialize_collection(bookmates, UserAuthorSerializer)
+      bookmatees: serialize_collection(bookmatees, UserAuthorSerializer)
     }
   end
 
@@ -53,6 +53,32 @@ class Api::V1::UsersController < ApplicationController
       posts: serialize_collection(posts, PostSerializer),
       count: posts.count
     }
+  end
+
+  def follow
+    if @user.bookmates.include?(current_user)
+      return render json: {
+        error: 'You are already following this user',
+        status: 400
+      }
+    end
+
+    @user.bookmates << current_user
+
+    render json: {}, status: 200
+  end
+
+  def unfollow
+    unless @user.bookmates.include?(current_user)
+      return render json: {
+        error: 'You are not following this user',
+        status: 400
+      }
+    end
+
+    @user.bookmates.delete(current_user) if @user
+
+    render json: {}, status: 200
   end
 
   private

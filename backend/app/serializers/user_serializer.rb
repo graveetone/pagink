@@ -1,6 +1,6 @@
 class UserSerializer < BaseSerializer
   attributes %i[id username status image_url sign_in_count last_sign_in_at bookmatesCount ginksCount
-                reviewsCount membershipDuration]
+                reviewsCount membershipDuration isCurrentUser isFollowedByCurrentUser]
 
   def image_url
     object.image_link&.url
@@ -32,5 +32,13 @@ class UserSerializer < BaseSerializer
 
     month_name = months_names[object.created_at.month - 1]
     "#{month_name} #{object.created_at.year}"
+  end
+
+  def isCurrentUser
+    object == scope if scope.present?
+  end
+
+  def isFollowedByCurrentUser
+    object.bookmates.include?(scope) if scope.present?
   end
 end

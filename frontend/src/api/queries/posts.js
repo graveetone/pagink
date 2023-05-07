@@ -1,18 +1,18 @@
 import PaginkAPI from "../PaginkAPI";
 
 const endpoints = {
-    bookmatesPosts: userId => `users/${userId}/bookmates_posts`,
+    bookmateesPosts: userId => `users/${userId}/bookmatees_posts`,
 }
 
 const { getEndpoint, usePaginkQuery } = PaginkAPI(endpoints);
 
-const useBookmatesPostsQuery = (userId) => {
-    const queryKey = ['users', userId, 'bookmates_posts'];
-    const endpointKey = 'bookmatesPosts';
+const useBookmateesPostsQuery = (userId) => {
+    const queryKey = ['users', userId, 'bookmatees_posts'];
+    const endpointKey = 'bookmateesPosts';
 
     return usePaginkQuery(queryKey, getEndpoint(endpointKey, userId));
 };
 
 export {
-    useBookmatesPostsQuery
+    useBookmateesPostsQuery
 }

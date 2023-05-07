@@ -6,7 +6,7 @@ import PostCard from './../../components/PostCard'
 import Subheading from '../../components/Subheading';
 import LoadableContent from '../../components/LoadableContent';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useBookmatesPostsQuery } from './../../api/queries/posts'
+import { useBookmateesPostsQuery } from './../../api/queries/posts'
 import CreateGinkSection from '../../components/CreateGinkSection';
 
 const recentPosts = ({ posts }) => posts.map(post => {
@@ -23,7 +23,7 @@ function HomePage() {
             <Subheading>
                 <>
                     <div className='flex flex-col mt-24 gap-12 w-5/6 md:w-1/2'>
-                        <LoadableContent hook={useBookmatesPostsQuery} params={currentUser.id}>
+                        <LoadableContent hook={useBookmateesPostsQuery} params={currentUser.id}>
                             {recentPosts}
                         </LoadableContent>
                     </div>
