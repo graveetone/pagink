@@ -13,7 +13,8 @@ function usePaginkMutation(url, method, options, queriesToInvalidate) {
             if (queriesToInvalidate) {
                 queriesToInvalidate.forEach(queryToInvalidate => {
                     queryClient.invalidateQueries(queryToInvalidate, {
-                        force: true
+                        force: true,
+                        exact: false
                     })
                 })
             }
