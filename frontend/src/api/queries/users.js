@@ -6,7 +6,8 @@ const endpoints = {
     userPosts: userId => `users/${userId}/posts`,
     currentUser: () => `current_user`,
     followUser: userId => `users/${userId}/follow`,
-    unfollowUser: userId => `users/${userId}/unfollow`
+    unfollowUser: userId => `users/${userId}/unfollow`,
+    relatedUsers: userId => `users/${userId}/related_users`
 }
 
 const { getEndpoint, usePaginkQuery, usePaginkMutation } = PaginkAPI(endpoints);
@@ -51,12 +52,18 @@ const useUnfollowUserMutation = (currentUserId, userId) => {
     ]);
 };
 
+const useUserRelatedUsersQuery = (userId) => {
+    const token = helpers.getTokenFromSession()
+    const queryKey = ['user', userId, 'relatedUsers'];
+    const endpointKey = 'relatedUsers';
 
-
+    return usePaginkQuery(queryKey, getEndpoint(endpointKey, userId), { headers: { Authorization: token } });
+};
 export {
     useUserQuery,
     useUserPostsQuery,
     useCurrentUserQuery,
     useFollowUserMutation,
-    useUnfollowUserMutation
+    useUnfollowUserMutation,
+    useUserRelatedUsersQuery
 }

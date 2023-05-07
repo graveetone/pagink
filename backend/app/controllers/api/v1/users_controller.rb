@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: %i[show bookmatees_posts shelves bookmates posts follow unfollow]
+  before_action :set_user, only: %i[show bookmatees_posts shelves related_users posts follow unfollow]
 
   def index
     @users = User.all
@@ -35,12 +35,15 @@ class Api::V1::UsersController < ApplicationController
     }
   end
 
-  def bookmatees
-    bookmates = @user.bookmatees
+  def related_users
+    bookmatees = @user.bookmatees
+    bookmates = @user.bookmates
 
-    render json: {
-      bookmatees: serialize_collection(bookmatees, UserAuthorSerializer)
-    }
+    render json:
+    UserSerializer.new(@user).as_json.merge({
+                                              bookmatees: serialize_collection(bookmatees, UserAuthorSerializer),
+                                              bookmates: serialize_collection(bookmates, UserAuthorSerializer)
+                                            })
   end
 
   def posts
