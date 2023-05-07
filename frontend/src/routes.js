@@ -12,7 +12,8 @@ import {
     SettingsPage,
     GinkPage,
     ReviewPage,
-    HomePage
+    HomePage,
+    RelatedUsersPage
 } from './pages'
 
 import { RegistrationProvider } from './contexts/RegistrationContext'
@@ -28,6 +29,7 @@ const LoggedInRoutes = () => {
                 <Route path="/author/:authorId" element={<AuthorPage />} />
                 <Route path="/shelve/:shelveId" element={<ShelvePage />} />
                 <Route path="/book/:bookId" element={<BookPage />} />
+                <Route path="/user/:userId/relatedUsers" element={<RelatedUsersPage />} />
                 <Route path="/user/:userId" element={<UserPage />} />
                 <Route path="/gink/:ginkId" element={<GinkPage />} />
                 <Route path="/review/:reviewId" element={<ReviewPage />} />

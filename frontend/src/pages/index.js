@@ -11,6 +11,7 @@ import SettingsPage from './settings_page'
 import GinkPage from './gink_page'
 import ReviewPage from './review_page'
 import HomePage from "./home_page";
+import RelatedUsersPage from './related_users_page'
 
 export {
     BookPage,
@@ -25,5 +26,6 @@ export {
     SettingsPage,
     GinkPage,
     ReviewPage,
-    HomePage
+    HomePage,
+    RelatedUsersPage
 }
