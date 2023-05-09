@@ -30,7 +30,7 @@ function UserPage() {
                 </div>
                 <>
                   <div className='flex flex-col mt-24 gap-12 w-5/6 md:w-1/2'>
-                    <LoadableContent hook={useUserPostsQuery} params={user.id}>
+                    <LoadableContent hook={useUserPostsQuery} params={user.id}  subLoader={true}>
                       {recentPosts}
                     </LoadableContent>
                   </div>

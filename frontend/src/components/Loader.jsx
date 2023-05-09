@@ -2,7 +2,7 @@ import React from 'react'
 
 function Loader() {
   return (
-    <div className='flex justify-center items-center w-full h-full'>
+    <div className='flex justify-center items-center w-full'>
       <img src="/loader.gif" alt="Loading" />
     </div>
   )

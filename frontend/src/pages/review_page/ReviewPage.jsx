@@ -88,7 +88,7 @@ function ReviewPage() {
                             </div>
                         </div>
                         <CreateCommentSection commentable={{ commentable_id: review.id, commentable_type: 'Review' }} />
-                        <LoadableContent hook={useReviewCommentsQuery} params={review.id}>
+                        <LoadableContent hook={useReviewCommentsQuery} params={review.id} subLoader={true}>
                             {CommentsSections}
                         </LoadableContent>
 

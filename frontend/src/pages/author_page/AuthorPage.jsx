@@ -16,7 +16,7 @@ function AuthorPage() {
         {Author}
       </LoadableContent >
 
-      <LoadableContent hook={useAuthorBooksQuery} params={authorId}>
+      <LoadableContent hook={useAuthorBooksQuery} params={authorId} subLoader={true}>
         {AuthorBooks}
       </LoadableContent>
     </div>

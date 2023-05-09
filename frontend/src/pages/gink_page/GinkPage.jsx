@@ -77,7 +77,7 @@ function GinkPage() {
                         </div>
                         <CreateCommentSection commentable={{ commentable_id: gink.id, commentable_type: 'Gink' }} />
 
-                        <LoadableContent hook={useGinkCommentsQuery} params={gink.id}>
+                        <LoadableContent hook={useGinkCommentsQuery} params={gink.id} subLoader={true}>
                             {CommentsSections}
                         </LoadableContent>
 

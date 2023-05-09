@@ -16,7 +16,7 @@ function BookPage() {
         {Book}
       </LoadableContent>
 
-      <LoadableContent hook={useReviewsQuery} params={bookId}>
+      <LoadableContent hook={useReviewsQuery} params={bookId} subLoader={true}>
         {BookReviews}
       </LoadableContent>
     </div>
