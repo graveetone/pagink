@@ -1,12 +1,15 @@
 import React from 'react';
 import Loader from './../components/Loader'
 import Popup from './../components/popup/Popup'
+import Subloader from './subloader/Subloader';
 
-function LoadableContent({ hook, params, children }) {
+function LoadableContent({ hook, params, subLoader, children }) {
   const { isLoading, error, data } = hook(params);
 
   if (isLoading)
-    return <Loader />
+    return (
+      subLoader ? <Subloader /> : <Loader />
+    )
 
   if (error) {
     return <div className='-mt-5'>

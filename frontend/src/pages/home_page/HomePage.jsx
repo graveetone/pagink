@@ -23,7 +23,7 @@ function HomePage() {
             <Subheading>
                 <>
                     <div className='flex flex-col mt-24 gap-12 w-5/6 md:w-1/2'>
-                        <LoadableContent hook={useBookmateesPostsQuery} params={currentUser.id}>
+                        <LoadableContent hook={useBookmateesPostsQuery} params={currentUser.id}  subLoader={true}>
                             {recentPosts}
                         </LoadableContent>
                     </div>

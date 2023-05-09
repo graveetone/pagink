@@ -14,7 +14,7 @@ function RelatedUsersPage() {
 
   return (
     <>
-      <LoadableContent hook={useUserRelatedUsersQuery} params={userId}>
+      <LoadableContent hook={useUserRelatedUsersQuery} params={userId} subLoader={true}>
         {
           (user) => {
             { helpers.setPageTitle(`${user.username}'s bookmatees`) }
