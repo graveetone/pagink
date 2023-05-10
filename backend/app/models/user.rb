@@ -6,6 +6,8 @@ class User < ApplicationRecord
     unconfirmed: 'UNCONFIRMED'
   }
 
+  DEFAULT_SHELVES = ['Read Books', 'Currently Reading', 'Want To Read', 'Recommendations']
+
   devise :database_authenticatable,
          :registerable,
          :validatable,
@@ -42,6 +44,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments, class_name: 'Comment', foreign_key: 'author_id'
 
+  after_create :setup_default_shelves
+
   def status=(value)
     raise ArgumentError, "Invalid status: #{value}" unless STATUSES.values.include?(value)
 
@@ -63,10 +67,20 @@ class User < ApplicationRecord
   end
 
   def suspended?
-    status == STATUSES[:v]
+    status == STATUSES[:suspended]
   end
 
   def unconfirmed?
     status == STATUSES[:unconfirmed]
+  end
+
+  private
+
+  def setup_default_shelves
+    DEFAULT_SHELVES.each do |shelve_title|
+      Shelve.create(author: self,
+                    title: shelve_title,
+                    is_private: false)
+    end
   end
 end
