@@ -29,6 +29,8 @@ class Api::V1::UsersController < ApplicationController
   def shelves
     shelves = @user.shelves
 
+    fill_recommendations_shelve
+
     render json: {
       shelves: serialize_collection(shelves, ShelveSerializer),
       author: UserAuthorSerializer.new(@user)
@@ -88,5 +90,13 @@ class Api::V1::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def fill_recommendations_shelve
+    shelve = Shelve.find_or_create_by(title: 'Recommendations', author: @user)
+
+    recommended_books = RecommendationsService.new.books_from_similar_users(@user)
+
+    shelve.books = recommended_books
   end
 end
