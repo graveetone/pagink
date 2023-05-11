@@ -23,7 +23,7 @@ class RecommendationsService
 
   def data
     items = users.map do |user|
-      books = user.shelves.map { |shelve| shelve.books }.flatten.uniq
+      books = user.shelves.reject {|shelve| shelve.title == 'Recommendations'}.map { |shelve| shelve.books }.flatten.uniq
 
       items = books.map do |book|
         {
