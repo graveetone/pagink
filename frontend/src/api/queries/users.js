@@ -28,10 +28,12 @@ const useUserPostsQuery = (userId) => {
 
 const useCurrentUserQuery = () => {
     const token = helpers.getTokenFromSession()
+    const tokenIsPresent = !!token;
+    
     const queryKey = ['currentUser'];
     const endpointKey = 'currentUser';
 
-    return usePaginkQuery(queryKey, getEndpoint(endpointKey), { headers: { Authorization: token } });
+    return usePaginkQuery(queryKey, getEndpoint(endpointKey), { headers: { Authorization: token } }, {enabled: tokenIsPresent});
 };
 
 const useFollowUserMutation = (currentUserId, userId) => {

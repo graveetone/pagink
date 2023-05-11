@@ -69,6 +69,8 @@ class GoogleBooksBookCreatorService
     industry_identifiers.each do |identifier|
       return identifier[:identifier] if %w[ISBN_13 ISBN_10].include?(identifier[:type])
     end
+
+    nil
   end
 
   def description
