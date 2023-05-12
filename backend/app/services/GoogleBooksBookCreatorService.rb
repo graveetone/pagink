@@ -78,11 +78,11 @@ class GoogleBooksBookCreatorService
   end
 
   def categories
-    item[:volumeInfo]&.[](:categories) # USE THIS
+    item[:volumeInfo]&.[](:categories)
   end
 
   def authors
-    item[:volumeInfo][:authors].map do |author_name|
+    item[:volumeInfo][:authors]&.map do |author_name|
       Author.find_or_create_by(name: author_name)
     end
   end
