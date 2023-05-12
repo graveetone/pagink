@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
 
-function usePaginkMutation(url, method, options, queriesToInvalidate) {
+function usePaginkMutation(url, method, options, queriesToInvalidate, mutationOptions) {
     const queryClient = useQueryClient();
 
     return useMutation(
@@ -18,7 +18,8 @@ function usePaginkMutation(url, method, options, queriesToInvalidate) {
                     })
                 })
             }
-        }
+        },
+        ...mutationOptions
     }
     );
 }

@@ -1,13 +1,15 @@
 import PaginkAPI from './../PaginkAPI'
+import helpers from '../../helpers';
 
 const endpoints = {
     book: bookId => `books/${bookId}`,
     bookReviews: bookId => `books/${bookId}/reviews`,
     search: query => `books/search`,
-    globalSearch: query => 'books/search'
+    globalSearch: query => 'books/search',
+    createFoundBook: () => '/books'
 }
 
-const { getEndpoint, usePaginkQuery } = PaginkAPI(endpoints);
+const { getEndpoint, usePaginkQuery, usePaginkMutation } = PaginkAPI(endpoints);
 
 const useBookQuery = bookId => {
     const queryKey = ['book', bookId];
@@ -35,10 +37,17 @@ const useGlobalSearchQuery = (query) => {
     return usePaginkQuery(queryKey, getEndpoint(endpointKey), { params: { query: query, global: 1 } });
 };
 
+const useCreateFoundBookMutation = (queryOptions) => {
+    const endpointKey = 'createFoundBook'
+    const token = helpers.getTokenFromSession()
+    return usePaginkMutation(getEndpoint(endpointKey), 'POST', { headers: { Authorization: token } }, [], queryOptions);
+};
+
 
 export {
     useBookQuery,
     useReviewsQuery,
     useSearchQuery,
-    useGlobalSearchQuery
+    useGlobalSearchQuery,
+    useCreateFoundBookMutation
 }
