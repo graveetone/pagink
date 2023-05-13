@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :shelves
+      resources :shelves do
+        member do
+          post :add_book
+        end
+      end
       resources :reviews do
         member do
           get :comments

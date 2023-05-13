@@ -19,4 +19,14 @@ class Api::V1::ShelvesController < ApplicationController
 
     render json: @shelve
   end
+
+  def add_book
+    @shelve = Shelve.includes(:books).find(params[:shelveId])
+    @book = Book.find(params[:bookId])
+    
+    unless @shelve.books.include?(@book)
+      @shelve.books << @book
+      render json: @shelve
+    end
+  end
 end
