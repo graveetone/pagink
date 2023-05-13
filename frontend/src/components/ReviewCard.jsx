@@ -73,7 +73,7 @@ function ReviewCard({ review }) {
                     />
 
                         <div className='flex justify-center items-center'>
-                            <Button icon={<>{review.commentsCount} {icons.comments}</>} onClick={() => { }} />
+                            <Button icon={<>{review.commentsCount} {icons.comments}</>} href={`/review/${review.id}`} />
                         </div>
                     </div>
                 </div>

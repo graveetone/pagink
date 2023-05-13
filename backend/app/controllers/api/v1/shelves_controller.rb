@@ -6,7 +6,7 @@ class Api::V1::ShelvesController < ApplicationController
   end
 
   def show
-    @shelve = Shelve.find(params[:id])
+    @shelve = Shelve.includes(author: :image_link, books: [:image_link, authors: :image_link]).find(params[:id])
 
     render json: @shelve
   end

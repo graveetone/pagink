@@ -4,8 +4,8 @@ import Button from './Button';
 import { useLikeMutation, useUnlikeMutation } from '../api/queries/likes';
 
 function LikeButton({ caption, isLiked, likeableData, queriesToInvalidate }) {
-    const {mutateAsync: like} = useLikeMutation(queriesToInvalidate) 
-    const {mutateAsync: unlike} = useUnlikeMutation(queriesToInvalidate)
+    const { mutateAsync: like } = useLikeMutation(queriesToInvalidate)
+    const { mutateAsync: unlike } = useUnlikeMutation(queriesToInvalidate)
 
     return (
         <div className='flex justify-center items-center'>
@@ -16,7 +16,9 @@ function LikeButton({ caption, isLiked, likeableData, queriesToInvalidate }) {
                 </>
             )} onClick={() => {
                 isLiked ? unlike(likeableData) : like(likeableData)
-            }} />
+            }}
+                className='hover:text-white'
+            />
         </div>
     )
 }
