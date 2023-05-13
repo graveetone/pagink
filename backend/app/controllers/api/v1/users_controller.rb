@@ -89,7 +89,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.includes(:reviews, :ginks, :image_link, shelves: [books: [:image_link, authors: :image_link]], bookmatees: :image_link, bookmates: :image_link).find(params[:id])
   end
 
   def fill_recommendations_shelve

@@ -61,6 +61,6 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def set_book
-    @book = Book.find(params[:id])
+    @book = Book.includes(:image_link, :authors, :shelves).find(params[:id])
   end
 end

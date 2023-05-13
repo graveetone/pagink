@@ -23,6 +23,6 @@ class Api::V1::AuthorsController < ApplicationController
   private
 
   def set_author
-    @author = Author.find(params[:id])
+    @author = Author.includes(:books, :image_link).find(params[:id])
   end
 end
