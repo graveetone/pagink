@@ -64,7 +64,7 @@ function GinkCard({ gink }) {
                               }, ['users', gink.author.id, 'posts']]}
                         />
                         <div className='flex justify-center items-center'>
-                            <Button icon={<>{gink.commentsCount} {icons.comments}</>} onClick={() => { }} />
+                            <Button icon={<>{gink.commentsCount} {icons.comments}</>} href={`/gink/${gink.id}`} />
                         </div>
                     </div>
                 </div>
