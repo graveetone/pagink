@@ -10,4 +10,13 @@ class Api::V1::ShelvesController < ApplicationController
 
     render json: @shelve
   end
+
+  def create
+    @shelve = Shelve.find_or_create_by(
+      author_id: current_user.id,
+      title: params[:title]
+    )
+
+    render json: @shelve
+  end
 end

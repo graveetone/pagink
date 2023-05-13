@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import helpers from '../../helpers'
 import ShelveCard from './components/ShelveCard';
+import CreateShelveSection from './components/CreateShelveSection'
 import LoadableContent from '../../components/LoadableContent';
 import { useParams } from 'react-router-dom';
 import { useShelvesQuery } from './../../api/queries/shelves';
 import Heading from '../../components/Heading';
 import Subheading from '../../components/Subheading';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const Shelves = ({ shelves, author }) => {
   helpers.setPageTitle(`Shelves by ${author.username}`)
 
   const shelvesAuthor = author;
+  const { currentUser } = useContext(CurrentUserContext);
+
   const linkToUserPage = helpers.createLinkTo(`/user/${shelvesAuthor.id}`, shelvesAuthor.username)
   return (
     <>
@@ -25,6 +29,7 @@ const Shelves = ({ shelves, author }) => {
             return <ShelveCard key={shelve.id} shelve={shelve} />
           })}
         </div>
+        {helpers.areUsersTheSame(currentUser, author) && <CreateShelveSection author={author} />}
       </div >
     </>
   )
