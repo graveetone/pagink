@@ -1,5 +1,6 @@
 import React from 'react'
 import RaitingStar from './RaitingStar';
+import AddBookToShelveSection from './AddBookToShelveSection';
 
 function BookInfo({ book }) {
   const MAX_RAITING = 5;
@@ -35,6 +36,11 @@ function BookInfo({ book }) {
               <tr className="flex justify-center items-center text-center">
                 <td className='text-black xs:text-xl md:text-3xl font-roboto'>
                   Users shelved this book <span className='font-black text-ruby-red'>{book.shelves_count}</span> times
+                </td>
+              </tr>
+              <tr className='flex justify-center items-center flex-col'>
+                <td>
+                  <AddBookToShelveSection book={book} />
                 </td>
               </tr>
             </tbody>
