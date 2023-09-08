@@ -31,7 +31,7 @@ const validateUsername = (username, onSuccess) => {
 };
 
 
-const validateEmail = email => {
+const validateEmail = (email, onSuccess) => {
     const endpointKey = 'validateEmail';
     axios.get(getEndpoint(endpointKey), { params: { email: email } }).then(
         (data) => {

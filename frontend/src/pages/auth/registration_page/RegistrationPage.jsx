@@ -157,7 +157,7 @@ function RegistrationPage() {
                     <RegistrationButton
                         caption='Finish'
                         width={primaryButtonWidth}
-                        onClick={() => { handleSubmitRegistration }} />
+                        onClick={ handleSubmitRegistration } />
                 )}
                 {currentPageIndex === lastLastPageIndex && (
                     <RegistrationButton
