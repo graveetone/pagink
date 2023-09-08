@@ -1,1 +1,1 @@
-web: cd backend && bundle exec rails server
+web cd backend && bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
