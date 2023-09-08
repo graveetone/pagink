@@ -5,7 +5,8 @@ import LoadableContent from '../../components/LoadableContent';
 import Statistics from './components/Statistics'
 
 function MainLogoutPage() {
-  return <LoadableContent hook={useStatisticsQuery}>
+  const backendDownMessage = "Sorry, server is unavailable due to the lack of free Heroku plan. Contact @graveetone in telegram if you have any questions"
+  return <LoadableContent hook={useStatisticsQuery} errorMesssage={backendDownMessage}>
     {Statistics}
   </LoadableContent>
 }

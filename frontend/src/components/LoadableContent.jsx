@@ -3,7 +3,7 @@ import Loader from './../components/Loader'
 import Popup from './../components/popup/Popup'
 import Subloader from './subloader/Subloader';
 
-function LoadableContent({ hook, params, subLoader, children }) {
+function LoadableContent({ hook, params, subLoader, children, errorMesssage }) {
   const { isLoading, error, data } = hook(params);
 
   if (isLoading)
@@ -13,7 +13,7 @@ function LoadableContent({ hook, params, subLoader, children }) {
 
   if (error) {
     return <div className='-mt-5'>
-      <Popup errors={[error.message, 'Please, try again later']} />
+      <Popup errors={[errorMesssage || error.message, 'Please, try again later']} />
     </div>
   }
 
