@@ -46,6 +46,8 @@ class User < ApplicationRecord
 
   after_create :setup_default_shelves
 
+  accepts_nested_attributes_for :image_link
+
   def status=(value)
     raise ArgumentError, "Invalid status: #{value}" unless STATUSES.values.include?(value)
 

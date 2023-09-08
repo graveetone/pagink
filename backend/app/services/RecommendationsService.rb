@@ -2,18 +2,24 @@ class RecommendationsService
   DEFAULT_RECOMMENDATION_ITEMS_COUNT = 5
 
   def initialize
-    @recommender = Disco::Recommender.new
-
+    @recommender = Disco::Recommender.new(top_items: true)
+    @trained = true
     @recommender.fit(data)
+  rescue ArgumentError
+    @trained = false
   end
 
   def books_from_similar_users(user, count: DEFAULT_RECOMMENDATION_ITEMS_COUNT)
+    return [] unless @trained
+
     result = @recommender.user_recs(user.id, count: count)
 
     get_recommended_books(result)
   end
 
   def similar_items(item, count: DEFAULT_RECOMMENDATION_ITEMS_COUNT)
+    return [] unless @trained
+
     result = @recommender.item_recs(item.id, count: count)
 
     get_recommended_books(result)
@@ -23,7 +29,9 @@ class RecommendationsService
 
   def data
     items = users.map do |user|
-      books = user.shelves.reject {|shelve| shelve.title == 'Recommendations'}.map { |shelve| shelve.books }.flatten.uniq
+      books = user.shelves.reject do |shelve|
+                shelve.title == 'Recommendations'
+              end.map { |shelve| shelve.books }.flatten.uniq
 
       items = books.map do |book|
         {

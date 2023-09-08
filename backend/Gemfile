@@ -11,8 +11,11 @@ gem "bootsnap", require: false
 gem 'active_model_serializers'
 gem 'devise'
 gem 'devise-jwt'
-gem 'faraday'
+# gem 'faraday'
 gem "disco" # recommendations
+gem 'google-drive' # to store user images
+gem 'data_uri' # to parse base64
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors"
 
