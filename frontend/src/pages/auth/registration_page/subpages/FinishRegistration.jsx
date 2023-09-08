@@ -19,11 +19,11 @@ function FinishRegistration() {
         <tbody className='flex flex-col justify-start'>
           <tr className='flex gap-12'>
             <td>Username:</td>
-            <td>graveetone</td>
+            <td>{registrationState.username.value}</td>
           </tr>
           <tr className='flex gap-12'>
             <td>Email:</td>
-            <td>zastavskijs@gmail.com</td>
+            <td>{registrationState.email.value}</td>
           </tr>
         </tbody>
       </table>

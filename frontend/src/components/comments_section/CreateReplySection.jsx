@@ -11,8 +11,6 @@ function CreateReplySection({ origin }) {
 
     const submitComment = (data) => {
         createComment(data)
-        alert(JSON.stringify(data))
-
         closeModal()
     }
 

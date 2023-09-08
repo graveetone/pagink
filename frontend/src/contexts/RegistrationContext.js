@@ -25,7 +25,7 @@ const initialRegistrationState = {
         validations: []
     },
     photo: {
-        value: 'default_user_profile_picture.svg',
+        value: '/default_user_profile_picture.svg',
         errors: [],
         validations: []
     }

@@ -6,6 +6,7 @@ import { RegistrationContext } from './../../../contexts/RegistrationContext'
 import RegistrationButton from './components/RegistrationButton'
 import Popup from './../../../components/popup/Popup'
 import Heading from '../../../components/Heading'
+import { useRegistrationMutation } from '../../../api/queries/auth'
 
 const components = [
     subpages.startRegistration,
@@ -29,6 +30,8 @@ function RegistrationPage() {
 
     const currentComponent = components[currentPageIndex];
     const currentInputName = currentComponent?.inputName;
+
+    const { mutateAsync: register } = useRegistrationMutation();
 
     const resetErrors = () => setErrorsBlock(<Popup errors={[]} visible={false} />);
 
@@ -90,6 +93,31 @@ function RegistrationPage() {
         resetErrors()
     }
 
+    const handleSubmitRegistration = async () => {
+        const {
+            username: { value: username },
+            email: { value: email },
+            password: { value: password },
+            passwordConfirmation: { value: password_confirmation },
+            photo: { value: url }
+        } = registrationState;
+
+        const data = {
+            username,
+            email,
+            password: password,
+            password_confirmation,
+            url: url
+        };
+
+        try {
+            const response = await register({ user: data });
+            setCurrentPageIndex(nextPageIndex)
+        } catch (error) {
+            console.log(error); //TODO: display error for user
+        }
+    }
+
     const secondaryButtonWidth = 'xs:w-1/2 md:w-1/6'
     const primaryButtonWidth = 'xs:w-3/4 md:w-1/3'
 
@@ -129,7 +157,7 @@ function RegistrationPage() {
                     <RegistrationButton
                         caption='Finish'
                         width={primaryButtonWidth}
-                        onClick={() => { alert(JSON.stringify(registrationState)); setCurrentPageIndex(nextPageIndex) }} />
+                        onClick={() => { handleSubmitRegistration }} />
                 )}
                 {currentPageIndex === lastLastPageIndex && (
                     <RegistrationButton

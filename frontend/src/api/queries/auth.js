@@ -2,17 +2,18 @@ import PaginkAPI from './../PaginkAPI'
 import axios from 'axios';
 import helpers from './../../helpers'
 
-const HOST = "http://192.168.1.108:3000"
+const HOST = process.env.REACT_APP_API_HOST;
 
 const endpoints = {
     login: () => `${HOST}/login`,
     validateUsername: () => `validate_username`,
     validateEmail: () => `validate_email`,
     logout: () => `${HOST}/logout`,
+    signup: () => `${HOST}/signup`
 
 };
 
-const { getEndpoint, usePaginkQuery, usePaginkMutation } = PaginkAPI(endpoints);
+const { getEndpoint, usePaginkMutation } = PaginkAPI(endpoints);
 
 
 const useLoginMutation = () => {
@@ -20,21 +21,23 @@ const useLoginMutation = () => {
     return usePaginkMutation(endpoints[endpointKey](), 'POST');
 };
 
-const validateUsername = async username => {
-    const endpointKey = 'validateUsername';
-    const endpoint = getEndpoint(endpointKey);
-    const response = await axios.get(endpoint, { params: { username: username } });
-    alert(response.data.usernameValid)
-    return response.data.usernameValid;
+const validateUsername = (username, onSuccess) => {
+    const endpointKey = 'validateUsername'
+    axios.get(getEndpoint(endpointKey), { params: { username: username } }).then(
+        (data) => {
+            onSuccess(data)
+        }
+    )
 };
 
 
 const validateEmail = email => {
-    // const queryKey = ['validate', username];
     const endpointKey = 'validateEmail';
-
-    axios.get(endpoints[endpointKey]).then(response => console.log(response))
-    // return usePaginkQuery(queryKey, getEndpoint(endpointKey, null, {username: username}));
+    axios.get(getEndpoint(endpointKey), { params: { email: email } }).then(
+        (data) => {
+            onSuccess(data)
+        }
+    )
 };
 
 const useLogoutMutation = () => {
@@ -43,9 +46,16 @@ const useLogoutMutation = () => {
     return usePaginkMutation(endpoints[endpointKey](), 'DELETE', { headers: { Authorization: token } });
 };
 
+const useRegistrationMutation = () => {
+    const endpointKey = 'signup'
+    return usePaginkMutation(endpoints[endpointKey](), 'POST');
+};
+
+
 export {
     useLoginMutation,
     useLogoutMutation,
     validateUsername,
-    validateEmail
+    validateEmail,
+    useRegistrationMutation
 }
